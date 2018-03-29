@@ -1,0 +1,99 @@
+@charset "utf-8";
+//=====css样式初始化=====
+body, div, dl, dt, dd, ul, ol, li, table, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, p, blockquote, tr, th, td, tbody, tfoot, thead, select {
+	margin: 0;
+	padding: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+	text-decoration: none;
+	font-weight: normal;
+	font-size: 100%;
+}
+s, i, em {
+	font-style: normal;
+	text-decoration: none;
+}
+fieldset, img, input, button, textarea {
+	border: none;
+	padding: 0;
+	margin: 0;
+	outline-style: none;
+	vertical-align: middle;
+}
+li {
+	list-style: none;
+}
+textarea {
+	resize: none;
+}
+fieldset, img {
+	border: 0;
+}
+button, input, select, textarea {
+	font-size: 100%;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+select, input, button, img {
+	border: 0;
+	vertical-align: middle;
+}
+%cl {
+	*zoom: 1;
+	&:after {
+		content: "";
+		display: table;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+		overflow: hidden;
+	}
+}
+.clearfix {
+	@extend %cl;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+a {
+	text-decoration: none;
+}
+a:link, a:visited, a:hover, a:active, a:focus {
+	color: #333;
+	text-decoration: none;
+}
+html, body {
+	background: #fff;
+	color: #333;
+	font: 14px/1.5 Microsoft YaHei, tahoma, arial, Hiragino Sans GB, \\5b8b\4f53, sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+//版心
+.w{
+	width: 1200px;
+	margin: 0 auto;
+}
+//字体
+@font-face {
+	font-family: 'MyFont';
+	src: url("../font/font.svg");
+	src:  url('../font/font.eot') format('embedded-opentype'),
+	url('../font/font.ttf') format('truetype'),
+	url('../font/font.woff') format('woff'),
+	url('../font/font.svg') format('svg');
+}
+.icon-font{
+	font-family: 'MyFont', serif;
+	vertical-align: middle;
+}
+.split-line {
+	text-align: center;
+	margin: 0 8px;
+	color: #959595;
+	cursor: default;
+}

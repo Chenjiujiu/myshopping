@@ -1,0 +1,393 @@
+@charset "UTF-8";
+
+//产品模块
+.prod-module {
+	margin-bottom: 10px;
+	//头部
+	.prod-header {
+		line-height: 58px;
+		height: 58px;
+		margin-bottom: 10px;
+		@extend %cl;
+		//标题
+		.title {
+			color: $color-Main;
+			font-size: 22px;
+			font-weight: 200;
+			float: left;
+		}
+		//楼层
+		.floor{
+			float: left;
+			padding: 0 10px;
+			margin: 9px 10px 0 0;
+			line-height: 40px;
+			color: $whilt;
+			background-color: $color-Main;
+			border-radius: 0 100% 50% 0;
+		}
+		//更多
+		.table-more {
+			float: right;
+			@extend %g2-m;
+			a {
+				@include ts2 ;
+				font-size: 16px;
+				@extend %b-m;
+				&:hover i {
+					background-color: $color-Main;
+				}
+			}
+			i {
+				border-radius: 50%;
+				background-color: $gray03;
+				color: $whilt;
+				padding: 4px;
+				margin-left: 8px;
+				font-size: 12px;
+				vertical-align: 1px;
+				@include ts2;
+			}
+		}
+		//小导航
+		.table-nav {
+			float: right;
+			line-height: 42px;
+			.nav-item {
+				display: inline-block;
+				%current {
+					border-bottom: 2px solid $color-Main;
+					color: $color-Main;
+				}
+				a {
+					width: 64px;
+					height: 24px;
+					margin-left: 30px;
+					font-size: 16px;
+					color: $gray02;
+					font-weight: 200;
+					padding: 5px 0;
+					@include ts2;
+					border-bottom: 2px solid transparent;
+					&:hover {
+						@extend %current;
+					}
+				}
+				.nav-current {
+					@extend %current;
+				}
+			}
+		}
+		//左右按钮
+		.table-ctrl {
+			float: right;
+			box-sizing: border-box;
+			width: 72px;
+			height: 25px;
+			border: 1px solid #e0e0e0;
+			color: #333333;
+			vertical-align: middle;
+			line-height: 25px;
+			margin-top: 16px;
+			text-align: center;
+			%ctrl {
+				width: 35px;
+				height: 25px;
+				color: $gray03;
+				@include ts2;
+				display: inline-block;
+				margin-top: -4px;
+				&:hover {
+					background-color: $color-Main;
+					color: $whilt;
+				}
+			}
+			.ctrl-prve {
+				@extend %ctrl;
+				box-sizing: border-box;
+				border-right: 1px solid #e0e0e0;
+			}
+			.ctrl-next {
+				@extend %ctrl;
+			}
+			.ctrl-disabled {
+				color: $yellow01;
+				&:hover {
+					cursor: default;
+					background-color: transparent;
+					color: $gray05;
+				}
+			}
+		}
+	}
+	//内容
+	.prod-container {
+		width: 1220px;
+		//1列
+		@extend %cl;
+		%sol {
+			float: left;
+			margin-right: 20px;
+		}
+		.sol-1 {
+			@extend %sol;
+			width: 190px;
+			.prod-box {
+				width: 200px;
+				box-sizing: border-box;
+				@extend %cl;
+			}
+		}
+		.sol-2 {
+			@extend %sol;
+			width: 390px;
+			.prod-box {
+				width: 400px;
+				box-sizing: border-box;
+				@extend %cl;
+			}
+		}
+		//4列
+		.sol-4 {
+			 @extend %sol;
+			 width: 790px;
+			 .prod-box {
+				 width: 800px;
+				 @extend %cl;
+			 }
+		 }
+		//5列
+		.sol-5 {
+			@extend %sol;
+			width: 990px;
+			.prod-box {
+				width: 1000px;
+				@extend %cl;
+			}
+		}
+		//6列
+		.sol-6 {
+			@extend %sol;
+			width: 1190px;
+			.prod-box {
+				width: 1200px;
+				@extend %cl;
+			}
+		}
+		//常规盒子
+		.prod-item {
+			text-align: center;
+			margin: 0 10px 10px 0;
+			position: relative;
+			float: left;
+			background-color: $whilt;
+			@include ts2 ;
+			//常用产品盒子
+			&.item-common {
+				//图片
+				.img {
+					width: 190px;
+					height: 170px;
+					text-align: center;
+					a{
+						display: block;
+					}
+					img {
+						width: 190px;
+						height: 170px;
+					}
+				}
+				//标题
+				.title {
+					text-align: center;
+					line-height: 26px;
+					a {
+						color: $gray02;
+						font-weight: 600;
+						font-size: 14px;
+					}
+				}
+				//价格
+				.price {
+					color: $color-Main;
+					padding-bottom: 8px;
+				}
+				//评价
+				.review {
+					width: 234px;
+					height: 0;
+					position: absolute;
+					left: 0;
+					bottom: 0;
+					background-color: #ff6700;
+					z-index: 10;
+					overflow: hidden;
+					opacity: 0;
+					@include ts2;
+					a {
+						display: block;
+						padding: 8px 30px;
+						font-size: 12px;
+					}
+					.text {
+						height: 36px;
+						display: block;
+						color: #ffffff;
+						margin-bottom: 5px;
+						text-align: left;
+						overflow: hidden;
+					}
+					.author {
+						display: block;
+						height: 18px;
+						line-height: 18px;
+						color: rgba(255, 255, 255, 0.6);
+						span {
+							max-width: 94px;
+							display: inline-block;
+							vertical-align: middle;
+							line-height: 19px;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							white-space: nowrap;
+							padding: 0 4px;
+						}
+					}
+				}
+				&:hover {
+					.review {
+						height: 76px;
+						opacity: 1;
+						filter: alpha(opacity=100);
+					}
+				}
+				//标签
+				%flag {
+					display: block;
+					width: 64px;
+					height: 20px;
+					font-size: 12px;
+					line-height: 20px;
+					color: #ffffff;
+					position: absolute;
+					top: -3px;
+					left: 50%;
+					margin-left: -32px;
+					text-align: center;
+				}
+				.flag-reduce {
+					@extend %flag;
+					background-color: rgba(2,140,232,.9);
+				}
+				.flag-new {
+					@extend %flag;
+					background-color: rgba(131,196,78,.9)
+				}
+			}
+			//占用4格的盒子
+			&.item-4ge{
+				img {
+					width: 400px;
+					height: 460px;
+				}
+				a {
+					display: block;
+				}
+			}
+			//跨两行的大盒子
+			&.item-2row {
+				img{
+				height: 460px;
+					width: 200px;
+				}
+			}
+			//半行的小盒子
+			&.item-small {
+				height: 103px;
+				//图片
+				.pic {
+					position: absolute;
+					right: 20px;
+					top: 32px;
+					img {
+						width: 80px;
+						height: 80px;
+					}
+				}
+				//标题
+				.title {
+					padding: 20px 0 5px 0;
+					width: 94px;
+					height: 21px;
+					font-size: 14px;
+					margin-left: 30px;
+					a {
+						display: block;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						color: #333333;
+					}
+				}
+				//价格
+				.price {
+					width: 94px;
+					height: 21px;
+					font-size: 14px;
+					margin-left: 30px;
+					text-align: left;
+					padding-left: 5px;
+					color: $color-Main;
+				}
+				//箭头图标
+				.go {
+					height: 48px;
+					padding: 28px 35px;
+					.text {
+						float: left;
+						width: 94px;
+						height: 48px;
+						padding-right: 22px;
+						.more {
+							display: block;
+							width: 94px;
+							height: 48px;
+							text-align: left;
+							font-size: 18px;
+							color: gray;
+							small {
+								display: block;
+								font-size: 12px;
+								color: gray;
+							}
+						}
+					}
+					.icon-font {
+						float: left;
+						width: 48px;
+						line-height: 48px;
+						font-size: 48px;
+						color: $color-Main;
+						cursor: pointer;
+					}
+				}
+			}
+			&:hover {
+				box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+				transform: translate3d(0,-6px,0);
+			}
+		}
+		//左右滚动的盒子
+		.roll-box {
+			overflow: hidden;
+			width: 1200px;
+			height: 235px;
+			padding-top: 2px;
+			margin-top: -2px;
+			.roll-list {
+				@extend %cl;
+				width: 4960px;
+			}
+		}
+	}
+}

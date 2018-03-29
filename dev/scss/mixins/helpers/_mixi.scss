@@ -1,0 +1,64 @@
+@charset "UTF-8";
+//=====边框样式=====
+//1px
+@mixin bd1($color){
+	border: 1px solid $color;
+}
+@mixin bdt1($color){
+	border-top: 1px solid $color;
+}
+@mixin bdr1($color){
+	border-right: 1px solid $color;
+}
+@mixin bdb1($color){
+	border-bottom: 1px solid $color;
+}
+@mixin bdl1($color){
+	border-left: 1px solid $color;
+}
+//2px
+@mixin bd2($color){
+	border: 2px solid $color;
+}
+@mixin bdt2($color){
+	border-top: 2px solid $color;
+}
+@mixin bdr2($color){
+	border-right: 2px solid $color;
+}
+@mixin bdb2($color){
+	border-bottom: 2px solid $color;
+}
+@mixin bdl2($color){
+	border-left: 2px solid $color;
+}
+//3px
+@mixin bd3($color){
+	border: 3px solid $color;
+}
+@mixin bdt3($color){
+	border-top: 3px solid $color;
+}
+@mixin bdr3($color){
+	border-right: 3px solid $color;
+}
+@mixin bdb3($color){
+	border-bottom: 3px solid $color;
+}
+@mixin bdl3($color){
+	border-left: 3px solid $color;
+}
+
+//=====过渡=====
+//.1秒
+@mixin ts1{
+	transition: all .1s linear;
+}
+//.2秒
+@mixin ts2{
+	transition: all .2s linear;
+}
+//.5秒
+@mixin ts5{
+	transition: all .5s linear;
+}

@@ -1,0 +1,119 @@
+@charset "UTF-8";
+//公共页脚
+.pubFooter {
+	//服务
+	background-color: $whilt;
+	.footer-service {
+		@include bdb1($bd-gray);
+		margin-bottom: 30px;
+		//服务项
+		.col-service {
+			float: left;
+			width: 240px;
+			line-height: 80px;
+			font-size: 18px;
+			text-align: center;
+			i {
+				font-size: 40px;
+				margin: 0 10px;
+				color: $color-Main;
+			}
+		}
+	}
+	//帮助
+	.footer-help {
+		margin-bottom: 30px;
+		//帮助列表
+		.col-help {
+			float: left;
+			width: 110px;
+			margin: 0 42px;
+			dt {
+				line-height: 28px;
+			}
+			a {
+				@extend %g2-m;
+				display: inline-block;
+				font-size: 12px;
+				line-height: 20px;
+			}
+			//帮助项
+		}
+		//联系我们
+		.col-contact {
+			float: right;
+			width: 220px;
+			text-align: center;
+			font-size: 12px;
+			color: $server-gray;
+			@include bdl1($gray01);
+			.title {
+				color: $color-Main;
+				font-size: 20px;
+				padding: 5px 0;
+			}
+			.tell {
+				font-size: 18px;
+				color: $color-Main;
+			}
+			.btn {
+				margin: 10px auto;
+				display: block;
+				width: 125px;
+				height: 30px;
+				line-height: 30px;
+				cursor: pointer;
+				color: $color-Main;
+				@include bd1($color-Main);
+				@include ts2;
+				&:hover {
+					color: $whilt;
+					background-color: $color-Main;
+				}
+				.icon-font {
+					line-height: 29px;
+					font-size: 18px;
+				}
+			}
+		}
+
+	}
+	//版权
+	.footer-copyright {
+		text-align: center;
+		background-color: $bg-gray;
+		//链接
+		.copyright-links {
+			padding: 20px 0 10px 0;
+			a {
+				@extend %g2-m;
+				font-size: 12px;
+			}
+		}
+		//版权内容
+		.copyright-info {
+			a {
+				@extend %g3-m;
+			}
+			font-size: 12px;
+			color: $gray03;
+		}
+		//版权图片
+		.copyright-pic {
+			padding: 20px 0;
+			.pic {
+				display: inline-block;
+				width: 103px;
+				height: 32px;
+				background-image: url("../../images/copyright.png");
+				margin: 0 10px;
+			}
+			//循环生成背景位置
+			@for $i from 0 to 6 {
+				.cop#{$i} {
+					background-position: #{$i%2*-103}px #{floor($i/2)*-32}px;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,434 @@
+@charset "UTF-8";
+//公共页头部
+.pubHeader {
+	//顶部功能条
+	.pub-topbar {
+		background-color: $topbar-bg;
+		line-height: 40px;
+		color: $gray02;
+		text-align: center;
+		a {
+			display: inline-block;
+			@extend %g2-m;
+		}
+		//登录条
+		.topbar-loggin {
+			float: left;
+		}
+		//功能条
+		.topbar-fun {
+			float: right;
+			.fun-item {
+				float: left;
+			}
+		}
+		.fun-app {
+			position: relative;
+			&:hover {
+				.app-box {
+					height: 150px;
+					padding: 20px;
+				}
+				.icon-arrow {
+					display: block;
+				}
+			}
+			.app-box {
+				position: absolute;
+				top: 40px;
+				right: 50%;
+				margin-right: -90px;
+				width: 140px;
+				height: 0;
+				text-align: center;
+				box-shadow: 0 3px 3px 0 #{$yellow01};
+				background-color: $whilt;
+				padding: 0 20px;
+				overflow: hidden;
+				@include ts2;
+				z-index: 9999;
+				img {
+					width: 120px;
+				}
+				h4 {
+					margin-top: 5px;
+					color: $color-Main;
+					font-weight: 500;
+				}
+			}
+			.icon-arrow {
+				display: none;
+				width: 0;
+				height: 0;
+				border: 8px solid transparent;
+				border-bottom-color: $whilt;
+				position: absolute;
+				bottom: -1px;
+				left: 50%;
+				margin-left: -8px;
+			}
+		}
+		.fun-myxk {
+			position: relative;
+			padding: 0 10px;
+			@include ts2;
+			&:hover {
+				background-color: $whilt;
+				.myxk-box {
+					height: 120px;
+					padding: 10px;
+				}
+			}
+			.myxk-box {
+				position: absolute;
+				top: 40px;
+				right: 0;
+				height: 0;
+				background-color: $whilt;
+				box-shadow: 0 3px 3px 0 #{$yellow01};
+				z-index: 999;
+				text-align: left;
+				font-size: 12px;
+				padding: 0 10px;
+				overflow: hidden;
+				@include ts2;
+			}
+			.myxk-list {
+				width: 160px;
+			}
+			.myxk-item {
+				margin: 0 10px;
+				width: 60px;
+				line-height: 30px;
+				float: left;
+			}
+		}
+		.fun-car {
+			width: 130px;
+			margin: 0 0 0 10px;
+			background-color: $car-bg;
+			cursor: pointer;
+			position: relative;
+			text-align: center;
+			transition: all .2s linear .2s;
+			&:hover {
+				background-color: $whilt;
+				transition: all .2s linear;
+				.car-info {
+					color: $color-Main;
+				}
+			}
+		}
+		.car-box {
+			height: 0;
+			width: 330px;
+			position: absolute;
+			top: 40px;
+			right: 0;
+			background-color: $whilt;
+			overflow: hidden;
+			@include ts2;
+			z-index: 1000;
+			box-shadow: 0 3px 3px 0 #{$yellow01};
+		}
+		.car-list {
+			padding: 10px 20px;
+		}
+		.car-item {
+			height: 60px;
+			padding: 5px 0;
+			position: relative;
+			font-size: 12px;
+			@include bdb1($yellow01);
+			&:hover {
+				.close {
+					opacity: 1;
+					display: block;
+				}
+			;
+			}
+			&:last-child {
+				border: none;
+			}
+			.img {
+				float: left;
+				width: 60px;
+				height: 60px;
+				img {
+					width: 60px;
+					height: 60px;
+				}
+			}
+			.des {
+				float: left;
+				width: 120px;
+				height: 40px;
+				line-height: 20px;
+				padding: 10px 10px 0 10px;
+				overflow: hidden;
+				a {
+					color: #333;
+					line-height: 20px;
+					text-align: left;
+					font-size: 12px;
+					&:hover {
+						color: $color-Main;
+					}
+				}
+			}
+			.price {
+				float: left;
+				width: 90px;
+				overflow: hidden;
+				span, i {
+					padding: 0 4px;
+				}
+			}
+			.close {
+				opacity: 0;
+				width: 18px;
+				line-height: 18px;
+				position: absolute;
+				right: 0;
+				top: 16px;
+				color: $gray05;
+				@include ts2;
+				&:hover {
+					color: #333;
+				}
+			}
+		}
+		.car-sum {
+			height: 40px;
+			background-color: $yellow01;
+			padding: 15px 20px;
+			.info {
+				float: left;
+				h3 {
+					line-height: 10px;
+				}
+				p {
+					color: $color-Main;
+				}
+				span {
+					font-size: 24px;
+					font-weight: 400;
+				}
+			}
+			.gotocar {
+				float: right;
+				height: 40px;
+				background-color: $color-Main;
+				padding: 0 20px;
+				a {
+					color: $whilt;
+				}
+			}
+		}
+		.car-empty {
+			padding: 25px 10px;
+		}
+	}
+	//搜索导航
+	.pub-header {
+		//搜索
+		.header-search {
+			.logo {
+				float: left;
+				width: 220px;
+				height: 120px;
+				text-indent: -9999em;
+				//overflow: hidden;
+				margin-right: 80px;
+				a {
+					display: block;
+				}
+				img {
+					display: block;
+					width: 220px;
+				}
+			}
+			.search-box {
+				float: left;
+				height: 80px;
+				width: 600px;
+				margin-top: 30px;
+			}
+			.input-box {
+				height: 46px;
+				width: 600px;
+				@include bd3($color-Main);
+
+				input {
+					line-height: 46px;
+					width: 470px;
+					padding: 0 15px;
+					color: #333;
+					font-size: 16px;
+					box-shadow: inset 0 0 6px 1px $yellow01;
+				}
+			}
+			.input-btn {
+				width: 100px;
+				line-height: 46px;
+				background-color: $color-Main;
+				float: right;
+				font-size: 18px;
+				color: $whilt;
+				cursor: pointer;
+			}
+			.hot-words {
+				float: left;
+				height: 40px;
+				width: 600px;
+				a {
+					@extend %g2-m;
+					display: inline-block;
+					padding: 2px 5px;
+				}
+			}
+			.search-banner {
+				float: right;
+				width: 200px;
+				height: 100px;
+				margin-top: 20px;
+				overflow: hidden;
+				img{
+					width: 200px;
+					height: 100px;
+				}
+			}
+		}
+		//导航
+		.header-nav {
+			margin-top: 20px;
+			@include bdb1($yellow02);
+			.nav-item{
+				float: left;
+				text-align: center;
+				a{
+					font-size: 16px;
+					display: block;
+					@extend %b-m;
+					padding: 10px;
+				}
+				.list-item{
+					text-align: left;
+				}
+			}
+			.nav-all{
+				margin-right: 50px;
+				width: 175px;
+				height: 44px;
+				position: relative;
+				.all-title{
+					display: block;
+					font-size: 16px;
+					line-height: 44px;
+					background-color: $color-Main;
+					color: $whilt;
+					cursor: pointer;
+				}
+				&:hover{
+					.nav-box{
+						display: block;
+					}
+				}
+			}
+			.icon-font{
+				float: right;
+			}
+			.nav-box{
+				display: none;
+				position: absolute;
+				top: 44px;
+				left: 0;
+				z-index: 9999;
+			}
+			.nav-list{
+				width: 174px;
+				height: 340px;
+				padding: 10px 0;
+				@include bd1($color-Main);
+				background-color: $whilt;
+				opacity: .94;
+			}
+			.list-item{
+				height: 42px;
+				cursor: pointer;
+				&:hover{
+					background-color: $color-Main;
+					&>a{color: $whilt}
+					.list-box{
+						display: block;
+					}
+				}
+				a{
+					display: block;
+					width: 153px;
+					line-height: 22px;
+					font-size: 14px;
+				}
+			}
+			.list-box{
+				display: none;
+				height: 360px;
+				position: absolute;
+				top: 1px;
+				left: 175px;
+				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
+				background-color: $whilt;
+				z-index: 500;
+				overflow: hidden;
+				ul{
+					float: left;
+					width: 200px;
+				}
+				li{
+					float: left;
+					width: 180px;
+					line-height: 60px;
+					height: 60px;
+					padding-left: 20px;
+					display: block;
+					overflow: hidden;
+					a{
+						line-height: 60px;
+						padding: 0;
+					}
+					.img{
+						display: inline-block;
+						width: 80px;
+						height: 40px;
+						margin-right: 12px;
+						padding-top: 5px;
+						text-align: center;
+						img{
+							max-width: 100%;
+							max-height: 100%;
+						}
+					}
+					span{
+						line-height: 40px;
+					}
+					&:hover span{
+						color: $color-Main;
+					}
+				}
+			}
+			.nav-list-col1 {
+				width: 200px;
+			}
+			.nav-list-col2 {
+				width: 400px;
+			}
+			.nav-list-col3 {
+				width: 600px;
+			}
+			.nav-list-col4 {
+				width: 800px;
+			}
+		}
+	}
+
+}

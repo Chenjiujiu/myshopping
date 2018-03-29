@@ -1,0 +1,5 @@
+@charset "UTF-8";
+@import "mixins/mixins";	//引入scss函数库 包含变量，占位符，函数，mixin
+@import "modules/pubHeader";	//引入页头样式
+@import "modules/pubFooter";	//引入页脚样式
+@import "pages/buyM";	//引入页面主样式
