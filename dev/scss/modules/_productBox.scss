@@ -17,7 +17,7 @@
 			float: left;
 		}
 		//楼层
-		.floor{
+		.floor {
 			float: left;
 			padding: 0 10px;
 			margin: 9px 10px 0 0;
@@ -122,16 +122,15 @@
 	}
 	//内容
 	.prod-container {
-		width: 1220px;
+		width: 1230px;
 		//1列
 		@extend %cl;
 		%sol {
 			float: left;
-			margin-right: 20px;
+			margin-right: 10px;
 		}
 		.sol-1 {
 			@extend %sol;
-			width: 190px;
 			.prod-box {
 				width: 200px;
 				box-sizing: border-box;
@@ -140,7 +139,6 @@
 		}
 		.sol-2 {
 			@extend %sol;
-			width: 390px;
 			.prod-box {
 				width: 400px;
 				box-sizing: border-box;
@@ -149,17 +147,15 @@
 		}
 		//4列
 		.sol-4 {
-			 @extend %sol;
-			 width: 790px;
-			 .prod-box {
-				 width: 800px;
-				 @extend %cl;
-			 }
-		 }
+			@extend %sol;
+			.prod-box {
+				width: 800px;
+				@extend %cl;
+			}
+		}
 		//5列
 		.sol-5 {
 			@extend %sol;
-			width: 990px;
 			.prod-box {
 				width: 1000px;
 				@extend %cl;
@@ -168,7 +164,6 @@
 		//6列
 		.sol-6 {
 			@extend %sol;
-			width: 1190px;
 			.prod-box {
 				width: 1200px;
 				@extend %cl;
@@ -186,10 +181,8 @@
 			&.item-common {
 				//图片
 				.img {
-					width: 190px;
-					height: 170px;
 					text-align: center;
-					a{
+					a {
 						display: block;
 					}
 					img {
@@ -214,7 +207,7 @@
 				}
 				//评价
 				.review {
-					width: 234px;
+					width: 100%;
 					height: 0;
 					position: absolute;
 					left: 0;
@@ -264,7 +257,7 @@
 				//标签
 				%flag {
 					display: block;
-					width: 64px;
+					width: 60px;
 					height: 20px;
 					font-size: 12px;
 					line-height: 20px;
@@ -272,22 +265,22 @@
 					position: absolute;
 					top: -3px;
 					left: 50%;
-					margin-left: -32px;
+					margin-left: -30px;
 					text-align: center;
 				}
 				.flag-reduce {
 					@extend %flag;
-					background-color: rgba(2,140,232,.9);
+					background-color: rgba(2, 140, 232, .9);
 				}
 				.flag-new {
 					@extend %flag;
-					background-color: rgba(131,196,78,.9)
+					background-color: rgba(131, 196, 78, .9)
 				}
 			}
 			//占用4格的盒子
-			&.item-4ge{
+			&.item-4ge {
 				img {
-					width: 400px;
+					width: 390px;
 					height: 460px;
 				}
 				a {
@@ -296,97 +289,89 @@
 			}
 			//跨两行的大盒子
 			&.item-2row {
-				img{
-				height: 460px;
+				img {
+					height: 460px;
 					width: 200px;
-				}
-			}
-			//半行的小盒子
-			&.item-small {
-				height: 103px;
-				//图片
-				.pic {
-					position: absolute;
-					right: 20px;
-					top: 32px;
-					img {
-						width: 80px;
-						height: 80px;
-					}
-				}
-				//标题
-				.title {
-					padding: 20px 0 5px 0;
-					width: 94px;
-					height: 21px;
-					font-size: 14px;
-					margin-left: 30px;
-					a {
-						display: block;
-						overflow: hidden;
-						text-overflow: ellipsis;
-						white-space: nowrap;
-						color: #333333;
-					}
-				}
-				//价格
-				.price {
-					width: 94px;
-					height: 21px;
-					font-size: 14px;
-					margin-left: 30px;
-					text-align: left;
-					padding-left: 5px;
-					color: $color-Main;
-				}
-				//箭头图标
-				.go {
-					height: 48px;
-					padding: 28px 35px;
-					.text {
-						float: left;
-						width: 94px;
-						height: 48px;
-						padding-right: 22px;
-						.more {
-							display: block;
-							width: 94px;
-							height: 48px;
-							text-align: left;
-							font-size: 18px;
-							color: gray;
-							small {
-								display: block;
-								font-size: 12px;
-								color: gray;
-							}
-						}
-					}
-					.icon-font {
-						float: left;
-						width: 48px;
-						line-height: 48px;
-						font-size: 48px;
-						color: $color-Main;
-						cursor: pointer;
-					}
 				}
 			}
 			&:hover {
 				box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-				transform: translate3d(0,-6px,0);
+				transform: translate3d(0, -6px, 0);
+			}
+			@media screen and (max-width: 1180px) {
+				&.item-common {
+					.img {
+						img {
+							width: 150px;
+							height: 135px;
+						}
+					}
+					.title {
+						line-height: 22px;
+					}
+					.price {
+						padding-bottom: 0;
+					}
+				}
+				&.item-4ge {
+					img {
+						width: 310px;
+						height: 366px;
+					}
+					a {
+						display: block;
+					}
+				}
+				&.item-2row {
+					img {
+						width: 150px;
+						height: 366px;
+					}
+				}
 			}
 		}
 		//左右滚动的盒子
 		.roll-box {
 			overflow: hidden;
 			width: 1200px;
-			height: 235px;
-			padding-top: 2px;
+			height: 245px;
+			padding-top: 12px;
 			margin-top: -2px;
 			.roll-list {
 				@extend %cl;
 				width: 4960px;
+			}
+		}
+		@media screen and (max-width: 1180px) {
+			width: 980px;
+			.sol-1 {
+				.prod-box {
+					width: 150px;
+				}
+			}
+			.sol-2 {
+				.prod-box {
+					width: 310px;
+				}
+			}
+			.sol-4 {
+				.prod-box {
+					width: 640px;
+				}
+			}
+			.sol-5 {
+				.prod-box {
+					width: 800px;
+				}
+			}
+			.sol-6 {
+				.prod-box {
+					width: 960px;
+				}
+			}
+			.roll-box {
+				width: 960px;
+				height: 190px;
 			}
 		}
 	}

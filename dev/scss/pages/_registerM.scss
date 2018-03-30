@@ -1,1 +1,95 @@
 @charset "UTF-8";
+.header{
+	background: url("../../images/headbg.jpg") repeat-x left bottom;
+	.logo-box{
+		padding: 20px 0;
+		img{
+			float: left;
+			height: 80px;
+		}
+		h1{
+			float: left;
+			padding-left: 30px;
+			line-height: 80px;
+			font-size: 30px;
+		}
+	}
+}
+.main{
+	width: 1200px;
+	height: 1200px;
+}
+.register-box{
+	position: absolute;
+	left: 50%;
+	margin-left: -160px;
+	margin-top: 50px;
+}
+.regist-form {
+	.regist-item {
+		width: 318px;
+		height: 50px;
+		@include bd1($blue009);
+		border-radius: 4px;
+		margin-top: 10px;
+		position: relative;
+		input{
+			width: 278px;
+			padding: 0 20px;
+			font-size: 14px;
+			line-height: 30px;
+			margin-top: 10px;
+		}
+	}
+	.short-item{
+		width: 150px;
+		input{
+			width: 110px;
+		}
+	}
+	.agreement-word{
+		width: 318px;
+		text-align: center;
+		line-height: 35px;
+		font-size: 12px;
+		color: $gray03;
+		a{
+			@extend %shen-m;
+		}
+	}
+	.submit-btn{
+		margin-top: 10px	;
+		width: 320px;
+		line-height: 50px;
+		text-align: center;
+		background-color: $color-Main;
+		color: $whilt;
+		font-size: 16px;
+		border-radius: 4px;
+		cursor: pointer;
+		@include ts1;
+		&:hover{
+			background-color: $blue006;
+		}
+	}
+	.tips-error{
+		position: absolute;
+		left: 330px;
+		top: 0;
+		padding: 5px;
+		.tips-words{
+			width: 180px;
+			height: 40px;
+			font-size: 12px;
+		}
+	}
+	.tips-ok{}
+	.regist-label{
+		position: absolute;
+		left: 10px;
+		top: 0;
+		line-height: 50px;
+		padding: 0 10px;
+		cursor: inherit;
+	}
+}

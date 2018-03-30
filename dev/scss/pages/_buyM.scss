@@ -19,68 +19,74 @@
 		float: left;
 
 	}
-	.view-main{
+	.view-main {
 		height: 450px;
+		width: 100%;
 		position: relative;
 		margin: 60px 0 0 0;
 		@include bd1($gray01);
 		overflow: hidden;
-		.main-item{
+		.main-item {
 			position: absolute;
 			top: 0;
 			text-align: center;
-			img{
-				width: 540px;
+			width: 100%;
+			img {
+				width: 100%;
 			}
 		}
 
 	}
-	.view-mini{
+	.view-mini {
+		width: 100%;
 		margin-top: 15px;
 		position: relative;
-
-		.mini-list{
-			height: 80px;
-			padding: 0 54px;
-			width: 1000px;
-			.mini-item{
-				float: left;
-				height: 76px;
-				width: 76px;
-				margin: 0 3px;
-				@include bd2(transparent);;
-				cursor: pointer;
-				@include ts2;
-				img{
-					width: 76px;
+		box-sizing: border-box;
+		padding: 0 50px;
+		.mini-box {
+			overflow: hidden;
+			.mini-list {
+				height: 80px;
+				width: 1000px;
+				.mini-item {
+					float: left;
 					height: 76px;
-				}
-				&:hover{
-					@include bd2($color-Main);
+					width: 76px;
+					margin: 0 3px;
+					@include bd2(transparent);;
+					cursor: pointer;
+					@include ts2;
+					img {
+						width: 76px;
+						height: 76px;
+					}
+					&:hover {
+						@include bd2($color-Main);
+					}
 				}
 			}
 		}
-		%ctrl{
+		%ctrl {
 			position: absolute;
 			top: 1px;
 			width: 50px;
 			line-height: 80px;
 			text-align: center;
 			cursor: pointer;
-			color: rgba(0,0,0,.1);
+			color: rgba(0, 0, 0, .1);
 			font-weight: 600;
 			z-index: 100;
 			font-size: 22px;
 			@include ts2;
-			&:hover{
-				color: rgba(0,0,0,.5);
+			&:hover {
+				color: rgba(0, 0, 0, .5);
 			}
 		}
-		.mini-prev{
+		.mini-prev {
 			@extend %ctrl;
 			left: 0;
 		}
-		.mini-next{
+		.mini-next {
 			@extend %ctrl;
 			right: 0;
 		}
@@ -312,6 +318,18 @@
 			}
 		}
 	}
+	@media screen and (max-width:1180px){
+		.choose-view{
+			width: 355px;
+			margin-right: 10px;
+		}
+		.view-main{
+			height: 377px;
+		}
+		.choose-info{
+			width: 550px;
+		}
+	}
 }
 //商品展示
 .pro-show {
@@ -343,7 +361,8 @@
 .show-box {
 	//详细信息
 	.information {
-		.info-title{
+		display: none;
+		.info-title {
 			padding: 10px 0;
 			line-height: 30px;
 			font-size: 18px;
@@ -351,82 +370,83 @@
 			border-bottom: 2px dotted $gray01;
 		}
 		//详细参数
-		.info-s{
-			table{
+		.info-s {
+			table {
 				width: 900px;
 				margin: 30px auto 0;
 			}
-			tr{
+			tr {
 				border: 1px solid $gray01;
 				border-right: none;
 			}
-			td{
+			td {
 				padding: 0 10px;
 				width: 150px;
 				line-height: 30px;
 			}
-			td:nth-child(2n){
+			td:nth-child(2n) {
 				border-right: 1px solid $gray01;
 				color: $gray03;
 			}
-			td:nth-child(2n-1){
+			td:nth-child(2n-1) {
 				background-color: $gray04;
 			}
 		}
 		//尺码对照表
-		.info-size{
-			table{margin: 30px auto 0;}
-			th{
+		.info-size {
+			table {
+				margin: 30px auto 0;
+			}
+			th {
 				border: 1px solid $gray01;
 				padding: 0 10px;
 				background-color: $gray04;
 			}
-			td{
+			td {
 				width: 50px;
-				line-height:  33px;
+				line-height: 33px;
 				font-size: 12px;
 				text-align: center;
 				border: 1px solid $gray01;
 			}
 		}
 		//商品展示
-		.info-pic{
+		.info-pic {
 			text-align: center;
 		}
 	}
 	//评论
-	.comment{
-		display: none;
+	.comment {
+		//display: none;
 		margin-top: 30px;
 		overflow: hidden;
 		//评分
-		.comment-grade{
-			padding: 0 20px;
+		.comment-grade {
 			@include bd1($gray01);
-			.grade{
+			.grade {
 				float: left;
 				height: 80px;
 				width: 150px;
-				margin-right: 20px;
+				margin:0 20px;
 				text-align: center;
-				h4{
+				h4 {
 					font-size: 12px;
 					line-height: 10px;
 					margin-top: 8px;
 				}
-				strong{
+				strong {
 					font-size: 30px;
 					color: $color-Main;
 					font-weight: 600;
 				}
-				p{
-					span{
+				p {
+					span {
 						display: block;
 						height: 10px;
 						background-color: $gray01;
 						border-radius: 5px;
 						position: relative;
-						em{
+						em {
 							position: absolute;
 							left: 0;
 							top: 0;
@@ -436,7 +456,7 @@
 							z-index: 10;
 							border-radius: 5px;
 						}
-						i{
+						i {
 							position: absolute;
 							bottom: -5px;
 							left: 88%;
@@ -450,11 +470,11 @@
 					}
 				}
 			}
-			.tag-box{
+			.tag-box {
 				float: left;
 				border-left: 1px solid $gray01;
 				height: 80px;
-				.com-tag-label{
+				.com-tag-label {
 					float: left;
 					color: $gray01;
 					writing-mode: tb-rl;
@@ -464,95 +484,108 @@
 					padding-right: 20px;
 					background: url("../../images/kh.png") no-repeat right center;
 				}
-				.com-tag-list{
+				.com-tag-list {
 					float: left;
 					padding-left: 5px;
 					width: 920px;
 					height: 70px;
 					padding-top: 10px;
-					.tag-item{
+					.tag-item {
 						text-align: center;
 						display: block;
 						float: left;
 						height: 22px;
 						padding: 0 8px;
-						margin:  5px 10px;
+						margin: 5px 10px;
 						border-radius: 5px;
 						@include ts2;
-						box-shadow: 0 2px 2px 0 rgba(0,0,0,.1);
+						box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .1);
 					}
-					.good{
+					.good {
 						@include bd1($blue008);
-						a{
+						a {
 							color: $color-Main;
 						}
 					}
-					.good:hover{
+					.good:hover {
 						background-color: $blue008;
 						border-color: $color-Main;
-						transform: translate3d(0,-1px,0);
+						transform: translate3d(0, -1px, 0);
 					}
-					.bad{
+					.bad {
 						@include bd1(#f7caca);
-						a{
+						a {
 							color: #f94e4e;
 						}
 					}
-					.bad:hover{
+					.bad:hover {
 						background-color: #f7caca;
 						border-color: #f94e4e;
-						transform: translate3d(0,-1px,0);
+						transform: translate3d(0, -1px, 0);
+					}
+				}
+			}
+			@media screen and (max-width:1180px){
+				.grade{
+					margin: 0 10px;
+				}
+				.tag-box{
+					.com-tag-list{
+						width: 710px;
 					}
 				}
 			}
 		}
 		//评论
-		.com-item{
+		.com-item {
 			@extend %cl;
-			padding: 10px	;
+			padding: 10px;
 			@include bdb1($gray01);
-			.content{
+			.content {
 				float: left;
 				width: 880px;
-				p{
+				p {
 					position: relative;
 				}
-				.img-small{
+				.img-small {
 					height: 72px;
 					width: 860px;
 					overflow: hidden;
-					li{
+					li {
 						float: left;
-						border: 2px	solid $gray01;
+						border: 2px solid $gray01;
 						margin-right: 10px;
 						padding: 2px;
-						&.img-small-current{
-							border: 2px	solid $color-Main;
+						&.img-small-current {
+							border: 2px solid $color-Main;
 						}
 					}
-					img{
+					img {
 						width: 60px;
 						height: 60px;
 						cursor: pointer;
 					}
 				}
-				.img-big{
+				.img-big {
 					overflow: hidden;
-					li{
+					li {
 						display: none;
-						&.img-big-current{
+						&.img-big-current {
 							display: block;
 						}
 					}
 				}
-				.reply{
+				.reply {
 					color: $blue02;
-					span{
+					span {
 						padding-right: 10px;
 					}
 				}
+				@media screen and (max-width:1180px){
+					width: 640px;
+				}
 			}
-			.info{
+			.info {
 				position: relative;
 				float: right;
 				width: 300px;
@@ -561,74 +594,75 @@
 				padding: 10px 0;
 				line-height: 100%;
 			}
-			.time{
+			.time {
 				font-size: 12px;
 				margin-top: 5px;
 				display: block;
 				color: $gray03;
 			}
-			.type{
+			.type {
 				float: left;
 				width: 150px;
 				font-size: 12px;
-				p{
+				p {
 					line-height: 18px;
 				}
 				span {
 					color: $gray03;
 				}
 			}
-			.author{
+			.author {
 				float: left;
 				width: 150px;
 			}
-			.anonymous{
+			.anonymous {
 				display: block;
 				font-size: 12px;
 				color: $gray03;
 			}
 		}
 		//翻页
-		.comment-pno{
-			.pno-list{
+		.comment-pno {
+			.pno-list {
 				float: right;
 				margin: 20px;
 			}
-			li{
+			li {
 				float: left;
 				cursor: pointer;
 				color: $blue02;
 			}
-			.prev,.next{
+			.prev, .next {
 				@include bd1($gray01);
 				line-height: 27px;
 				padding: 5px 14px;
 			}
-			.prev{
+			.prev {
 				border-right: none;
 			}
-			.pno-item{
+			.pno-item {
 				line-height: 27px;
 				text-align: center;
 				padding: 5px 14px;
 				@include bd1($gray01);
 				border-right: none;
 			}
-			.pno-more{
+			.pno-more {
 				border-top: none;
 				border-bottom: none;
 				color: $gray03;
 			}
-			.disabled{
+			.disabled {
 				color: $gray03;
 				cursor: default;
 			}
 
 		}
 	}
-	//售后保障
-	.safeguard{
-
-	}
 }
 
+@media screen and (max-width:1180px){
+	.w{
+		width: 960px;
+	}
+}

@@ -6,6 +6,12 @@
 		color: $color-Main;
 	}
 }
+%shen-m{
+	color:  $blue006;
+	&:hover,&:active{
+		color: $blue006;
+	}
+}
 %g2-m{
 	color:  $gray02;
 	&:hover,&:active{

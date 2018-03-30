@@ -89,6 +89,12 @@ body{
 	padding-bottom: 40px;
 	.sort-list{
 		width: 1224px;
+		@media screen and (max-width: 1180px){
+			width: 968px;
+			.sm-hide{
+				display: none;
+			}
+		}
 	}
 	.sort-item{
 		float: left;
@@ -136,6 +142,9 @@ body{
 	padding:0 20px 8px;
 	margin-bottom: 40px	;
 	overflow: hidden;
+	@media screen and (max-width: 1180px){
+		padding:0 46px 8px;
+	}
 	@include bdb1($yellow02);
 	.brand-list{
 		width: 400%;
