@@ -9,7 +9,7 @@
 		//服务项
 		.col-service {
 			float: left;
-			width: 240px;
+			width: 20%;
 			line-height: 80px;
 			font-size: 18px;
 			text-align: center;
@@ -23,11 +23,17 @@
 	//帮助
 	.footer-help {
 		margin-bottom: 30px;
-		//帮助列表
-		.col-help {
+		.col-helps{
 			float: left;
-			width: 110px;
-			margin: 0 42px;
+			width: 100%;
+			box-sizing: border-box;
+			padding-left: 50px;
+			padding-right: 225px;
+		}
+		//帮助列表
+		.help-item {
+			float: left;
+			width: 20%;
 			dt {
 				line-height: 28px;
 			}
@@ -42,6 +48,7 @@
 		//联系我们
 		.col-contact {
 			float: right;
+			margin-left: -222px;
 			width: 220px;
 			text-align: center;
 			font-size: 12px;
@@ -89,6 +96,11 @@
 				@extend %g2-m;
 				font-size: 12px;
 			}
+			@media screen and (max-width: 1180px) {
+				.sm-hide{
+					display: none;
+				}
+			}
 		}
 		//版权内容
 		.copyright-info {
@@ -115,5 +127,10 @@
 				}
 			}
 		}
+	}
+}
+@media screen and (max-width: 1180px) {
+	.w{
+		width: 960px;
 	}
 }

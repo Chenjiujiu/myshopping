@@ -1,0 +1,61 @@
+.login-other {
+	width: 360px;
+	height: 70px;
+	border-top: 1px solid #e0e0e0;
+	position: relative;
+	text-align: center;
+	margin: 0 auto; }
+.login-other .other-t {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	background-color: #ffffff;
+	text-align: center;
+	position: relative;
+	top: -20px;
+	padding-top: 10px; }
+.login-other .other-img ul > li {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	width: 30px;
+	height: 30px;
+	margin: 0 12px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	-o-border-radius: 50%;
+	border-radius: 50%;
+	background-color: #bdbdbd;
+	position: relative;
+	cursor: pointer; }
+.login-other .other-img ul > li a {
+	display: block;
+	background: url("../images/login_other.png") no-repeat;
+	position: absolute;
+	bottom: 7px;
+	left: 4px; }
+.login-other .other-img .qq > a {
+	width: 18px;
+	height: 18px;
+	background-position: -18px 0; }
+.login-other .other-img .wb > a {
+	width: 18px;
+	height: 18px;
+	background-position: -38px 0; }
+.login-other .other-img .zfb > a {
+	width: 25px;
+	height: 18px;
+	background-position: -57px 0; }
+.login-other .other-img .wx > a {
+	width: 24px;
+	height: 18px;
+	background-position: -84px 0; }
+.login-other .other-img .qq:hover {
+	background-color: #0288d1; }
+.login-other .other-img .wb:hover {
+	background-color: #d32f2f; }
+.login-other .other-img .zfb:hover {
+	background-color: #0a1; }
+.login-other .other-img .wx:hover {
+	background-color: #00d20d; }
