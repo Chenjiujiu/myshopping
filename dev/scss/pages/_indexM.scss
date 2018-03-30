@@ -7,7 +7,6 @@ body{
 	background-color: $whilt;
 	text-align: center;
 	margin-bottom: 40px;
-	overflow: hidden;
 	.slider-box{
 		position: relative;
 		height: 600px;
@@ -32,36 +31,33 @@ body{
 			height: 100%;
 		}
 	}
-	.ctrl{
-		width: 100%;
-		@include ts2;
-		position: absolute;
-		top: 50%;
-		margin-top: -40px;
-		&:hover{
-			.prev,.next{
-				background:rgba(0,0,0,.35) ;
-			}
-		}
 		%cr{
 			display: block;
 			line-height: 80px;
 			width: 50px;
+			font-size: 20px;
+			font-weight: 600;
 			text-align: center;
-			background:rgba(0,0,0,0) ;
+			background:rgba(0,0,0,.1) ;
 			color: $yellow02;
 			cursor: pointer;
+			position: absolute;
+			top: 50%;
+			margin-top: -40px;
 			@include ts2;
+			&:hover{
+					background:rgba(0,0,0,.4) ;
+			}
 		}
-		.prev{
-			float: left;
+		.ctrl-prev{
 			@extend %cr;
+			left: 0;
 		}
-		.next{
-			float: right;
+		.ctrl-next{
 			@extend %cr;
+			right: 0;
 		}
-	}
+
 	.dots{
 		width: 300px;
 		height: 24px;
