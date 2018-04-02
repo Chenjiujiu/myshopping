@@ -32,28 +32,33 @@
 				<h3 class="title">密码登录</h3>
 				<form action="">
 					<div class="uname">
-						<label for=""><i>o</i></label>
-						<input type="text" placeholder="会员名/邮箱/手机号">
+						<label for="uname"><i class="icon-font">&#xe915;</i></label>
+						<input id="uname" type="text" placeholder="会员名/手机号">
 						<span class="tips-error"></span>
 					</div>
 					<div class="upwd">
-						<label for=""><i>o</i></label>
-						<input type="password" placeholder="请输入密码">
+						<label for="upwd"><i class="icon-font">&#xe916;</i></label>
+						<input id="upwd" type="password" placeholder="请输入密码">
 						<span class="tips-error"></span>
 					</div>
 					<button type="button" class="btn">登录</button>
 				</form>
 				<!--其他方式登录-->
 				<div class="login-other">
-					<a href="#"><i>o</i>支付宝</a>
-					<a href="#"><i>o</i>微博</a>
-					<a href="#"><i>o</i>QQ</a>
+					<a href="#" class="zfb-login"><i class="icon-font">&#xe918;</i>支付宝</a>
+					<a href="#" class="wx-login"><i class="icon-font">&#xe919;</i>微信</a>
+					<a href="#" class="qq-login"><i class="icon-font">&#xe91a;</i>QQ</a>
 				</div>
 				<p class="helps"> <a href="#">忘记密码</a><a href="#">免费注册</a></p>
+				<i class="icon-font togool" id="go_erw">扫码登录&#xe91e;</i>
 			</div>
 			<!--二维码登录-->
 			<div class="ewm-login">
 				<h3 class="title">手机扫码，安全登录</h3>
+				<div class="ewm">
+					<img src="../images/ewm.png" alt="">
+				</div>
+				<p class="goback" id="go_pwd"><a href="#">返回密码登录-></a></p>
 			</div>
 		</div>
 	</div>
@@ -103,4 +108,6 @@
 		</div>
 	</div>
 </body>
+<script src="../js/cjj.js"></script>
+<script src="../js/login.js"></script>
 </html>

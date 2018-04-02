@@ -36,13 +36,12 @@
 							<input class="uname-input" id="uname-input" type="text" value="">
 							<label class="regist-label uname-label label-active " for="uname-input">用户名</label>
 						</div>
-						<!--错误提示-->
-						<div class="tips-error">
-							<i></i>
+						<!--提示-->
+						<div class=" tips">
+							<i class="arr"></i>
+							<i class="icon-font ok">&#xe914;</i>
 							<div class="tips-words">用户名不能为空</div>
 						</div>
-						<!--ok-->
-						<div class="tips-ok"></div>
 					</li>
 					<!--手机号-->
 					<li class="regist-item">
@@ -52,28 +51,31 @@
 							<label class="regist-label iphone-label" for="iphone-input">手机号</label>
 						</div>
 						<!--错误提示-->
-						<div class="tips-error">
-							<i></i>
+						<div class=" tips tips-ok">
+							<i class="arr"></i>
+							<i class="icon-font ok">&#xe914;</i>
 							<div class="tips-words">
-								请填写正确的手机号码，以便 接收订单通知，找回密码等
+								手机号格式不正确
 							</div>
 						</div>
 						<!--ok-->
 						<div class="tips-ok"></div>
 					</li>
 					<!--验证码-->
-					<li class="regist-item short-item clearfix" >
+					<li class="regist-item short-item clearfix">
 						<!--输入-->
 						<div class="auth-code">
 							<input class="code-input" id="code-input" type="text" value="">
 							<label class="regist-label code-label" for="code-input">验证码</label>
 						</div>
+						<div class="auth-pic"></div>
 						<!--错误提示-->
-						<div class="tips-error" >
-								<i></i>
-								<div class="tips-words">
-									请输入正确的验证码
-								</div>
+						<div class=" tips tips-error">
+							<i class="arr"></i>
+							<i class="icon-font ok">&#xe914;</i>
+							<div class="tips-words">
+								请输入正确的验证码
+							</div>
 						</div>
 						<!--ok-->
 						<div class="tips-ok"></div>
@@ -82,14 +84,15 @@
 					<!--设置密码-->
 					<li class="regist-item">
 						<div class="upwd">
-							<input class="upwd-input" id="upwd-input" type="password" >
+							<input class="upwd-input" id="upwd-input" type="password">
 							<label class="regist-label upwd-label" for="upwd-input">设置密码</label>
 						</div>
-						<div class="tips-error">
-								<i></i>
-								<div class="y_tips_words">
-									6-20个大小
-								</div>
+						<div class=" tips tips-error">
+							<i class="arr"></i>
+							<i class="icon-font ok">&#xe914;</i>
+							<div class="tips-words">
+								6-20个英文或数字
+							</div>
 						</div>
 						<!--ok-->
 						<div class="tips-ok"></div>
@@ -101,17 +104,18 @@
 							<label class="regist-label verify-label" for="verify-input">确认密码</label>
 						</div>
 
-						<div class="tips-error">
-								<i></i>
-								<div class="tips-words">
-									请再次输入密码
-								</div>
+						<div class=" tips tips-error">
+							<i class="arr"></i>
+							<i class="icon-font ok">&#xe914;</i>
+							<div class="tips-words">
+								请再次输入密码
+							</div>
 						</div>
 						<div class="tips-ok"></div>
 					</li>
 					<!--协议提示-->
 					<li class="agreement-word">
-						点击注册，表示您同意1号店 <a href="#"target="_blank">《服务协议及隐私声明》</a>
+						点击注册，表示您同意1号店 <a href="#" target="_blank">《服务协议及隐私声明》</a>
 					</li>
 					<!--提交按钮-->
 					<li class="submit-btn">同意协议并注册</li>

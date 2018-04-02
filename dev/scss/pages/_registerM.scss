@@ -16,33 +16,31 @@
 	}
 }
 .main{
-	width: 1200px;
-	height: 1200px;
+	height: 580px;
 }
 .register-box{
 	position: absolute;
 	left: 50%;
-	margin-left: -160px;
+	margin-left: -200px;
 	margin-top: 50px;
 }
 .regist-form {
 	.regist-item {
-		width: 318px;
-		height: 50px;
-		@include bd1($blue009);
-		border-radius: 4px;
-		margin-top: 10px;
 		position: relative;
+		width: 540px;
+		height: 50px;
+		margin-bottom: 10px;
 		input{
+			height: 48px;
 			width: 278px;
 			padding: 0 20px;
+			@include bd1($blue009);
 			font-size: 14px;
 			line-height: 30px;
-			margin-top: 10px;
+			border-radius: 4px;
 		}
 	}
 	.short-item{
-		width: 150px;
 		input{
 			width: 110px;
 		}
@@ -72,18 +70,56 @@
 			background-color: $blue006;
 		}
 	}
-	.tips-error{
+	.tips{
 		position: absolute;
 		left: 330px;
-		top: 0;
-		padding: 5px;
+		top: 10px;
+		padding: 5px 10px;
+		line-height: 20px;
+		background-color: $blue007;
 		.tips-words{
-			width: 180px;
-			height: 40px;
+			max-width: 180px;
+			line-height: 20px;
 			font-size: 12px;
+			color: $gray02;
+		}
+		.arr{
+			display: block;
+			border: 7px solid transparent;
+			border-right: 7px solid $blue007;
+			position: absolute;
+			left: -14px;
+			top: 50%;
+			margin-top: -10px;
 		}
 	}
-	.tips-ok{}
+	.tips-error{
+		background-color: $error;
+		.tips-words{
+			color: $whilt;
+		}
+		.arr{
+			border-right-color: $error;
+		}
+	}
+	.tips .ok{
+		display: none;
+	}
+	.tips-ok{
+		.icon-font{
+			display: inline-block;
+		}
+		.arr{
+			display: none;
+		}
+		.tips-words{
+			display: none;
+		}
+		background-color: transparent;
+		color: $color-Main;
+		font-size: 20px;
+		font-weight: 700;
+	}
 	.regist-label{
 		position: absolute;
 		left: 10px;
@@ -91,5 +127,20 @@
 		line-height: 50px;
 		padding: 0 10px;
 		cursor: inherit;
+	}
+	.auth-code{
+		float: left;
+		margin-right: 28px;
+	}
+	.auth-pic{
+		width: 140px;
+		height: 50px;
+		display: block;
+		float: left;
+		overflow: hidden;
+		border-radius: 4px;
+		background: url("../../images/codepic.jpg") no-repeat center center;
+		background-size: contain;
+		cursor: pointer;
 	}
 }

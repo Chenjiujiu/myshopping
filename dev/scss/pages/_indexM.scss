@@ -52,9 +52,11 @@ body{
 		.ctrl-prev{
 			@extend %cr;
 			left: 0;
+			font-size: 50px;
 		}
 		.ctrl-next{
 			@extend %cr;
+			font-size: 50px;
 			right: 0;
 		}
 
