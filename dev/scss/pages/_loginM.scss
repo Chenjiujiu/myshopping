@@ -6,8 +6,13 @@ body {
 .header {
 	.logo-box {
 		padding: 20px 0;
-		img {
+		a{
+			display: block;
+			height: 80px;
 			float: left;
+		}
+		img {
+			display: block;
 			height: 80px;
 		}
 		h1 {
@@ -69,7 +74,7 @@ body {
 			margin-top: 15px;
 		}
 		.btn {
-			margin-top: 30px;
+			margin-top: 20px;
 			width: 300px;
 			line-height: 42px;
 			color: $whilt;
@@ -146,6 +151,18 @@ body {
 					color: $color-Main;
 				}
 			}
+		}
+		.tips-error{
+			opacity: 0;
+			line-height: 22px;
+			float: left;
+			margin: 4px	0 0 44px;
+			padding: 0 5px;
+			font-size: 12px;
+			background-color: red;
+			color: $whilt;
+			border-radius: 3px;
+			@include ts1;
 		}
 	}
 	@media screen and (max-width: 1180px) {

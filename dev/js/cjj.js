@@ -132,8 +132,8 @@
 			return val === null;
 		},
 		//事件绑定
-		on:function(type, fn,b){
-			b===undefined?b=false:b;
+		on:function(type, fn, b){
+			b === undefined ? b = false : b;
 			// 正常浏览器
 			if(document.addEventListener){
 				for(var i = 0; i < this.doms.length; i++){
@@ -143,11 +143,12 @@
 			}else if(document.attachEvent){	//ie
 				for(var j = 0; j < this.doms.length; j++){
 					var obj2 = this.doms[j];
-					obj2.attachEvent('on'+type, fn);
+					obj2.attachEvent('on' + type, fn);
 				}
 			}
+			return this;
 		},
-		un:function(type,fn){
+		un:function(type, fn){
 			if(document.removeEventListener){
 				for(var i = 0; i < this.doms.length; i++){
 					var obj = this.doms[i];
@@ -159,82 +160,89 @@
 					obj2.detachEvent(type, fn);
 				}
 			}
+			return this;
 		},
 		click:function(fn){
-			this.on('click',fn);
+			this.on('click', fn);
+			return this;
 		},
 		mover:function(fn){
-			this.on('mouseover',fn);
+			this.on('mouseover', fn);
+			return this;
 		},
 		mout:function(fn){
-			this.on('mouseout',fn);
+			this.on('mouseout', fn);
+			return this;
 		},
-		hover:function(overfn,outfn){
+		hover:function(overfn, outfn){
 			if(overfn){
-				this.on('mouseover',overfn);
+				this.on('mouseover', overfn);
 			}
 			if(outfn){
-				this.on('mouseout',outfn)
+				this.on('mouseout', outfn)
 			}
+			return this;
 		},
 		// 事件对象
 		event:function(event){
-			return	event?event:window.event;
+			return event ? event : window.event;
 		},
 		//事件目标
 		target:function(event){
-			var e=this.event(event);
-			return e.target||e.srcElement;
+			var e = this.event(event);
+			return e.target || e.srcElement;
 		},
 		//阻止默认行为
 		preDef:function(event){
-			var e=this.event(event);
+			var e = this.event(event);
 			if(e.preventDefault){
 				e.preventDefault();
 			}else{
-				e.returnValue=false;
+				e.returnValue = false;
 			}
+			return this;
 		},
 		//阻止冒泡
 		stopProp:function(event){
-			var e =this.event(event);
+			var e = this.event(event);
 			if(e.stopPropagation){
 				e.stopPropagation();
 			}else{
-				e.cancelBubble=true;
+				e.cancelBubble = true;
 			}
+			return this;
 		},
 		//随机数
-		random:function(star,end){
-			return Math.floor(Math.random()*(end-star))+star;
+		random:function(star, end){
+			return Math.floor(Math.random() * (end - star)) + star;
 		},
 		//模版字符串
-		tempStr:function(str,data){
-			return str.replace(/#\{(\w+)\}/g,function(m,key){
-				return typeof data[key]==='undefined'?'':data[key]
+		tempStr:function(str, data){
+			return str.replace(/#\{(\w+)\}/g, function(m, key){
+				return typeof data[key] === 'undefined' ? '' : data[key]
 			});
 		},
 		//设置样式,属性,文本
-		css:function(k,v){
+		css:function(k, v){
 			if(v){
 				for(var i = 0; i < this.doms.length; i++){
 					var obj = this.doms[i];
-					obj.style[k]=v;
+					obj.style[k] = v;
 				}
 				return this;
 			}else{//	如果没有v 则表示获取
-				var dom=this.get(0);
+				var dom = this.get(0);
 				if(document.currentStyle){
 					return dom.currentStyle[k];
 				}else{
-					return getComputedStyle(dom,null)[k];
+					return getComputedStyle(dom, null)[k];
 				}
 			}
 		},
-		attr:function(k,v){
+		attr:function(k, v){
 			for(var i = 0; i < this.doms.length; i++){
 				var obj = this.doms[i];
-				obj[k]=v;
+				obj[k] = v;
 			}
 			return this;
 		},
@@ -242,43 +250,50 @@
 			if(h){
 				for(var i = 0; i < this.doms.length; i++){
 					var obj = this.doms[i];
-					obj.innerHTML=h;
+					obj.innerHTML = h;
 				}
 				return this;
 			}else{
 				return this.get(0).innerHTML;
 			}
 		},
+		val:function(v){
+			if(v){
+				this.get(0).value = v;
+			}else{
+				return this.get(0).value;
+			}
+		},
 		//添加,移除,判断class
 		addClass:function(c){
 			for(var i = 0; i < this.doms.length; i++){
 				var obj = this.doms[i];
-				obj.className=obj.className+" "+c;
+				obj.className = obj.className + " " + c;
 			}
 			return this;
 		},
 		remClass:function(c){
 			for(var i = 0; i < this.doms.length; i++){
 				var obj = this.doms[i];
-				obj.className=(" "+obj.className+" ").replace(" "+c+" "," ");
+				obj.className = (" " + obj.className + " ").replace(" " + c + " ", " ");
 			}
 			return this;
 		},
 		hasClass:function(c){
-			var flag=false;
+			var flag = false;
 			for(var i = 0; i < this.doms.length; i++){
 				var obj = this.doms[i];
-				flag=-1<(" "+obj.className+" ").indexOf(" "+c+" ");
+				flag = -1 < (" " + obj.className + " ").indexOf(" " + c + " ");
 			}
 			return flag;
 		},
 		//显示隐藏元素
 		show:function(){
-			this.css('display','block');
+			this.css('display', 'block');
 			return this;
 		},
 		hide:function(){
-			this.css('display','none');
+			this.css('display', 'none');
 			return this;
 		},
 		toggle:function(){
@@ -291,14 +306,51 @@
 				}
 			}
 		},
+		//ajax
+		ajax:function(data){//{type,url,data,dataType,fn,callback}
+			if(data.dataType === 'jsonp'){
+				var newscript = document.createElement('script');
+				newscript.src = data.url + "?" + data.data + "&&callback=" + data.callback;
+				document.appendChild(newscript);
+			}else{
+				var xhr = null;
+				var url = data.url;
+				var param = null;
+				if(window.XMLHttpRequest){
+					xhr = new XMLHttpRequest();
+				}else{
+					xhr = new ActiveXObject("Microsoft.XMLHTTP")
+				}
+				if(data.type === "get"){
+					url = data.url + "?" + data.data;
+				}else{
+					param = data.data;
+				}
+				xhr.open(data.type, url, true);
+				if(data.type === "post"){
+					xhr.setRequestHeader('content-Type', 'application/X-www-form-urlencode')
+				}
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState === 4 && xhr.status === 200){
+						if(data.dataType === "json"){
+							data.fn(JSON.parse(xhr.responseText));
+						}else{
+							data.fn(xhr.responseText);
+						}
+					}
+				};
+				console.log(param);
+				
+				xhr.send(param);
+			}
+		}
 	};
-	//实例化对象,并返回doms
+	// 实例化对象,并返回doms
 	w.C = function(ele){
 		return new Cjj(ele);
 	};
-
+	C.__proto__ = Cjj.prototype;
 }(window);
-
 
 
 
