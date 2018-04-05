@@ -41,7 +41,7 @@
 			function cla(ele, context){
 				context = context || document;
 				ele = that.trim(ele);
-				if(!context.getElementsByClassName){
+				if(context.getElementsByClassName){
 					pushDoms(context.getElementsByClassName(ele));
 				}else{
 					var tags = context.getElementsByTagName('*');
@@ -213,7 +213,10 @@
 			var domsnext=[];
 			for(var i = 0; i < this.doms.length; i++){
 				var obj = this.doms[i];
-				var next=obj.nextElementSibling || obj.nextSibling;
+				do{
+          var next=obj.nextElementSibling || obj.nextSibling;
+          obj=next;
+				}while (next.nodeType!==1);
 				domsnext.push(next);
 			}
 			this.doms=domsnext;
@@ -275,7 +278,11 @@
 			}else if(document.attachEvent){	//ie
 				for(var j = 0; j < this.doms.length; j++){
 					var obj2 = this.doms[j];
-					obj2.attachEvent('on' + type, fn);
+					obj2.attachEvent('on' + type, function (obj2){
+						return function () {
+              fn.call(obj2);
+            }
+          }(obj2));
 				}
 			}
 			return this;
@@ -397,7 +404,7 @@
 			}
 		},
 		//添加,移除,判断class
-		class:function(c){
+		setClass:function(c){
 			for(var i = 0; i < this.doms.length; i++){
 				var obj = this.doms[i];
 				obj.className =c;
@@ -505,7 +512,31 @@
 				cookieText += "; data.secure";
 			}
 			document.cookie=cookieText;
-		}
+		},
+		getCookie:function (data) {
+			var data= encodeURIComponent(data);
+			var allCookies=document.cookie;
+			data+="=";
+			var result=allCookies.indexOf(data);
+			if(result!=-1){
+				var start=result+data.length;
+				var end=allCookies.indexOf(";",start);
+				if(end==-1){
+					end=allCookies.length;
+				}
+				var value=allCookies.substring(start,end);
+				return decodeURIComponent(value);
+			}else{
+				return "";
+			}
+    },
+		delCookie:function (data) {
+			var name=encodeURIComponent(data.name);
+			var path=encodeURIComponent(data.path);
+			var time=new Date(0);
+			path=path==""?"":";path="+path;
+			document.cookie=name+"="+";expires="+time.toUTCString()+path;
+    }
 	};
 	// 实例化对象,并返回doms
 	w.C = function(ele,parent){
@@ -513,3 +544,5 @@
 	};
 	C.__proto__ = Cjj.prototype;
 }(window);
+qqq=123;
+
