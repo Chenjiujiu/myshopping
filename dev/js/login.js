@@ -52,9 +52,10 @@
 	C("#submit").click(function(){
 		if(unameFlag&&upwdFlag&&flag){
 			var callback = function(data){
+        console.log(data);
 				if(data.flag===1){
 					window.location.href="../index.html";
-					C.setCookie({"name":"uid","value":data.uid,"path":"/"});
+					C.setCookie({"name":"uid","value":data.uid,"days":30,"path":"/"});
 				}else{
 					tip.html('用户名或密码错误!').css("opacity","1");
 					flag=false;
@@ -63,7 +64,7 @@
 			C.ajax({
 				type:'post',
 				url:'../data/login.php',
-				data:{"uname":uname,"upwd":upwd},
+				data:{"uname":C("#uname").val(),"upwd":C("#upwd").val()},
 				dataType:"json",
 				fn:callback
 			});

@@ -31,12 +31,14 @@
 			var that = this;
 			function id(ele){
 				pushDoms([document.getElementById(ele)]);
+				return this;
 			}
 			// tag选择器
 			function tag(ele, context){
 				context = context || document;
 				pushDoms(context.getElementsByTagName(ele));
-			}
+        return this;
+      }
 			//class选择器
 			function cla(ele, context){
 				context = context || document;
@@ -62,6 +64,7 @@
 			function all(ele, context){
 				context = context || document;
 				pushDoms(context.querySelectorAll(ele));
+				return this
 			}
 			//追加到doms
 			function pushDoms(d){
@@ -500,6 +503,7 @@
 			if(data.days){
 				var expires=new Date();
 				expires.setTime(expires.getTime()+data.days*24*60*60*1000);
+				console.log(expires)
 				cookieText+=";expires="+expires.toUTCString();
 			}
 			if(data.path){
@@ -527,15 +531,16 @@
 				var value=allCookies.substring(start,end);
 				return decodeURIComponent(value);
 			}else{
-				return "";
+				return undefined;
 			}
     },
 		delCookie:function (data) {
-			var name=encodeURIComponent(data.name);
-			var path=encodeURIComponent(data.path);
-			var time=new Date(0);
-			path=path==""?"":";path="+path;
-			document.cookie=name+"="+";expires="+time.toUTCString()+path;
+			this.setCookie({
+				"name":data.name,
+				"path":data.path,
+				"days":-10,
+				"value":""
+			})
     }
 	};
 	// 实例化对象,并返回doms
@@ -544,5 +549,4 @@
 	};
 	C.__proto__ = Cjj.prototype;
 }(window);
-qqq=123;
 

@@ -10,7 +10,6 @@
 	var upwdReg = /^\w{6,20}$/;	//密码正则
 	var codeReg = /^\w{4}$/;	//验证码正则
 	C(".regist-item input").on("focus", function(){
-		console.log(this);
 		C(this).next().css("left", "-80px").css("text-align", "right")
 			.parent().sibl(".tips").show();
 	});	//lable标签移动

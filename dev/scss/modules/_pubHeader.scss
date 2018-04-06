@@ -12,8 +12,24 @@
 			@extend %g2-m;
 		}
 		//登录条
-		.topbar-loggin {
+		.topbar-login {
 			float: left;
+		}
+		//退出条
+		.topbar-welcome{
+			display: none;
+			float: left;
+			.welcome{
+				a{
+					@extend %shen-m
+				}
+			}
+			.logout{
+				cursor: pointer;
+				&:hover{
+					color: $color-Main;
+				}
+			}
 		}
 		//功能条
 		.topbar-fun {
