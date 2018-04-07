@@ -14,5 +14,8 @@ function Product(data) {
   this.sale=data.sale;
 }
 Product.prototype={
-
+  // 绑定基本信息
+  // 绑定图片信息
+  // 绑定图片效果
+  // 绑定事件
 };

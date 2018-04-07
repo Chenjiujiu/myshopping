@@ -23,6 +23,7 @@ body{
 		position: absolute;
 		left: 50%;
 		margin-left: -960px;
+		@include ts5 ;
 		@media screen and (max-width: 1180px){
 			margin-left: -640px;
 		}
@@ -44,6 +45,11 @@ body{
 			position: absolute;
 			top: 50%;
 			margin-top: -40px;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
 			@include ts2;
 			&:hover{
 					background:rgba(0,0,0,.4) ;
@@ -79,6 +85,7 @@ body{
 			border-radius: 50%;
 			background: rgba(0, 0, 0, 0.3);
 			border: 4px solid rgba(222, 222, 222, 0.4);
+			@include ts5 ;
 		}
 		.current{
 			background: rgba(222, 222, 222, 0.4);

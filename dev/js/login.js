@@ -23,11 +23,11 @@
 	var unameFlag = false;	//用户名标志位
 	var upwdFlag=false;	//密码标识位
 	var flag=false;	//公共标识位
-	var tip = C(".password-login .uname .tips-error");
 	var unameReg = /^[a-zA-Z]\w{4,19}$/;
-	var phoneReg = /^0?(1)[3-9][0-9]{9}$/;
-	var upwdReg = /^\w{6,20}$/;
-	C('#uname').on("blur", function(){
+  var phoneReg = /^0?(1)[3-9][0-9]{9}$/;
+  var upwdReg = /^\w{6,20}$/;
+  var tip = C(".password-login .uname .tips-error");
+  C('#uname').on("blur", function(){
 		if(unameReg.test(this.value) ||phoneReg.test(this.value)){
 			tip.html(' ').css("opacity", '0');
 			unameFlag = true;
@@ -43,11 +43,10 @@
 			upwdFlag = true;
 			flag= true;
 		}else{
-			tip.html('用户名或密码错误!').css("opacity","1");
+			tip.html('密码格式错误!').css("opacity","1");
 			upwdFlag=false;
 		}
 	});
-
 	/*登录提交验证*/
 	C("#submit").click(function(){
 		if(unameFlag&&upwdFlag&&flag){

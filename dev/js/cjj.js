@@ -247,6 +247,10 @@
 				return this.doms[i];
 			}
 		},
+		//计算doms长度
+		length:function () {
+			return this.doms.length;
+    },
 		//基本数据类型检测
 		isnumb:function(val){
 			return typeof val === 'number';
@@ -424,7 +428,7 @@
 		remClass:function(c){
 			for(var i = 0; i < this.doms.length; i++){
 				var obj = this.doms[i];
-				obj.className = (" " + obj.className + " ").replace(" " + c + " ", " ");
+				obj.className = this.trim((" " + obj.className + " ").replace(" " + c + " ", " "));
 			}
 			return this;
 		},
