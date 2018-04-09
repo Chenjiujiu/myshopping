@@ -100,6 +100,8 @@ Slider.prototype = {
   },
   //当前显示
   showCurrent: function () {
+  	// console.log(this.config.items.get(this.index));
+  	
     this.config.items.css("opacity", '0');
     C(this.config.items.get(this.index)).css("opacity", '1');
     this.config.dot.remClass("current");
