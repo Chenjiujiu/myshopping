@@ -16,7 +16,7 @@ function Slider(data) {
     dot: C(".slider .dots").child()
   };
   //轮播模板
-  this.itemTemp = '<li class="slider-item"><a href="#{href}"><img src="#{img}" alt=""></a></li>';
+  this.itemTemp = '<li class="slider-item"><a href="#{href}"><img src="./images/slide/#{img}" alt=""></a></li>';
   //小圆点模板
   this.dotsTemp = '<li>#{i}</li>';
   //当前张数

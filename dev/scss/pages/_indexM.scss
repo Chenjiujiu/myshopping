@@ -168,9 +168,16 @@ body{
 		margin: 0 5px;
 	}
 	.brand-pic{
+		float: left;
 		text-align: center;
 		height: 45px;
+		width: 67.5px;
 		line-height: 50;
+		background-image: url("./../images/logos.png");
+		-webkit-background-size: cover;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: 0 0;
 	}
 	.brand-name{
 		display: block;

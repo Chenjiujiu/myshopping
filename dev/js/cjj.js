@@ -79,7 +79,9 @@
 					that.doms.push(d[j]);
 				}
 			}
-			var eles = this.trim(ele).split(' ');//ele转换为数组
+
+				var eles = this.trim(ele).split(' ');//ele转换为数组
+
 			var context = [];	//保存上下文(父级doms)
 			if(document.querySelectorAll){	//支持h5
 				all(ele,parent)
@@ -545,7 +547,28 @@
 				"days":-10,
 				"value":""
 			})
-    }
+    },
+		//获取地址参数
+		getserch:function(arg){
+			// ?uid=1&uname=xiaomin&&upwd=123;
+			var result={};
+			var search=location.search.slice(1);
+			search=decodeURIComponent(search);
+			search=search.replace(/\s*\&+\s*/g,'&');
+			var data=search.split("&");
+			for(var i = 0; i < data.length; i++){
+				var item=data[i].split("=");
+				if(item[1]!==undefined){
+					result[item[0]]=item[1];
+				}
+			}
+			if(arg===undefined){
+				return result;
+			}else{
+				return result[arg];
+			}
+
+		}
 	};
 	// 实例化对象,并返回doms
 	w.C = function(ele,parent){

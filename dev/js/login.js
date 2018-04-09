@@ -51,8 +51,7 @@
 	C("#submit").click(function(){
 		if(unameFlag&&upwdFlag&&flag){
 			var callback = function(data){
-        console.log(data);
-				if(data.flag===1){
+				if(data.flag===1){	//登录成功
 					window.location.href="../index.html";
 					C.setCookie({"name":"uid","value":data.uid,"days":30,"path":"/"});
 				}else{
