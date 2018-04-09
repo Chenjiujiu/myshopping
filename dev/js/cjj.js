@@ -9,8 +9,17 @@
 		if(this.isObj(ele)){
 			this.doms.push(ele);
 			return this;
-		}else{
+		}else if(this.isStr(ele)&&ele.charAt(0)==="<"){
+			var tag=ele.slice(1,ele.indexOf(">"));
+			var content=ele.slice(ele.indexOf(">")+1,ele.lastIndexOf("<"));
+			var newdom=document.createElement(tag);
+			newdom.innerHTML=content;
+			this.doms.push(newdom);
+			return this;
+		}else if(this.isStr(ele)){
 			return this.select(ele,parent);
+		}else {
+			return this
 		}
 	};
 	Cjj.prototype = {
@@ -79,48 +88,51 @@
 					that.doms.push(d[j]);
 				}
 			}
-
-				var eles = this.trim(ele).split(' ');//ele转换为数组
-
+			var eles = this.trim(ele).split(' ');//ele转换为数组
 			var context = [];	//保存上下文(父级doms)
-			if(document.querySelectorAll){	//支持h5
-				all(ele,parent)
-			}else{	//不支持
-				for(var i = 0, len = eles.length; i < len; i++){
-					this.doms = [];
-					var item = this.trim(eles[i]);	//每个选择器去左右空格
-					var first = item.slice(0, 1);	//标示符
-					var sel = item.slice(1);	//标	签
-					if(first === '#'){	//id
-						id(sel);
-						context = this.doms;
-					}else if(first === '.'){//类
-						if(context.length){
-							for(var j = 0, conlen = context.length; j < conlen; j++){
-								cla(sel, context[j]);
+			if(eles.length===1&&this.trim(eles[0]).slice(0,1)==="#"){
+				id(this.trim(eles[0]).slice(1))
+				if(document.querySelectorAll){	//支持h5
+					all(ele,parent)
+				}else{	//不支持
+					for(var i = 0, len = eles.length; i < len; i++){
+						this.doms = [];
+						var item = this.trim(eles[i]);	//每个选择器去左右空格
+						var first = item.slice(0, 1);	//标示符
+						var sel = item.slice(1);	//标	签
+						if(first === '#'){	//id
+							id(sel);
+							context = this.doms;
+						}else if(first === '.'){//类
+							if(context.length){
+								for(var j = 0, conlen = context.length; j < conlen; j++){
+									cla(sel, context[j]);
+								}
+							}else{
+								cla(sel,parent);
 							}
-						}else{
-							cla(sel,parent);
-						}
-						context = this.doms;
-					}else{//标签
-						if(context.length){
-							for(var k = 0, conlen = context.length; k < conlen; k++){
-								tag(item, context[k]);
+							context = this.doms;
+						}else{//标签
+							if(context.length){
+								for(var k = 0, conlen = context.length; k < conlen; k++){
+									tag(item, context[k]);
+								}
+							}else{
+								tag(item,parent);
 							}
-						}else{
-							tag(item,parent);
+							context = this.doms;
 						}
-						context = this.doms;
 					}
 				}
 			}
 			return this;
 		},
 		parent:function(sel){
+			var newdom=new Cjj();
+			newdom.doms=Array.prototype.slice.call(this.doms);
 			var domsparent=[];
-			for(var i = 0; i < this.doms.length; i++){
-				var obj = this.doms[i];
+			for(var i = 0; i < newdom.doms.length; i++){
+				var obj = newdom.doms[i];
 				if(sel){
 					sel=this.trim(sel);
 					var first=sel.charAt(0);
@@ -134,8 +146,8 @@
 							var flag = -1 < (" " + objP.className + " ").indexOf(" " + content + " ");
 							if(flag){
 								domsparent.push(objP);
-								this.doms=domsparent;
-								return this;
+								newdom.doms=domsparent;
+								return newdom;
 							}
 							obj=objP;
 						}while(objP.nodeName!=="HTML");
@@ -145,8 +157,8 @@
 							var objP=obj.parentNode; //obj的父元素
 							if(objP.nodeName===sel.toUpperCase()){
 								domsparent.push(objP);
-								this.doms=domsparent;
-								return this;
+								newdom.doms=domsparent;
+								return newdom;
 							}
 							obj=objP;
 						}while(objP.nodeName!=="HTML");
@@ -155,13 +167,15 @@
 					domsparent.push(obj.parentNode);
 				}
 			}
-			this.doms=domsparent;
-			return this;
+			newdom.doms=domsparent;
+			return newdom;
 		},
 		child:function(sel){
+			var newdom=new Cjj();
+			newdom.doms=Array.prototype.slice.call(this.doms);
 			var domschild=[];
-			for(var i = 0; i < this.doms.length; i++){
-				var obj = this.doms[i];
+			for(var i = 0; i < newdom.doms.length; i++){
+				var obj = newdom.doms[i];
 				var child=obj.children;
 				if(sel){
 					sel=this.trim(sel);
@@ -191,55 +205,62 @@
 					domschild=obj.children;
 				}
 			}
-			this.doms=domschild;
-			return this;
+			newdom.doms=domschild;
+			return newdom;
 		},
 		firstChild:function(){
+			var newdom=new Cjj();
+			newdom.doms=Array.prototype.slice.call(this.doms);
 			var domschild=[];
 			for(var i = 0; i < this.doms.length; i++){
-				var obj = this.doms[i];
+				var obj = newdom.doms[i];
 				var child=obj.firstElementChild||obj.firstChild;
 				domschild.push(child);
 			}
-			this.doms=domschild;
-			return this
+			newdom.doms=domschild;
+			return newdom
 		},
 		lastChild:function(){
+			var newdom=new Cjj();
+			newdom.doms=Array.prototype.slice.call(this.doms);
 			var domschild=[];
-			for(var i = 0; i < this.doms.length; i++){
-				var obj = this.doms[i];
+			for(var i = 0; i < newdom.doms.length; i++){
+				var obj = newdom.doms[i];
 				var child=obj.lastElementChild||obj.lastChild;
 				domschild.push(child);
 			}
-			this.doms=domschild;
-			return this
+			newdom.doms=domschild;
+			return newdom
 		},
 		next:function(){
+			var newdom=new Cjj();
+			newdom.doms=Array.prototype.slice.call(this.doms);
 			var domsnext=[];
-			for(var i = 0; i < this.doms.length; i++){
-				var obj = this.doms[i];
+			for(var i = 0; i < newdom.doms.length; i++){
+				var obj = newdom.doms[i];
 				do{
           var next=obj.nextElementSibling || obj.nextSibling;
           obj=next;
 				}while (next.nodeType!==1);
 				domsnext.push(next);
 			}
-			this.doms=domsnext;
-			return this;
+			newdom.doms=domsnext;
+			return newdom;
 		},
 		prev:function(){
+			var newdom=new Cjj();
+			newdom.doms=Array.prototype.slice.call(this.doms);
 			var domsprev=[];
-			for(var i = 0; i < this.doms.length; i++){
-				var obj = this.doms[i];
+			for(var i = 0; i < newdom.doms.length; i++){
+				var obj = newdom.doms[i];
 				var prev=obj.previousElementSibling || obj.previousSibling;
 				domsprev.push(prev);
 			}
-			this.doms=domsprev;
-			return this;
+			newdom.doms=domsprev;
+			return newdom;
 		},
 		sibl:function(sel){
-			this.parent().child(sel);
-			return this;
+			return this.parent().child(sel);
 		},
 		//转换dom元素
 		get:function(i){
@@ -366,9 +387,13 @@
 		},
 		//模版字符串
 		tempStr:function(str, data){
-			return str.replace(/#\{(\w+)\}/g, function(m, key){
-				return typeof data[key] === 'undefined' ? '' : data[key]
-			});
+			if(this.isObj(data)){
+				return str.replace(/#\{(\w+)\}/g, function(m, key){
+					return typeof data[key] === 'undefined' ? '' : data[key]
+				});
+			}else{
+				return str.replace(/#\{(\w+)\}/g,data);
+			}
 		},
 		//设置样式,属性,文本
 		css:function(k, v){
@@ -390,7 +415,7 @@
 		attr:function(k, v){
 			for(var i = 0; i < this.doms.length; i++){
 				var obj = this.doms[i];
-				obj[k] = v;
+				obj.setAttribute(k,v);
 			}
 			return this;
 		},
@@ -460,6 +485,7 @@
 					obj.style.display = 'none';
 				}
 			}
+			return this
 		},
 		//ajax
 		ajax:function(arg){//{type,url,data,dataType,fn,callback}
@@ -554,26 +580,40 @@
 			var result={};
 			var search=location.search.slice(1);
 			search=decodeURIComponent(search);
-			search=search.replace(/\s*\&+\s*/g,'&');
-			var data=search.split("&");
-			for(var i = 0; i < data.length; i++){
-				var item=data[i].split("=");
-				if(item[1]!==undefined){
-					result[item[0]]=item[1];
-				}
-			}
 			if(arg===undefined){
-				return result;
+				search=search.replace(/\s*\&+\s*/g,'&');
+				var data=search.split("&");
+				for(var i = 0; i < data.length; i++){
+					var item=data[i].split("=");
+					if(item[1]!==undefined){
+						result[item[0]]=item[1];
+					}
+				}
 			}else{
-				return result[arg];
+				var star=search.indexOf("=",search.indexOf(arg));
+				var end=search.indexOf("&",search.indexOf(arg));
+				result[arg]=this.trim(search.slice(star+1,end));
 			}
-
+			return result;
 		}
 	};
 	// 实例化对象,并返回doms
 	w.C = function(ele,parent){
 		return new Cjj(ele,parent);
 	};
+	C.extend=Cjj.prototype.extend=function(source){
+		//遍历对象
+		for(var i in source){
+			this[i] = source[i];
+		}
+		return this;
+	};
+	C.extend({
+		test:function(a){
+			console.log(a);
+
+		}
+	})
 	C.__proto__ = Cjj.prototype;
 }(window);
 
