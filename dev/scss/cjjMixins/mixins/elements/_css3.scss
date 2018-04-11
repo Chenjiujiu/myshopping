@@ -1,0 +1,172 @@
+@charset "UTF-8";
+// css3的混合宏(mixin);
+//////////////////////////////////////////////////////
+///
+/// $style	:	样式名 ;
+/// $frames	: 样式内容;
+//////////////////////////////////////////////////////
+//css3前缀,$style:样式名,$frames:样式内容
+@mixin c3Pre($style, $frames) {
+	@if ($prefixOpen) { //前缀开启
+		@each $pre in $browsers {
+			@if ($prefixW and $pre=='webkit') {
+				-#{$pre}-#{$style}: #{$frames};
+			} @else if ($prefixM and $pre=='moz') {
+				-#{$pre}-#{$style}: #{$frames};
+			} @else if ($prefixI and $pre=='ms') {
+				-#{$pre}-#{$style}: #{$frames};
+			} @else if ($prefixO and $pre=='o') {
+				-#{$pre}-#{$style}: #{$frames};
+			}
+		}
+		#{$style}: #{$frames};
+	} @else { //前缀关闭
+		$style: $frames;
+	}
+}
+//设置内容;
+@mixin cnt($content...) {
+	@if (length($content) >=1) {
+		content: $content;
+	} @else {
+		content: '';
+	}
+}
+//css3过渡;
+@mixin trs($properties...) {
+	@if (length($properties) >=1) {
+		@include c3Pre(transition, $properties);
+	} @else {
+		$properties: all 0.3s ease;
+		@include c3Pre(transition, $properties);
+	}
+}
+//=====过渡=====
+//.1秒
+@mixin ts1{
+	transition: all .1s linear;
+}
+//.2秒
+@mixin ts2{
+	transition: all .2s linear;
+}
+//.5秒
+@mixin ts5{
+	transition: all .5s linear;
+}
+
+//过度属性;
+@mixin trs-p($properties...) {
+	@include c3Pre(transition-property, $properties...);
+}
+//过度时间;
+@mixin trs-d($times...) {
+	@include c3Pre(transition-duration, $times);
+}
+//过渡效果;
+@mixin trs-fun($motions...) {
+	@include c3Pre(transition-timing-function, $motions);
+}
+//过度延迟时间;
+@mixin trs-del($times...) {
+	@include c3Pre(transition-delay, $times);
+}
+//css3圆角;
+@mixin bd-r($radius: 5px) {
+	@include c3Pre(border-radius, addUnit($radius));
+}
+//阴影;
+@mixin box-s($shadow...) {
+	@if (length($shadow) >=1) {
+		@include c3Pre(box-shadow, $shadow);
+	} @else {
+		$shadow: 0 0 4px rgba(0, 0, 0, .3);
+		@include c3Pre(box-shadow, $shadow);
+	}
+}
+//文字阴影;
+@mixin txt-s($shadow...) {
+	@if (length($shadow) >=1) {
+		@include c3Pre(text-shadow, $shadow);
+	} @else {
+		$shadow: 0 0 4px rgba(0, 0, 0, .3);
+		@include c3Pre(text-shadow, $shadow);
+	}
+}
+//去除阴影;
+@mixin box-s-no {
+	@include c3Pre(box-shadow, none);
+}
+//去除文字阴影;
+@mixin txt-s-no{
+	@include c3Pre(text-shadow, none);
+}
+//是否允许用户选中文本;
+@mixin usr-s($arg: text) {
+	@include c3Pre(user-select, $arg);
+}
+//禁止文本被选择;
+@mixin user-s-no {
+	@include usr-s(none);
+}
+//transform;
+@mixin trf($property...) {
+	@include c3Pre(transform, $property);
+}
+//元素的基点位置;
+@mixin trf-o($axes) {
+	@include c3Pre(transform-origin, $axes);
+}
+//3D 转换;
+@mixin trf-s($style: preserve-3d) {
+	@include c3Pre(transform-style, $style);
+}
+//隐藏被旋转的 div 元素的背面;
+@mixin bf-v($visibility:hidden) {
+	@include c3Pre(backface-visibility, $visibility);
+}
+//设置元素被查看位置的视图;
+@mixin pep($depth: none) {
+	@include c3Pre(perspective, $depth);
+}
+//设置 3D 元素的基点位置;
+@mixin pep-o($value: 50% 50%) {
+	@include c3Pre(perspective-origin, $value);
+}
+//设置 3D 元素的基点X位置;
+@mixin pep-o-x($value: 50%) {
+	@include c3Pre(perspective-origin-x, $value);
+}
+//设置 3D 元素的基点Y位置;
+@mixin pec-o-y($value: 50%) {
+	@include c3Pre(perspective-origin-y, $value);
+}
+//旋转;
+@mixin rotate($degrees) {
+	@include c3Pre(transform, rotate($degrees));
+}
+// 禁用元素事件
+// 1. 阻止任何点击动作的执行
+// 2. 使链接显示为默认光标(cursor:default)
+// 3. 阻止触发hover和active状态
+// 4. 阻止JavaScript点击事件的触发
+@mixin pe{
+	pointer-events: none;
+}
+//filter;
+@mixin filter( $arg ) {
+	@include c3Pre(filter, $arg);
+}
+//模糊;
+@mixin blur( $blur:10px ) {
+	@include filter(blur(addUnit($blur)));
+	@if (allBrowser()) {
+		filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='#{$blur}');
+		*zoom: 1;
+	}
+
+}
+//滤镜:
+@mixin grayscale( $args:100% ) {
+	@include c3Pre(filter, grayscale($args));
+}

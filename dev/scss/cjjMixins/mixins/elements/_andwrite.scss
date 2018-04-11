@@ -1,0 +1,66 @@
+@charset "UTF-8";
+// 混合缩写;
+//宽/高/行高
+@mixin whl($width, $height, $line-height:$height) {
+	@include w($width);
+	@include h($height);
+	@include lh($line-height);
+}
+
+//宽/高/行高/字体大小
+@mixin whlf($width, $height, $line-height, $font) {
+	@include w($width);
+	@include h($height);
+	@include lh($line-height);
+	@include fz($font);
+}
+
+//宽/高/行高/字体大小/颜色/粗细
+@mixin whlfcb($width, $height, $line-height, $font, $color, $bold:normal) {
+	@include w($width);
+	@include h($height);
+	@include fz($font);
+	@include lh($line-height);
+	@include c($color);
+	@include fw($bold);
+}
+
+//高/行高
+@mixin hl($height, $line-height:$height) {
+	@include h($height);
+	@include lh($line-height);
+}
+
+//宽/行高;
+@mixin wl($width, $line-height) {
+	@include w($width);
+	@include lh($line-height);
+}
+
+//字体大小/行高
+@mixin flh( $font, $line) {
+	@include fz( $font);
+	@include lh( $line);
+}
+
+//字体大小/高/行高/颜色
+@mixin fhlc( $font, $height,$line, $color) {
+	@include fz( $font);
+	@include h($height);
+	@include lh( $line);
+	@include c( $color);
+}
+// 字体大小/颜色
+@mixin fc( $font, $color) {
+	@include fz( $font);
+	@include c( $color);
+}
+
+//字体/字体大小/行高/颜色
+@mixin ffflc( $family, $font, $line, $color) {
+	@include ff( $family);
+	@include fz( $font);
+	@include lh( $line);
+	@include c( $color);
+}
+

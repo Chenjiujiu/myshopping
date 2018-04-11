@@ -1,33 +1,29 @@
 // 轮播图对象
-function Slider(data) {
+function Slider(data,select) {
   //数据
   this.data = data;
   //dom元素
   this.config = {
     //轮播项盒子
-    slideBox: C(".slider .slider-list"),
-    items: C(".slider .slider-list").child(),
+    slideBox: C(select+" .slider-list"),
     //下一个按钮
-    btnNext: C(".slider .ctrl-next"),
+    btnNext: C(select+" .ctrl-next"),
     //上一个按钮
-    btnPrev: C(".slider .ctrl-prev"),
+    btnPrev: C(select+" .ctrl-prev"),
     //小圆点盒子
-    dots: C(".slider .dots"),
-    dot: C(".slider .dots").child()
+    dots: C(select+" .dots")
   };
   //轮播模板
-  this.itemTemp = '<li class="slider-item"><a href="#{href}"><img src="./images/slide/#{img}" alt=""></a></li>';
+  this.itemTemp = '<li class="slider-item"><a href="#{href}"><img src="./images/#{img}" alt=""></a></li>';
   //小圆点模板
   this.dotsTemp = '<li>#{i}</li>';
   //当前张数
   this.index = 0;
-  //初始化
-  this.init();
   //定时器开关
   this.timer;
 }
-
 Slider.prototype = {
+	// 初始化
   init: function () {
     this.bindItem();
     this.creatDots();
@@ -60,7 +56,7 @@ Slider.prototype = {
     this.config.btnNext.click(function () {
       that.autoPlay(false);
       that.index++;
-      if (that.index >= that.config.items.length()) {
+      if (that.index >= that.config.slideBox.child().length()) {
         that.index = 0;
       }
       that.showCurrent();
@@ -70,7 +66,7 @@ Slider.prototype = {
       that.autoPlay(false);
       that.index--;
       if (that.index < 0) {
-        that.index = that.config.items.length() - 1;
+        that.index = that.config.slideBox.child().length() - 1;
       }
       that.showCurrent();
       that.autoPlay(true);
@@ -80,7 +76,7 @@ Slider.prototype = {
   //绑定小圆点事件
   bindDots: function () {
     var that=this;
-    this.config.dot.click(function () {
+		this.config.dots.child().click(function () {
       that.autoPlay(false);
       that.index=C(this).html();
       that.showCurrent();
@@ -100,11 +96,9 @@ Slider.prototype = {
   },
   //当前显示
   showCurrent: function () {
-  	// console.log(this.config.items.get(this.index));
-  	
-    this.config.items.css("opacity", '0');
-    C(this.config.items.get(this.index)).css("opacity", '1');
-    this.config.dot.remClass("current");
-    C(this.config.dot.get(this.index)).addClass("current");
+    this.config.slideBox.child().remClass("current");
+    C(this.config.slideBox.child().get(this.index)).addClass("current");
+		this.config.dots.child().remClass("current");
+    C(this.config.dots.child().get(this.index)).addClass("current");
   }
 };

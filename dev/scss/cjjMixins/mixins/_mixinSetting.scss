@@ -1,0 +1,16 @@
+@charset "UTF-8";
+//版本:
+$version : 1.0.0;
+//全局单位;
+$unit	:	px;
+//是否兼容IE678;
+$ieLow	:	true;
+//css3前缀开关;
+$browsers	:	webkit moz ms o; //浏览器集合;
+$prefixOpen	:	true !default;  //开启前缀;
+$prefixW	:	true !default;   //谷歌前缀:webkit前缀
+$prefixM	:	true !default;   //火狐前缀:moz前缀
+$prefixI	:	true !default;   //IE前缀:ms前缀
+$prefixO	:	true !default;   //opera前缀:o前缀
+
+

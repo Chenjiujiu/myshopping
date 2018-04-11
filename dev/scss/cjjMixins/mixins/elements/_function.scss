@@ -1,0 +1,49 @@
+@charset "UTF-8";
+//函数宏
+//判断是否需要全兼容
+@function	allBrowser(){
+	@if($ieLow and $unit !=rem){
+		@return true;
+	}@else {
+		@return false;
+	}
+}
+
+//判断是否为数字
+@function isNum( $num ){
+	@if( type-of($num) == number ){
+		@return true;
+	}@else{
+		@return false;
+	}
+}
+
+//检验单位;
+@function testUnit( $args ){
+	//若有单位则返回原值
+	$filter-units : !important,px,rem,em,auto;
+	@each $o in $filter-units {
+		@if( str-index('#{$args}',$o) ){
+			@return $args;
+		}
+	}
+	//若无单位则加单位返回
+	@if( unit( $args ) == '%'){
+		@return $args;
+	}@else if($args == 0){
+		@return $args;
+	}@else if( unitless( $args ) ){
+		@return $args+$unit;
+	}@else{
+		@return $args;
+	}
+}
+
+//添加单位;
+@function addUnit( $args... ){
+	$arr:null;
+	@each $arg in $args {
+		$arr : $arr testUnit( $arg );
+	}
+	@return $arr;
+}

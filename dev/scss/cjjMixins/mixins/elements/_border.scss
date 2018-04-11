@@ -1,0 +1,154 @@
+@charset "UTF-8";
+// 边框的混合宏(mixin);
+//1或者2像素实线边框
+//=====边框样式=====
+//1px
+@mixin bd1($color){
+	border: 1px solid $color;
+}
+@mixin bdt1($color){
+	border-top: 1px solid $color;
+}
+@mixin bdr1($color){
+	border-right: 1px solid $color;
+}
+@mixin bdb1($color){
+	border-bottom: 1px solid $color;
+}
+@mixin bdl1($color){
+	border-left: 1px solid $color;
+}
+//2px
+@mixin bd2($color){
+	border: 2px solid $color;
+}
+@mixin bdt2($color){
+	border-top: 2px solid $color;
+}
+@mixin bdr2($color){
+	border-right: 2px solid $color;
+}
+@mixin bdb2($color){
+	border-bottom: 2px solid $color;
+}
+@mixin bdl2($color){
+	border-left: 2px solid $color;
+}
+//3px
+@mixin bd3($color){
+	border: 3px solid $color;
+}
+@mixin bdt3($color){
+	border-top: 3px solid $color;
+}
+@mixin bdr3($color){
+	border-right: 3px solid $color;
+}
+@mixin bdb3($color){
+	border-bottom: 3px solid $color;
+}
+@mixin bdl3($color){
+	border-left: 3px solid $color;
+}
+
+
+
+//边框;
+@mixin bd( $args... ) {
+	border:$args;
+}
+
+//上边框;
+@mixin bdt( $args... ) {
+	border-top:$args;
+}
+//右边框;
+@mixin bdr( $args... ) {
+	border-right:$args;
+}
+
+//下边框;
+@mixin bdb( $args... ) {
+	border-bottom:$args;
+}
+
+//左边框;
+@mixin bdl( $args... ) {
+	border-left:$args;
+}
+
+//上下边框;
+@mixin bdtb( $args1,$args2:$args1 ){
+	border-top:$args1;
+	border-bottom:$args2;
+}
+
+//左右边框;
+@mixin bdrl( $args1,$args2:$args1 ){
+	border-right:$args1;
+	border-left:$args2;
+}
+
+//边框颜色;
+@mixin bdc( $args... ) {
+	border-color:$args;
+}
+
+//边框图片;
+@mixin bdi( $image... ){
+	@include css3(border-image, $image...);
+}
+
+//取消边框;
+@mixin bd-no{
+	border:none;
+}
+
+//取消上边框;
+@mixin bdt-no{
+	border-top:none;
+}
+
+//取消右边框;
+@mixin bdr-no{
+	border-right:none;
+}
+
+//取消下边框;
+@mixin bdb-no{
+	border-bottom:none;
+}
+
+//取消左边框;
+@mixin bdl-no{
+	border-left:none;
+}
+
+//取消上边框&&下边框;
+@mixin bdtb-no{
+	border-top:none;
+	border-bottom:none;
+}
+
+//取消右边框&&左边框;
+@mixin bdrl-no{
+	border-right:none;
+	border-left:none;
+}
+
+// 分割线 |;
+@mixin cut-line( $mg:0 10px,$color:#999,$fz:14 ) {
+	@include mg($mg);
+	@include c($color);
+	@include fz($fz);
+}
+
+// 分割线 / (面包屑导航);
+@mixin cut-line2($pd:0 10px,$color:#ccc,$fz:14) {
+	&:before {
+		@include pd($pd);
+		@include c($color);
+		@include fz($fz);
+		content: "/\00a0";
+	}
+}

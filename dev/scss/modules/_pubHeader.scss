@@ -471,6 +471,15 @@
 				width: 760px;
 			}
 		}
+		//固定搜索
+		.fixd-search{
+			width: 100%;
+			height: 60px;
+			background-color: $whilt;
+			position: fixed;
+			top: 0;
+			@include bdb3($color-Main);
+		}
 	}
 }
 @media screen and (max-width: 1180px) {

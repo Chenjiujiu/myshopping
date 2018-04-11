@@ -1,0 +1,39 @@
+@charset "UTF-8";
+// 背景
+
+//设置背景;
+@mixin bg( $arg){
+		background:$arg;
+}
+//取消背景;
+@mixin bg-no{
+	background:none!important;
+}
+//颜色;
+@mixin bgc($color){
+	background-color:$color;
+}
+//背景图片;
+@mixin bgi($img:false){
+	background-image:url($img);
+}
+//背景大小;
+@mixin bgs( $value:cover ){
+	background-size:$value;
+}
+//背景裁切;
+@mixin bgcl( $value:content-box ){
+	background-clip:$value;
+}
+//背景起始点;
+@mixin bgo( $value:content-box ){
+	background-origin:$value;
+}
+
+//背景定位;
+@mixin bgp( $x:center,$y:center ){
+	background-position:addUnit($x) addUnit($y);
+}
+
+
+

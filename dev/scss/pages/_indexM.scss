@@ -24,10 +24,14 @@ body{
 		left: 50%;
 		margin-left: -960px;
 		@include ts5 ;
+		height: 100%;
+		opacity: 0;
 		@media screen and (max-width: 1180px){
 			margin-left: -640px;
 		}
-		height: 100%;
+		&.current{
+			opacity: 1;
+		}
 		img{
 			height: 100%;
 		}
@@ -98,6 +102,10 @@ body{
 	padding-bottom: 40px;
 	.sort-list{
 		width: 1224px;
+		height: 330px;
+		padding-left: 15px;
+		margin-left: -15px;
+		overflow: hidden;
 		@media screen and (max-width: 1180px){
 			width: 968px;
 			.sm-hide{
@@ -109,8 +117,7 @@ body{
 		float: left;
 		width: 232px;
 		height: 290px;
-		margin-right: 10px;
-		background-color: blue;
+		margin: 20px 10px 20px 0;
 		cursor: pointer;
 		position: relative;
 		overflow: hidden;
@@ -148,36 +155,46 @@ body{
 .brand{
 	box-sizing: border-box;
 	height: 80px;
-	padding:0 20px 8px;
-	margin-bottom: 40px	;
+	margin:0 20px 48px 20px	;
 	overflow: hidden;
+	position: relative;
 	@media screen and (max-width: 1180px){
-		padding:0 46px 8px;
+		margin:0 28px 30px;
 	}
 	@include bdb1($yellow02);
 	.brand-list{
-		width: 400%;
+		width: 100%;
+		position: absolute;
+		left: 0;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 	}
 	.brand-item{
 		width: 70px;
-		height: 70px;
+		height: 62px;
 		float: left;
 		overflow: hidden;
 		padding: 5px;
 		text-align: center;
 		margin: 0 5px;
+		border-bottom: 4px solid transparent;
+		@include ts2;
+		&:hover{
+			border-bottom: 4px solid $color-Main;
+		}
+		a{
+			display: block;
+		}
 	}
-	.brand-pic{
+	img{
 		float: left;
 		text-align: center;
 		height: 45px;
 		width: 67.5px;
 		line-height: 50;
-		background-image: url("./../images/logos.png");
-		-webkit-background-size: cover;
-		background-size: cover;
-		background-repeat: no-repeat;
-		background-position: 0 0;
 	}
 	.brand-name{
 		display: block;

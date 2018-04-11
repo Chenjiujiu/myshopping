@@ -1,0 +1,110 @@
+@charset "UTF-8";
+// 定位的混合宏;
+//遍历定位属性:top\right\bottom\left\z-index\width\height;
+@mixin position_each( $args ) {
+	$data: (t:top, r:right, b:bottom, l:left, z:z-index, w:width, h:height);
+	@each $key, $val in $args {
+		@if (map-has-key($data, $key)) { //key存在data内
+			@if ($key == z) {
+				#{map-get($data,$key)} : $val;
+			} @else {
+				#{map-get($data,$key)} : addUnit($val);
+			}
+		}
+	}
+}
+//  ex : @include pos(absolute,(t:10px,l:0px,z:5));
+@mixin pos($position,$args:false) {
+	$data: (abs:absolute, rel:relative, fix:fixed);
+	@if (map-has-key($data, $position)) {
+		position: map-get($data, $position);
+		@include position_each($args);
+	}
+}
+//  ex : @include abs((t:10px,l:0px,z:5));
+// 绝对定位:
+@mixin poa($args:false) {
+	position: absolute;
+	@include position_each($args);
+}
+// 相对定位:
+@mixin por($args:false) {
+	position: relative;
+	@include position_each($args);
+}
+// 固定定位:
+@mixin pof($args:false) {
+	position: fixed;
+	@if (allBrowser()) {
+		_position: absolute;
+		*zoom: 1;
+	}
+	@include position_each($args);
+}
+//设置层级数;
+@mixin z( $num ) {
+	z-index: $num;
+}
+//top值;
+@mixin t($top:0) {
+	top: addUnit($top);
+}
+//left值;
+@mixin l($left:0) {
+	left: addUnit($left);
+}
+//bottom值;
+@mixin b($bottom:0) {
+	bottom: addUnit($bottom);
+}
+//right值;
+@mixin r($right:0) {
+	right: addUnit($right);
+}
+//top/left值;
+@mixin tl($top:0,$left:0,$zindex:false) {
+	@include t($top);
+	@include l($top);
+	@if ($zindex) {
+		@include z($zindex);
+	}
+}
+//top/right值;
+@mixin tr($top:0,$right:0,$zindex:false) {
+	@include t($top);
+	@include r($right);
+	@if ($zindex) {
+		@include z($zindex);
+	}
+}
+//bottom/left值;
+@mixin bl($bottom:0,$left:0,$zindex:false) {
+	@include b($bottom);
+	@include l($left);
+	@if ($zindex) {
+		@include z($zindex);
+	}
+}
+//bottom/right值;
+@mixin br($bottom:0,$right:0,$zindex:false) {
+	@include b($bottom);
+	@include r($right);
+	@if ($zindex) {
+		@include z($zindex);
+	}
+}
+//top/left/bottom/right值;
+@mixin trbl($top:0,$right:0,$bottom:0,$left:0,$zindex:false) {
+	@include t($top);
+	@include l($left);
+	@include b($bottom);
+	@include r($right);
+	@if ($zindex) {
+		@include z($zindex);
+	}
+}
+
+
+
+
+

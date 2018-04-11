@@ -1,0 +1,29 @@
+@charset "utf-8";
+// 浮动的混合宏
+
+//设置浮动方向;
+@mixin float($directions:left){
+	float:$directions;
+}
+//左浮动;
+@mixin fl{
+	@include float(left);
+}
+
+//右浮动;
+@mixin fr{
+	@include float(right);
+}
+
+//清除浮动;
+@mixin clearfix{
+	*zoom:1;
+	&:after{
+		content: "";
+		display: block;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+		overflow: hidden;
+	}
+}

@@ -1,0 +1,56 @@
+@charset "utf-8";
+// 零碎汇总;
+
+//垂直对齐方式;
+@mixin va( $direction:middle ){
+	vertical-align: $direction;
+}
+//顶端;
+@mixin vat{
+	@include va(top);
+}
+//中间;
+@mixin vam{
+	@include va(middle);
+}
+//底部;
+@mixin vab{
+	@include va(bottom);
+}
+
+//超出隐藏;
+@mixin ovh{overflow:hidden; }
+//超出显示;
+@mixin ovv{overflow:visible !important;}
+
+//鼠标样式;
+@mixin cu( $args:pointer ){
+	cursor:$args
+}
+//小手;
+@mixin cup{
+	@include cu;
+}
+//默认;
+@mixin cud{
+	@include cu(default);
+}
+//隐藏
+@mixin cun {
+	cursor: none !important;
+}
+//透明度;
+@mixin opa($opacity:1) {
+	opacity: $opacity;
+	@if( allBrowser() or $ieLow ){
+		filter: alpha(opacity=$opacity*100); //IE8
+	}
+}
+//禁止textarea拖动大小;
+@mixin no-resize{
+	resize: none;
+}
+//内容
+@mixin ct($data:''){
+	content: $data;
+}
