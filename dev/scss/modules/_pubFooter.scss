@@ -4,7 +4,7 @@
 	//服务
 	background-color: $whilt;
 	.footer-service {
-		@include bdb1($bd-gray);
+		border-bottom: 1px solid $bd-gray;
 		margin-bottom: 30px;
 		//服务项
 		.col-service {
@@ -53,7 +53,7 @@
 			text-align: center;
 			font-size: 12px;
 			color: $server-gray;
-			@include bdl1($gray01);
+			border-left: 1px solid $gray01;
 			.title {
 				color: $color-Main;
 				font-size: 20px;
@@ -71,8 +71,8 @@
 				line-height: 30px;
 				cursor: pointer;
 				color: $color-Main;
-				@include bd1($color-Main);
-				@include ts2;
+				border: 1px solid $color-Main;
+				@include transition2;
 				&:hover {
 					color: $whilt;
 					background-color: $color-Main;
@@ -95,11 +95,6 @@
 			a {
 				@extend %g2-m;
 				font-size: 12px;
-			}
-			@media screen and (max-width: 1180px) {
-				.sm-hide{
-					display: none;
-				}
 			}
 		}
 		//版权内容

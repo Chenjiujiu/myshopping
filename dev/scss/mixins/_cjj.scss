@@ -1,0 +1,397 @@
+@charset "UTF-8";
+ ////////////////////////////////////
+ ///    @描述: scss常用mixin	    ///
+ ////   @作者: chenjiujiu      ///
+ /////  @创建日期: 2018/3/22	 ///
+ //////////////////////////////
+//全局单位;
+$unit	:	px;
+//是否兼容IE678;
+$ieLow	:	true;
+//css3前缀开关;
+$browsers	:	webkit moz ms o; //浏览器集合;
+$prefixOpen	:	true !default;  //开启前缀;
+$prefixW	:	true !default;   //谷歌前缀:webkit前缀
+$prefixM	:	true !default;   //火狐前缀:moz前缀
+$prefixI	:	true !default;   //IE前缀:ms前缀
+$prefixO	:	true !default;   //opera前缀:o前缀
+
+//判断是否需要全兼容
+@function	allBrowser(){
+	@if($ieLow and $unit !=rem){
+		@return true;
+	}@else {
+		@return false;
+	}
+}
+//判断是否为数字
+@function isNum( $num ){
+	@if( type-of($num) == number ){
+		@return true;
+	}@else{
+		@return false;
+	}
+}
+//检验单位;
+@function testUnit( $args ){
+	//若有单位则返回原值
+	$filter-units : !important,px,rem,em,auto;
+	@each $o in $filter-units {
+		@if( str-index('#{$args}',$o) ){
+			@return $args;
+		}
+	}
+	//若无单位则加单位返回
+	@if( unit( $args ) == '%'){
+		@return $args;
+	}@else if($args == 0){
+		@return $args;
+	}@else if( unitless( $args ) ){
+		@return $args+$unit;
+	}@else{
+		@return $args;
+	}
+}
+//添加单位;
+@function addUnit( $args... ){
+	$arr:null;
+	@each $arg in $args {
+		$arr : $arr testUnit( $arg );
+	}
+	@return $arr;
+}
+
+//*================*/
+// css3的混合宏(mixin);
+//////////////////////////////////////////////////////
+///
+/// $style	:	样式名 ;
+/// $frames	: 样式内容;
+//////////////////////////////////////////////////////
+//css3前缀,$style:样式名,$frames:样式内容
+@mixin c3Pre($style, $frames) {
+	@if ($prefixOpen) { //前缀开启
+		@each $pre in $browsers {
+			@if ($prefixW and $pre=='webkit') {
+				-#{$pre}-#{$style}: #{$frames};
+			} @else if ($prefixM and $pre=='moz') {
+				-#{$pre}-#{$style}: #{$frames};
+			} @else if ($prefixI and $pre=='ms') {
+				-#{$pre}-#{$style}: #{$frames};
+			} @else if ($prefixO and $pre=='o') {
+				-#{$pre}-#{$style}: #{$frames};
+			}
+		}
+		#{$style}: #{$frames};
+	} @else { //前缀关闭
+		$style: $frames;
+	}
+}
+//css3过渡;
+@mixin transition($properties...) {
+	@if (length($properties) >=1) {
+		@include c3Pre(transition, $properties);
+	} @else {
+		$properties: all 0.3s ease;
+		@include c3Pre(transition, $properties);
+	}
+}
+//过度属性;
+@mixin trs-p($properties...) {
+	@include c3Pre(transition-property, $properties...);
+}
+//过度时间;
+@mixin trs-t($times...) {
+	@include c3Pre(transition-duration, $times);
+}
+//过渡效果;
+@mixin trs-fn($motions...) {
+	@include c3Pre(transition-timing-function, $motions);
+}
+//过度延迟时间;
+@mixin trs-delay($times...) {
+	@include c3Pre(transition-delay, $times);
+}
+//transform;
+@mixin transform($property...) {
+	@include c3Pre(transform, $property);
+}
+//css3圆角;
+@mixin border-radius($radius: 5px) {
+	@include c3Pre(border-radius, $radius);
+}
+//阴影;
+@mixin box-shadow($shadow...) {
+	@include c3Pre(box-shadow, $shadow);
+}
+//文字阴影;
+@mixin text-shadow($shadow...) {
+	@include c3Pre(text-shadow, $shadow);
+}
+//去除阴影;
+@mixin box-shadow-no {
+	@include c3Pre(box-shadow, none);
+}
+//去除文字阴影;
+@mixin text-shadow-no{
+	@include c3Pre(text-shadow, none);
+}
+//是否允许用户选中文本;
+@mixin user-select($arg: text) {
+	@include c3Pre(user-select, $arg);
+}
+//禁止文本被选择;
+@mixin user-select-no {
+	-webkit-touch-callout: none;
+	@include user-select(none);
+}
+
+//元素的基点位置;
+@mixin transform-o($axes) {
+	@include c3Pre(transform-origin, $axes);
+}
+//3D 转换;
+@mixin transform-s($style: preserve-3d) {
+	@include c3Pre(transform-style, $style);
+}
+//隐藏被旋转的 div 元素的背面;
+@mixin backface-v($visibility:hidden) {
+	@include c3Pre(backface-visibility, $visibility);
+}
+//设置元素被查看位置的视图;
+@mixin perspective($depth: none) {
+	@include c3Pre(perspective, $depth);
+}
+//设置 3D 元素的基点位置;
+@mixin perspective-o($value: 50% 50%) {
+	@include c3Pre(perspective-origin, $value);
+}
+//设置 3D 元素的基点X位置;
+@mixin perspective-o-x($value: 50%) {
+	@include c3Pre(perspective-origin-x, $value);
+}
+//设置 3D 元素的基点Y位置;
+@mixin perspective-o-y($value: 50%) {
+	@include c3Pre(perspective-origin-y, $value);
+}
+//旋转;
+@mixin rotate($degrees) {
+	@include c3Pre(transform, rotate($degrees));
+}
+// 禁用元素事件
+// 1. 阻止任何点击动作的执行
+// 2. 使链接显示为默认光标(cursor:default)
+// 3. 阻止触发hover和active状态
+// 4. 阻止JavaScript点击事件的触发
+@mixin pe{
+	pointer-events: none;
+}
+
+//=====过渡=====
+//.1秒
+@mixin transition1{
+	@include transition(all .1s linear);;
+}
+//.2秒
+@mixin transition2{
+	@include transition(all .2s linear);;
+}
+//.5秒
+@mixin transition5{
+	@include transition(all .5s linear);;
+}
+
+//透明度;
+@mixin opacity($opacity:1) {
+	opacity: $opacity;
+	@if( allBrowser() or $ieLow ){
+		filter: alpha(opacity=$opacity*100); //IE8
+	}
+}
+//行内快
+@mixin dib{
+	display:inline-block;
+	@if( allBrowser() ){
+		*display: inline; *zoom: 1;
+	}
+}
+//边框图片;
+@mixin border-image( $image... ){
+	@include c3Pre(border-image, $image...);
+}
+//清除浮动;
+@mixin clearfix{
+	*zoom:1;
+	&:after{
+		content: "";
+		display: table;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+		overflow: hidden;
+	}
+}
+//超出一行....;
+@mixin overDot{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+//多行显示...;
+@mixin overDot-M( $row:2 ){
+	@include c3Pre(line-clamp,$row);//用来限制在一个块元素显示的文本行数
+	@include c3Pre(display,-webkit-box);//必须。将对象作为弹性伸缩盒子模型
+	@include c3Pre(box-orient,vertical);//必须。设置或检索伸缩盒对象的子元素的排列方式
+	overflow : hidden;
+	text-overflow: ellipsis;
+}
+//强制折行;
+@mixin break{
+	word-break:break-all; //支持IE，chrome，Fox不支持
+	word-wrap:break-word; //支持IE，chrome，Fox
+}
+//断行;
+@mixin break-word($wrap: break-word) {
+	overflow-wrap: $wrap;
+	word-wrap: $wrap;
+	@if $wrap == break-word {
+		word-break: break-all;
+	} @else {
+		word-break: $wrap;
+	}
+}
+//改变单词间的间隔(兼容ie);
+@mixin text-justify( $arg:auto ){
+	text-justify : $arg;
+}
+// 美化占位符 placeholder 样式
+@mixin beauty-pla($fz:12, $color: #999, $align: left) {
+	&:-moz-placeholder {
+		font-size: addUnit($fz);
+		color:$color;
+		text-align: $align;
+	}
+	&:-ms-input-placeholder {
+		font-size: addUnit($fz);
+		color:$color;
+		text-align: $align;
+	}
+	&::-webkit-input-placeholder {
+		font-size: addUnit($fz);
+		color:$color;
+		text-align: $align;
+	}
+}
+//美化选中文本
+@mixin beauty-sel( $bg:#00F, $color:#fff) {
+	&::selection {
+		background: $bg;
+		color: $color;
+	}
+	&::-moz-selection {
+		background: $bg;
+		color: $color;
+	}
+	&::-webkit-selection {
+		background: $bg;
+		color: $color;
+	}
+	&::-ms-selection {
+		background: $bg;
+		color: $color;
+	}
+	&::-o-selection {
+		background: $bg;
+		color: $color;
+	}
+}
+// 动画混合宏;
+//////////////////////////////////////////////////
+// 写法案例：
+// @include keyf(){
+// 		0{
+//			#{$bro}transfrom:translate3d(100%,0,0)
+//		}
+//		100%{
+//			#{$bro}transfrom:translate3d(10%,0,0);
+//		}
+// }
+/////////////////////////////////////////////////
+$bro: null;
+@mixin keyf( $animationName ) {
+	@-webkit-keyframes #{$animationName} {
+		$bro: '-webkit-' !global;
+		@content;
+	}
+	@-moz-keyframes #{$animationName} {
+		$bro: '-moz-' !global;
+		@content;
+	}
+	@-ms-keyframes #{$animationName} {
+		$bro: '-ms-' !global;
+		@content;
+	}
+	@-o-keyframes #{$animationName} {
+		$bro: '-o-' !global;
+		@content;
+	}
+	@keyframes #{$animationName} {
+		$bro: '' !global;
+		@content;
+	}
+}
+//animation动画;
+@mixin ani( $animations ) {
+	@include c3Pre(animation, $animations);
+}
+//名称;
+@mixin ani-name( $names ) {
+	@include c3Pre(animation-name, $names);
+}
+//一个周期所需要的时间;
+@mixin ani-time( $times:0.2s ) {
+	@include c3Pre(animation-duration, $times);
+}
+//速度形式;
+@mixin ani-style( $motions:linear ) {
+	// linear                : 动画从头到尾的速度是相同的;
+	// ease                  : 默认。动画以低速开始，然后加快，在结束前变慢;
+	// ease-in               : 动画以低速开始;
+	// ease-out              : 动画以低速结束;
+	// ease-in-out           : 动画以低速开始和结束;
+	// cubic-bezier(n,n,n,n) : 在 cubic-bezier 函数中自己的值。可能的值是从 0 到 1 的数值;
+	@include c3Pre(animation-timing-function, $motions);
+}
+//播放次数;
+@mixin ani-num( $values:1 ) {
+	//<number>(播放次数) | infinite(无限次播放);
+	@include c3Pre(animation-iteration-count, $values);
+}
+//轮流反向播放动画;
+@mixin ani-dir( $directions:alternate ) {
+	//normal(动画应该正常播放) | alternate(动画应该轮流反向播放);
+	@include c3Pre(animation-direction, $directions);
+}
+//"播放"或"暂停";
+@mixin ani-play( $states:running ) {
+	//paused(暂停) | running(运行);
+	@include c3Pre(animation-play-state, $states);
+}
+//延迟时间;
+@mixin ani-del( $times:0.2s ) {
+	@include c3Pre(animation-delay, $times);
+}
+//运动完成后的状态;
+@mixin ani-fill( $modes:forwards ) {
+	// none(默认值) | forwards(动画结束时的状态) | backwards(动画开始时的状态) | both(动画结束或开始的状态);
+	@include c3Pre(animation-fill-mode, $modes);
+}
+//三维闪动 bug 处理;
+@mixin bug3d() {
+	-webkit-backface-visibility: hidden;
+	-webkit-transform-style: preserve-3d;
+}
+@mixin background-size($arg:100%){
+	@include c3Pre(background-size, $arg);
+}
+

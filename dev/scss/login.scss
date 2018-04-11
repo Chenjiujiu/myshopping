@@ -1,4 +1,178 @@
 @charset "UTF-8";
-@import "mixins/mixins";	//引入scss函数库 包含变量，占位符，函数，mixin
+@import "base";//初始化css
+@import "mixins/cjj";	//引入scss函数库 包含变量，占位符，函数，mixin
+@import "mixins/variable";	//引入变量，
 @import "modules/pubFooter";	//	引入页脚样式
-@import "pages/loginM";	//引入页面主样式
+
+/*=====引入页面主样式=====*/
+body {
+	min-width: 1200px;
+	overflow-x: hidden;
+}
+.header {
+	.logo-box {
+		padding: 20px 0;
+		a{
+			display: block;
+			height: 80px;
+			float: left;
+		}
+		img {
+			display: block;
+			height: 80px;
+		}
+		h1 {
+			float: left;
+			padding-left: 30px;
+			line-height: 80px;
+			font-size: 30px;
+		}
+	}
+}
+.main {
+	height: 600px;
+	background: #{$color-Main} url("../images/login.jpg") no-repeat top center;
+	-webkit-background-size: cover;
+	background-size: cover;
+	.login-box {
+		width: 300px;
+		height: 300px;
+		padding: 25px;
+		background-color: #f7f7f7;
+		float: right;
+		margin-top: 50px;
+		position: relative;
+		@include box-shadow(3px 3px 4px 1px rgba(0, 0, 0, .2));
+		.title {
+			margin-top: 9px;
+			line-height: 20px;
+			padding-bottom: 10px;
+			font-size: 20px;
+		}
+		.uname,
+		.upwd {
+			height: 42px;
+			margin-top: 30px;
+			position: relative;
+			label {
+				display: block;
+				width: 40px;
+				line-height: 40px;
+				color: $whilt;
+				position: absolute;
+				top: 1px;
+				left: 1px;
+				text-align: center;
+				.icon-font {
+					color: $gray01;
+					font-size: 30px;
+				}
+			}
+			input {
+				width: 240px;
+				font-size: 14px;
+				line-height: 18px;
+				padding: 11px 8px 11px 50px;
+				border: 1px solid $gray01;
+			}
+		}
+		.uname {
+			margin-top: 15px;
+		}
+		.btn {
+			margin-top: 20px;
+			width: 300px;
+			line-height: 42px;
+			color: $whilt;
+			font-size: 18px;
+			font-weight: 600;
+			background-color: $blue009;
+			cursor: pointer;
+			&:hover {
+				background-color: $color-Main;
+			}
+		}
+		.helps {
+			text-align: right;
+			padding-top: 15px;
+			a {
+				@extend %g2-m;
+				padding: 5px;
+			}
+		}
+		.login-other {
+			margin-top: 10px;
+			a {
+				color: $gray02;
+				padding: 5px;
+			}
+			.icon-font {
+				display: inline-block;
+				font-size: 18px;
+				padding-right: 2px;
+				vertical-align: -3px;
+			}
+			.zfb-login:hover {
+				color: #118EE5;
+			}
+			.wx-login:hover {
+				color: #7FBA24;
+			}
+			.qq-login:hover {
+				color: #D9140F;
+			}
+		}
+		.ewm-login {
+			display: none;
+			.ewm{
+				text-align: center;
+				margin-top: 30px;
+				img{
+					width: 180px;
+					height: 180px;
+				}
+			}
+			.goback{
+				margin-top: 20px;
+				margin-right: 50px;
+				text-align: right;
+				a{
+					@extend %g2-m;
+					@include transition1;
+				}
+			}
+		}
+		.password-login {
+			.togool {
+				display: block;
+				line-height: 16px;
+				font-size: 16px;
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				cursor: pointer;
+				vertical-align: bottom;
+				@include transition1;
+				&:hover {
+					color: $color-Main;
+				}
+			}
+		}
+		.tips-error{
+			opacity: 0;
+			line-height: 22px;
+			float: left;
+			margin: 4px	0 0 44px;
+			padding: 0 5px;
+			font-size: 12px;
+			background-color: red;
+			color: $whilt;
+			border-radius: 3px;
+			@include transition1;
+		}
+	}
+	@media screen and (max-width: 1180px) {
+		height: 450px;
+	}
+}
+

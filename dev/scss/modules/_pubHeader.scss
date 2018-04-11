@@ -64,7 +64,7 @@
 				background-color: $whilt;
 				padding: 0 20px;
 				overflow: hidden;
-				@include ts2;
+				@include transition2;
 				z-index: 9999;
 				img {
 					width: 120px;
@@ -90,7 +90,7 @@
 		.fun-myxk {
 			position: relative;
 			padding: 0 10px;
-			@include ts2;
+			@include transition2;
 			&:hover {
 				background-color: $whilt;
 				.myxk-box {
@@ -110,7 +110,7 @@
 				font-size: 12px;
 				padding: 0 10px;
 				overflow: hidden;
-				@include ts2;
+				@include transition2;
 				.icon-font{
 					font-size: 16px;
 					margin-right: 3px	;
@@ -159,7 +159,7 @@
 			right: 0;
 			background-color: $whilt;
 			overflow: hidden;
-			@include ts2;
+			@include transition2;
 			z-index: 1000;
 			box-shadow: 0 3px 3px 0 #{$yellow01};
 		}
@@ -171,7 +171,7 @@
 			padding: 5px 0;
 			position: relative;
 			font-size: 12px;
-			@include bdb1($yellow01);
+			border: 1px solid $yellow01;
 			&:hover {
 				.close {
 					opacity: 1;
@@ -224,7 +224,7 @@
 				right: 0;
 				top: 16px;
 				color: $gray05;
-				@include ts2;
+				@include transition2;
 				&:hover {
 					color: #333;
 				}
@@ -264,60 +264,60 @@
 	//搜索导航
 	.pub-header {
 		//搜索
-		.header-search {
-			.logo {
-				float: left;
+		.logo {
+			display: block;
+			float: left;
+			margin-right: 30px;
+			a {
+				display: block;
 				width: 220px;
-				height: 120px;
-				text-indent: -9999em;
-				//overflow: hidden;
-				margin-right: 30px;
-				a {
-					display: block;
-				}
-				img {
-					display: block;
-					width: 220px;
-				}
-			}
-			.search-box {
-				float: left;
 				height: 80px;
-				width: 600px;
-				margin-top: 30px;
-				margin-left: 50px;
-				@media screen and (max-width: 1180px){
-					margin-left: 0;
-					width: 510px;
-				}
+				margin-top: 20px;
+				text-indent: -9999px;
+				white-space: nowrap;
+				overflow: hidden;
+				background: url("./../images/logo_120.png") no-repeat top center;
 			}
-			.input-box {
-				height: 52px;
-				width: 100%;
-				box-sizing: border-box;
-				padding-right: 100px;
-				@include bd3($color-Main);
-				input {
-					float: left;
-					line-height: 46px;
-					box-sizing: border-box;
-					width: 100%;
-					padding: 0 15px;
-					color: #333;
-					font-size: 16px;
-					box-shadow: inset 0 0 6px 1px $yellow01;
-				}
+		}
+		.search-box {
+			float: left;
+			height: 80px;
+			width: 600px;
+			margin-top: 30px;
+			margin-left: 50px;
+			@media screen and (max-width: 1180px){
+				margin-left: 0;
+				width: 510px;
 			}
-			.input-btn {
-				float: right;
-				margin-right: -100px;
-				width: 100px;
+		}
+		.input-box {
+			height: 52px;
+			width: 100%;
+			box-sizing: border-box;
+			padding-right: 100px;
+			border: 3px solid $color-Main;
+			input {
+				float: left;
 				line-height: 46px;
-				background-color: $color-Main;
-				font-size: 18px;
-				color: $whilt;
-				cursor: pointer;
+				box-sizing: border-box;
+				width: 100%;
+				padding: 0 15px;
+				color: #333;
+				font-size: 16px;
+				box-shadow: inset 0 0 6px 1px $yellow01;
 			}
+		}
+		.input-btn {
+			float: right;
+			margin-right: -100px;
+			width: 100px;
+			line-height: 46px;
+			background-color: $color-Main;
+			font-size: 18px;
+			color: $whilt;
+			cursor: pointer;
+		}
+		.header-search {
 			.hot-words {
 				float: left;
 				height: 40px;
@@ -343,7 +343,7 @@
 		//导航
 		.header-nav {
 			margin-top: 20px;
-			@include bdb1($yellow02);
+			border-bottom: 1px solid$yellow02;
 			.nav-item{
 				float: left;
 				text-align: center;
@@ -390,7 +390,7 @@
 				width: 174px;
 				height: 340px;
 				padding: 10px 0;
-				@include bd1($color-Main);
+				border: 1px solid $color-Main;
 				background-color: $whilt;
 				opacity: .98;
 			}
@@ -473,12 +473,29 @@
 		}
 		//固定搜索
 		.fixd-search{
+			//display: none;
 			width: 100%;
-			height: 60px;
+			height: 70px;
 			background-color: $whilt;
 			position: fixed;
 			top: 0;
-			@include bdb3($color-Main);
+			z-index: 9999;
+			@include box-shadow( 0 1px 6px 0 rgba(0,0,0,.3));
+			border-bottom:1px solid  $yellow02 \0;
+			.logo{
+				display: block;
+				text-indent: -9999px;
+				white-space: nowrap;
+				overflow: hidden;
+				a{
+					height: 70px;
+					margin-top: 0;
+					background: url("./../images/logo_70.png") no-repeat top center;
+				}
+			}
+			.search-box{
+				margin-top: 10px;
+			}
 		}
 	}
 }

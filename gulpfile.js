@@ -15,9 +15,6 @@ var config = {
 	//开发文件
 	html:	'./dev/**/*.html',	//html
 	css:	'./dev/css/**/*.css',	//css
-	js:	'./dev/js/**/*.js',	//js
-	images:	'./dev/images/**/*',	//img
-	font:	'./dev/font/**/*',	//font
 	scssall:	'./dev/scss/**/*.scss',	//scssall
 	scss:	['./dev/scss/**/*.scss', '!./dev/scss/**/_*.scss'],
 	scssc:	'./dev/css'
@@ -41,7 +38,7 @@ gulp.task('serve',function(){
 	});
 	//监听文件变化，执行相应任务
 	gulp.watch(config.scssall,['scssc']);
-	gulp.watch([config.html,config.js,config.images]).on('change', reload);
+	gulp.watch([config.html]).on('change', reload);
 });
 
 /*==默认调用开发模式==*/

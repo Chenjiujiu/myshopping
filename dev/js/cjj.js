@@ -4,6 +4,9 @@
  * @创建日期: 2018/4/2
  */
 ~function(window){
+	window.C = function(ele, parent, flag){//选择器，上下文，h5选择器开关
+		return new Cjj(ele, parent, flag);
+	};
 	var Cjj = function(ele, parent, flag){
 		this.doms = [];
 		flag = flag || false;//默认不开启h5选择器
@@ -122,30 +125,29 @@
 			}
 			return result;
 		},
-		//扩充
-		extend:function(){
-			var option, name, src, copy,
-				target = arguments[0] || {},
-				index = 1,
-				length = arguments.length;
-			if(index === length){	//一个参数 则拷贝给Cjj
-				target = this;
-				index--;
-			}
-			for(; index < length; index++){
-				if((option = arguments[index]) != null){
-					for(name in option){
-						copy = option[name];
-						target[name] = copy;
-					}
-				}
-			}
-			return target;
-		},
 		//拷贝对象
 		copy:function(targ){
 			return C.extend({}, targ)
 		}
+	};
+	C.extend=Cjj.prototype.extend=function(){
+		var option, name, src, copy,
+			target = arguments[0] || {},
+			index = 1,
+			length = arguments.length;
+		if(index === length){	//一个参数 则拷贝给Cjj
+			target = this;
+			index--;
+		}
+		for(; index < length; index++){
+			if((option = arguments[index]) != null){
+				for(name in option){
+					copy = option[name];
+					target[name] = copy;
+				}
+			}
+		}
+		return target;
 	};
 	//数据类型判断
 	Cjj.prototype.extend({
@@ -883,9 +885,12 @@
 		}
 	});
 	// 实例化对象,并返回
-	window.C = function(ele, parent, flag){//选择器，上下文，h5选择器开关
-		return new Cjj(ele, parent, flag);
-	};
+/*	C.extend({
+		test:function(a){
+			console.log(1);
+		}
+	});*/
+
 	C.__proto__ = Cjj.prototype;
 }(window);
 

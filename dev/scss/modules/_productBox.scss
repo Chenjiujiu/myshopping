@@ -8,7 +8,7 @@
 		line-height: 58px;
 		height: 58px;
 		margin-bottom: 10px;
-		@extend %cl;
+		@include clearfix;
 		//标题
 		.title {
 			color: $color-Main;
@@ -24,14 +24,14 @@
 			line-height: 40px;
 			color: $whilt;
 			background-color: $color-Main;
-			border-radius: 0 100% 50% 0;
+			@include border-radius(0 100% 50% 0);
 		}
 		//更多
 		.table-more {
 			float: right;
 			@extend %g2-m;
 			a {
-				@include ts2 ;
+				@include transition2 ;
 				font-size: 16px;
 				@extend %b-m;
 				&:hover i {
@@ -39,14 +39,14 @@
 				}
 			}
 			i {
-				border-radius: 50%;
+				@include border-radius(50%);
 				background-color: $gray03;
 				color: $whilt;
 				padding: 4px;
 				margin-left: 8px;
 				font-size: 12px;
 				vertical-align: 1px;
-				@include ts2;
+				@include transition2;
 			}
 		}
 		//小导航
@@ -67,7 +67,7 @@
 					color: $gray02;
 					font-weight: 200;
 					padding: 5px 0;
-					@include ts2;
+					@include transition2;
 					border-bottom: 2px solid transparent;
 					&:hover {
 						@extend %current;
@@ -94,7 +94,7 @@
 				width: 35px;
 				height: 25px;
 				color: $gray03;
-				@include ts2;
+				@include transition2;
 				display: inline-block;
 				margin-top: -4px;
 				&:hover {
@@ -176,7 +176,7 @@
 			position: relative;
 			float: left;
 			background-color: $whilt;
-			@include ts2 ;
+			@include transition2 ;
 			//常用产品盒子
 			&.item-common {
 				//图片
@@ -217,8 +217,8 @@
 					background-color: #ff6700;
 					z-index: 10;
 					overflow: hidden;
-					opacity: 0;
-					@include ts2;
+					@include opacity(0);
+					@include transition;
 					a {
 						display: block;
 						padding: 8px 30px;
@@ -252,8 +252,7 @@
 				&:hover {
 					.review {
 						height: 76px;
-						opacity: 1;
-						filter: alpha(opacity=100);
+						@include opacity(1);
 					}
 				}
 				//标签
@@ -313,8 +312,9 @@
 				}
 			}
 			&:hover {
-				box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-				transform: translate3d(0, -6px, 0);
+				@include box-shadow(0 15px 30px rgba(0, 0, 0, 0.1));
+				@include transform(translate3d(0, -6px, 0));
+				@include bug3d;
 			}
 			@media screen and (max-width: 1180px) {
 				&.item-common {

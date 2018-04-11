@@ -29,4 +29,51 @@ $car-bg:$blue008;	//购物车背景
 $error:$red01;//	错误警告色
 
 
+//a链接样式
+//=====链接样式=====
+%b-m{
+	color:  $black;
+	&:hover,&:active{
+		color: $color-Main;
+	}
+}
+%shen-m{
+	color:  $blue006;
+	&:hover,&:active{
+		color: $blue006;
+	}
+}
+%g2-m{
+	color:  $gray02;
+	&:hover,&:active{
+		color: $color-Main;
+	}
+}
+%g3-m{
+	color:  $gray03;
+	&:hover,&:active{
+		color: $color-Main;
+	}
+}
+%cl {
+	*zoom: 1;
+	&:after {
+		content: "";
+		display: table;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+		overflow: hidden;
+	}
+}
+.clearfix {
+	@extend %cl;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+
 

@@ -1,4 +1,240 @@
 @charset "UTF-8";
-@import "mixins/mixins";	//引入scss函数库 包含变量，占位符，函数，mixin
+@import "base";//初始化css
+@import "mixins/cjj";	//引入scss函数库 包含变量，占位符，函数，mixin
+@import "mixins/variable";	//引入变量，
 @import "modules/pubFooter";	//	引入页脚样式
-@import "pages/registerM";	//引入页面主样式
+//*=====页面主样式=====*/
+.header {
+	background: url("./../images/headbg.jpg") repeat-x bottom left;
+	.logo-box {
+		padding: 20px 0;
+		a{
+			display: block;
+			height: 80px;
+			float: left;
+		}
+		img {
+			display: block;
+			height: 80px;
+		}
+		h1 {
+			float: left;
+			padding-left: 30px;
+			line-height: 80px;
+			font-size: 30px;
+		}
+	}
+}
+.main{
+	height: 580px;
+}
+.register-box{
+	position: absolute;
+	left: 50%;
+	margin-left: -200px;
+	margin-top: 50px;
+}
+.regist-form {
+	.regist-item {
+		position: relative;
+		width: 540px;
+		height: 50px;
+		margin-bottom: 10px;
+		input{
+			height: 48px;
+			width: 278px;
+			padding: 0 20px;
+			border: 1px solid $blue009;
+			font-size: 14px;
+			line-height: 30px;
+			@include border-radius(4px);
+			@include transition2;
+		}
+	}
+	.short-item{
+		input{
+			width: 110px;
+		}
+	}
+	.agreement-word{
+		width: 318px;
+		text-align: center;
+		line-height: 35px;
+		font-size: 12px;
+		color: $gray03;
+		a{
+			@extend %shen-m;
+		}
+	}
+	.submit-btn{
+		margin-top: 10px	;
+		width: 320px;
+		line-height: 50px;
+		text-align: center;
+		background-color: $color-Main;
+		color: $whilt;
+		font-size: 16px;
+		@include border-radius(4px);
+		cursor: pointer;
+		@include transition1;
+		&:hover{
+			background-color: $blue006;
+		}
+	}
+	.tips{
+		display: none;
+		position: absolute;
+		left: 330px;
+		top: 10px;
+		padding: 5px 10px;
+		line-height: 20px;
+		background-color: $blue007;
+		@include transition2;
+		.arr{
+			display: block;
+			border: 7px solid transparent;
+			border-right: 7px solid $blue007;
+			position: absolute;
+			left: -14px;
+			top: 50%;
+			margin-top: -10px;
+		}
+		.tips-words{
+			max-width: 180px;
+			line-height: 20px;
+			font-size: 12px;
+			color: $gray02;
+		}
+		.icon-font{
+			display: none;
+		}
+	}
+	.tips-error{
+		background-color: $error;
+		.arr{
+			border-right-color: $error;
+		}
+		.tips-words{
+			color: $whilt;
+		}
+		.icon-font{
+			display: none;
+		}
+
+	}
+	.tips-ok{
+		background-color: transparent;
+		color: $color-Main;
+		font-size: 20px;
+		font-weight: 700;
+		.icon-font{
+			display: inline-block;
+		}
+		.arr{
+			display: none;
+		}
+		.tips-words{
+			display: none;
+		}
+	}
+	.regist-label{
+		position: absolute;
+		left: 10px;
+		top: 0;
+		width: 60px;
+		text-align: left;
+		line-height: 50px;
+		padding: 0 10px;
+		cursor: inherit;
+		@include transition2;
+	}
+	.auth-code{
+		float: left;
+		margin-right: 28px;
+	}
+	.auth-pic{
+		width: 140px;
+		height: 50px;
+		display: block;
+		float: left;
+		overflow: hidden;
+		@include border-radius(4px);
+		cursor: pointer;
+		img{
+			display: block;
+			width: 140px;
+			height: 50px;
+		}
+	}
+}
+%se-box{
+	display: none;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0,0,0,.3);
+	&>div{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		padding: 50px;
+		text-align: center;
+		@include box-shadow(0 10px 50px 0 rgba(0,0,0,0.4));
+		@include border-radius(3px);
+		@include transition5;
+	}
+}
+.succeed{
+	@extend %se-box;
+	.succeed-box{
+		width: 400px;
+		height: 120px;
+		margin-top: -110px;
+		margin-left: -250px;
+		background-color: $blue007;
+		h1{
+			font-size: 30px;
+			color: $color-Main;
+			font-weight: 600;
+			.icon-font{
+				padding: 0 10px;
+			}
+			padding-bottom: 30px;
+		}
+		.uname{
+			padding: 0 5px;
+			color: $color-Main;
+		}
+		.outtime{
+			padding: 0 2px;
+		}
+		a{
+			@extend %shen-m;
+			margin-left: 10px;
+		}
+		p{
+			line-height: 30px;
+		}
+	}
+}
+.error{
+	@extend %se-box;
+	.error-box{
+		width: 400px;
+		height: 60px;
+		margin-top: -80px;
+		margin-left: -250px;
+		background-color: $red01;
+		h1{
+			font-size: 30px;
+			color: $whilt;
+			font-weight: 600;
+			.icon-font{
+				padding: 0 10px;
+			}
+			padding-bottom: 30px;
+		}
+	}
+}
