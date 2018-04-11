@@ -131,6 +131,7 @@ body{
 			@include box-shadow(0 10px 20px rgba(0,0,0,.4));
 			span{
 				background: rgba(255,255,255,.8);
+				background:	#eee \0;
 				color: $color-Main;
 			}
 		}
@@ -145,6 +146,8 @@ body{
 			width: 232px;
 			height: 60px;
 			background: rgba(0,0,0,.7);
+			background:	#333 \0;
+			filter: alpha(opacity=70) \0;
 			color: $whilt;
 			text-align: center;
 			font-size: 18px;
@@ -169,6 +172,8 @@ body{
 		width: 100%;
 		position: absolute;
 		left: 0;
+		border-left: 15px solid $blue009;
+		border-right: 15px solid $blue009;
 		@include user-select-no;
 	}
 	.brand-item{

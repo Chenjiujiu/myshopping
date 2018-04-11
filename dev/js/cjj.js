@@ -4,6 +4,7 @@
  * @创建日期: 2018/4/2
  */
 ~function(window){
+	// 实例化对象,并返回
 	window.C = function(ele, parent, flag){//选择器，上下文，h5选择器开关
 		return new Cjj(ele, parent, flag);
 	};
@@ -12,7 +13,26 @@
 		flag = flag || false;//默认不开启h5选择器
 		return this.init(ele, parent, flag);
 	};
-	Cjj.prototype = {
+	C.extend=Cjj.prototype.extend=function(){
+		var option, name, src, copy,
+			target = arguments[0] || {},
+			index = 1,
+			length = arguments.length;
+		if(index === length){	//一个参数 则拷贝给Cjj
+			target = this;
+			index--;
+		}
+		for(; index < length; index++){
+			if((option = arguments[index]) != null){
+				for(name in option){
+					copy = option[name];
+					target[name] = copy;
+				}
+			}
+		}
+		return target;
+	};
+	Cjj.prototype = C.extend({
 		init:function(ele, parent, flag){
 			if(this.isDom(ele) || this.isObj(ele)){
 				//是对象直接push到doms
@@ -129,28 +149,9 @@
 		copy:function(targ){
 			return C.extend({}, targ)
 		}
-	};
-	C.extend=Cjj.prototype.extend=function(){
-		var option, name, src, copy,
-			target = arguments[0] || {},
-			index = 1,
-			length = arguments.length;
-		if(index === length){	//一个参数 则拷贝给Cjj
-			target = this;
-			index--;
-		}
-		for(; index < length; index++){
-			if((option = arguments[index]) != null){
-				for(name in option){
-					copy = option[name];
-					target[name] = copy;
-				}
-			}
-		}
-		return target;
-	};
+	});
 	//数据类型判断
-	Cjj.prototype.extend({
+	C.extend({
 		type:function(obj){
 			return Object.prototype.toString.call(obj);
 		},
@@ -428,9 +429,9 @@
 			}
 		},
 		//计算doms长度
-		length:function(){
+		leng:function(){
 			return this.doms.length;
-		},
+		}
 	});
 	//css属性框架
 	Cjj.prototype.extend({
@@ -458,10 +459,10 @@
 				return this;
 			}else{//	如果没有v 则表示获取
 				var dom = this.get(0);
-				if(document.currentStyle){
-					return dom.currentStyle[k];
-				}else{
+				if(window.getComputedStyle){
 					return getComputedStyle(dom, null)[k];
+				}else{
+					return dom.currentStyle[k];
 				}
 			}
 		},
@@ -612,6 +613,7 @@
 			}
 			//初始化目标值，
 			targent = C.copy(data.targent);
+
 			//保存动画参数，方便再次开启
 			obj.animateData = C.copy(data);
 			clearInterval(obj.timer);
@@ -749,6 +751,7 @@
 				var starY = C.event(ev).clientY - this.offsetTop;//点击时候 光标相对ul 的我位置
 				var that = this;
 				container.onmousemove = function(ev){
+					C.prevDef(ev);
 					if(openx){
 						var targX = (C.event(ev).clientX - starX) + "px";
 						if(over){
@@ -774,7 +777,9 @@
 				}
 			});
 			return this;
-		},
+		}
+	});
+	C.extend({
 		//事件对象
 		event:function(event){
 			return event ? event : window.event;
@@ -806,7 +811,7 @@
 		}
 	});
 	//cookie框架
-	Cjj.prototype.extend({
+	C.extend({
 		//cookie
 		setCookie:function(data){	//{name,value,days,path}
 			var cookieText = "";
@@ -862,7 +867,7 @@
 		}
 	});
 	//数据绑定框架
-	Cjj.prototype.extend({
+	C.extend({
 		//模版字符串
 		tempStr:function(str, data){
 			//hahahahhaha#{name}fwhfawh	 用data里面的数据来替代#{name}
@@ -874,7 +879,9 @@
 				return str.replace(/#\{(\w+)\}/g, data);
 			}
 		},
-		//给目标绑定html，定一个以html模板item，数据data
+	});
+	//给目标绑定html，定一个以html模板item，数据data
+	Cjj.prototype.extend({
 		bindHtml:function(item, data){
 			var html = '';
 			for(var i = 0; i < data.length; i++){
@@ -884,13 +891,7 @@
 			return this;
 		}
 	});
-	// 实例化对象,并返回
-/*	C.extend({
-		test:function(a){
-			console.log(1);
-		}
-	});*/
 
-	C.__proto__ = Cjj.prototype;
+	C.prototype = Cjj.prototype;
 }(window);
 

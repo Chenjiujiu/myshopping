@@ -10,10 +10,10 @@ function BrandRoll(data){
 	//单个模板
 	this.item = '<li class="brand-item"><a href="./search.html?bid=#{bid}"><img src="./images/#{logo}"><span class="brand-name">#{name}</span></a></li>';
 	this.start = {left:0};
-	this.targent = {left:-parseInt(this.width * this.data.length) + parseInt(C(this.doms).parent().css("width"))};
+	this.targent = {left:-parseInt(this.width * this.data.length) + parseInt(C(this.doms).parent().get(0).offsetWidth)};
 	this.timer;//定时器开关
 	this.current = 0;//当前位置
-	this.time = 30;
+	this.time = 20;
 	this.step = 2;
 }
 BrandRoll.prototype = {

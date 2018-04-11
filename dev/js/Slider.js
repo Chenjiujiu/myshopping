@@ -56,7 +56,7 @@ Slider.prototype = {
     this.config.btnNext.click(function () {
       that.autoPlay(false);
       that.index++;
-      if (that.index >= that.config.slideBox.child().length()) {
+      if (that.index >= that.config.slideBox.child().leng()) {
         that.index = 0;
       }
       that.showCurrent();
@@ -66,7 +66,7 @@ Slider.prototype = {
       that.autoPlay(false);
       that.index--;
       if (that.index < 0) {
-        that.index = that.config.slideBox.child().length() - 1;
+        that.index = that.config.slideBox.child().leng() - 1;
       }
       that.showCurrent();
       that.autoPlay(true);
