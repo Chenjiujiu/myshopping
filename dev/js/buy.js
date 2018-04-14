@@ -1,15 +1,16 @@
 "use strict";
 ~function(){
-	var sid = C.getserch("sid");
+	var fid = C.getserch("fid");
 	C.ajax({
 		url:'./data/buy.php',
-		type:'get',
-		dataType:'json',
-		data:{"sid":sid},
+		type:'post',
+		data:{"fid":fid},
+		dataType:"json",
 		fn:callback
 	});
 	function callback(data){
 		console.log(data);
+		window.a=data;
 	}
 }();
 

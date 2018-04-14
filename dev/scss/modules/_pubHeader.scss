@@ -476,10 +476,12 @@
 		.fixd-search{
 			//display: none;
 			width: 100%;
-			height: 70px;
+			height: 0;
+			overflow: hidden;
 			background-color: $whilt;
 			position: fixed;
 			top: 0;
+			left: 0;
 			z-index: 9999;
 			@include box-shadow( 0 1px 6px 0 rgba(0,0,0,.3));
 			border-bottom:1px solid  $yellow02 \0;

@@ -31,12 +31,11 @@
 		branRoll.init()
 	}
 }();
-// 固定搜索栏
+
+//实例化楼层导航
 ~function(){
-
-
-
+	var floorNav=new FlootNav();
+	floorNav.init();
 }();
-
 
 

@@ -13,7 +13,7 @@
 		flag = flag || false;//默认不开启h5选择器
 		return this.init(ele, parent, flag);
 	};
-	C.extend=Cjj.prototype.extend=function(){
+	C.extend = Cjj.prototype.extend = function(){
 		var option, name, src, copy,
 			target = arguments[0] || {},
 			index = 1,
@@ -110,8 +110,8 @@
 			}
 		},
 		//load
-		load:function(url,fn){
-			var that=this;
+		load:function(url, fn){
+			var that = this;
 			this.ajax({
 				type:"post",
 				url:url,
@@ -126,7 +126,7 @@
 		//获取url参数
 		getserch:function(arg){
 			// ?uid=1&uname=xiaomin&&upwd=123;
-			var result = {};
+			var result={};
 			var search = location.search.slice(1);
 			search = decodeURIComponent(search);
 			if(arg === undefined){
@@ -135,13 +135,14 @@
 				for(var i = 0; i < data.length; i++){
 					var item = data[i].split("=");
 					if(item[1] !== undefined){
-						result[item[0]] = item[1];
+						result[item[0]]= item[1];
 					}
 				}
 			}else{
+				search='&'+search+'&';
 				var star = search.indexOf("=", search.indexOf(arg));
 				var end = search.indexOf("&", search.indexOf(arg));
-				result[arg] = this.trim(search.slice(star + 1, end));
+				result = this.trim(search.slice(star + 1, end));
 			}
 			return result;
 		},
@@ -196,13 +197,19 @@
 			//id选择器
 			var that = this;
 			function id(ele){
-				pushDoms([document.getElementById(ele)]);
+				var dom=document.getElementById(ele);
+				if(dom!==null){
+					pushDoms([dom]);
+				}
 				return this;
 			}
 			// tag选择器
 			function tag(ele, context){
 				context = context || document;
-				pushDoms(context.getElementsByTagName(ele));
+				var dom=context.getElementsByTagName(ele);
+				if(dom!==null){
+					pushDoms(dom);
+				}
 				return this;
 			}
 			//class选择器
@@ -210,7 +217,11 @@
 				context = context || document;
 				ele = that.trim(ele);
 				if(context.getElementsByClassName){
-					pushDoms(context.getElementsByClassName(ele));
+					var doms=context.getElementsByClassName(ele);
+					if(doms!==null){
+						pushDoms(doms);
+					}
+					return this;
 				}else{
 					var tags = context.getElementsByTagName('*');
 					var len = tags.length;
@@ -229,7 +240,10 @@
 			//h5选择器
 			function all(ele, context){
 				context = context || document;
-				pushDoms(context.querySelectorAll(ele));
+				var dom=context.querySelectorAll(ele);
+				if(dom!==null){
+					pushDoms(dom);
+				}
 				return this
 			}
 			//追加到doms
@@ -439,16 +453,10 @@
 		css:function(k, v){
 			if(v){
 				if(k === "opacity"){
-					if("opacity" in this.doms[0].style){
-						for(var i = 0; i < this.doms.length; i++){
-							var obj = this.doms[i];
-							obj.style[k] = v;
-						}
-					}else{
-						for(var i = 0; i < this.doms.length; i++){
-							var obj = this.doms[i];
-							obj.style.filter = "alpha(opacity=" + v * 100 + ")";
-						}
+					for(var i = 0; i < this.doms.length; i++){
+						var obj = this.doms[i];
+						obj.style[k] = v;
+						obj.style.filter = "alpha(opacity=" + v * 100 + ")";
 					}
 				}else{
 					for(var i = 0; i < this.doms.length; i++){
@@ -482,6 +490,17 @@
 				return this;
 			}else{
 				return this.get(0).innerHTML;
+			}
+		},
+		txt:function(h){
+			if(h !== undefined){
+				for(var i = 0; i < this.doms.length; i++){
+					var obj = this.doms[i];
+					obj.innerText = h;
+				}
+				return this;
+			}else{
+				return this.get(0).innerText;
 			}
 		},
 		val:function(v){
@@ -560,13 +579,19 @@
 		}
 	});
 	//文档框架
-	Cjj.prototype.extend({
+	C.extend({
 		/*offsetWidth/Height/Left/Top/Parent/返回对象自己的宽高(width+boder+padding),距离上一级定位盒子的左上的位置，返回父级定位盒子。
 		window.scrreen.width/height/X/Y/返回屏幕的宽高，距离左上的位置。
 		clientWidth/Height/X/Y/返回当前可视区域的宽高，以及光标位于可视区左上的位置。
 		pageX/Y,光标相对网页的水平垂直位置 （IE8没有）
 		scroll 滚动的
 		*/
+		windowH:function(){
+			return window.innerHeight;
+		},
+		windowW:function(){
+			return window.innerWidth;
+		},
 		scrollTop:function(){
 			return window.pageYOffset || /*ie9+以及最新浏览器*/
 				document.documentElement.scrollTop || /*火狐和其他有DTD的正常浏览器*/
@@ -588,7 +613,7 @@
 	});
 	//动画框架
 	Cjj.prototype.extend({
-		animate:function(data){//{attr:{},time10,step:10,avg:false,fn:fun}
+		animate:function(data){//{targent:{},time10,step:10,avg:false,fn:fun}
 			// attr{width:21px,height20px},透明度用0-100
 			// time:定时器时间间隔 默认10,
 			// step:步长比 默认10,
@@ -637,7 +662,7 @@
 					}else if(attr === "zIndex"){
 						that.css(attr, current[attr]);
 					}else{
-						that.css(attr, current[attr] + "px");
+						that.css(attr, current[attr] + 'px');
 					}
 					if(current[attr] !== targent[attr]){//只要有一个属性还没达到，则不关闭定时器
 						flag = false;
@@ -690,11 +715,13 @@
 			if(document.addEventListener){
 				for(var i = 0; i < this.doms.length; i++){
 					var obj = this.doms[i];
+					obj.cIndex = i;
 					obj.addEventListener(type, fn, flag);
 				}
 			}else if(document.attachEvent){	//ie
 				for(var j = 0; j < this.doms.length; j++){
 					var obj2 = this.doms[j];
+					obj2.cIndex = j;
 					obj2.attachEvent('on' + type, function(obj2){
 						return function(){
 							fn.call(obj2);
@@ -755,18 +782,18 @@
 					if(openx){
 						var targX = (C.event(ev).clientX - starX) + "px";
 						if(over){
-							targX=parseInt(targX)>0?0:targX;
-							targX=parseInt(targX)<(C(that).parent().get(0).offsetWidth-that.offsetWidth)?
-								(C(that).parent().get(0).offsetWidth-that.offsetWidth)+"px":targX;
+							targX = parseInt(targX) > 0 ? 0 : targX;
+							targX = parseInt(targX) < (C(that).parent().get(0).offsetWidth - that.offsetWidth) ?
+								(C(that).parent().get(0).offsetWidth - that.offsetWidth) + "px" : targX;
 						}
 						C(that).css("left", targX);
 					}
 					if(openy){
 						var targY = (C.event(ev).clientY - starY) + "px";
 						if(over){
-							targY=parseInt(targY)>0?0:targY;
-							targY=parseInt(targY)<(C(that).parent().get(0).offsetHeight-that.offsetHeight)?
-								(C(that).parent().get(0).offsetHeight-that.offsetHeight)+"px":targY;
+							targY = parseInt(targY) > 0 ? 0 : targY;
+							targY = parseInt(targY) < (C(that).parent().get(0).offsetHeight - that.offsetHeight) ?
+								(C(that).parent().get(0).offsetHeight - that.offsetHeight) + "px" : targY;
 						}
 						C(that).css("top", targY);
 					}

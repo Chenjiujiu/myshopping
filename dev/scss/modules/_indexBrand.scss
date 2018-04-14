@@ -1,0 +1,52 @@
+@charset "UTF-8";
+//首页品牌
+.brand{
+	box-sizing: border-box;
+	height: 80px;
+	margin:0 20px 48px 20px	;
+	overflow: hidden;
+	position: relative;
+	@media screen and (max-width: 1180px){
+		margin:0 28px 30px;
+	}
+	border-bottom: 1px solid $yellow02;
+	.brand-list{
+		width: 100%;
+		position: absolute;
+		left: 0;
+		border-left: 15px solid $blue009;
+		border-right: 15px solid $blue009;
+		@include user-select-no;
+	}
+	.brand-item{
+		width: 70px;
+		height: 62px;
+		float: left;
+		overflow: hidden;
+		padding: 5px;
+		text-align: center;
+		margin: 0 5px;
+		border-bottom: 4px solid transparent;
+		@include transition2;
+		&:hover{
+			border-bottom: 4px solid $color-Main;
+		}
+		a{
+			display: block;
+		}
+	}
+	img{
+		float: left;
+		text-align: center;
+		height: 45px;
+		width: 67.5px;
+		line-height: 50;
+	}
+	.brand-name{
+		display: block;
+		width: 70px;
+		line-height: 20px;
+		text-align: center;
+		color: $gray02;
+	}
+}

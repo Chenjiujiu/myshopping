@@ -1,215 +1,26 @@
 @charset "UTF-8";
-@import "base";//初始化css
-@import "mixins/cjj";	//引入scss函数库 包含变量，占位符，函数，mixin
-@import "mixins/variable";	//引入变量，
-@import "modules/pubHeader";	//引入页头样式
-@import "modules/pubFooter";	//引入页脚样式
-@import "modules/productBox";	//引入产品模块样式
-/*=====引入页面主样式=====*/
-//轮播
+//初始化css
+@import "base";
+//scss函数库 包含变量，占位符，函数，mixin
+@import "mixins/cjj";
+//变量，
+@import "mixins/variable";
+//页头样式
+@import "modules/pubHeader";
+//轮播图样式
+@import "modules/indexSlider";
+//分类样式
+@import "modules/indexSort";
+//品牌样式
+@import "modules/indexBrand";
+//产品模块样式
+@import "modules/indexProduct";
+//楼层导航
+@import "modules/indexFloorNav";
+//页脚样式
+@import "modules/pubFooter";
 body{
 	overflow-x: hidden;
 }
-.slider{
-	background-color: $whilt;
-	text-align: center;
-	margin-bottom: 40px;
-	.slider-box{
-		position: relative;
-		height: 600px;
-		@media screen and (max-width: 1180px){
-			height: 400px;
-		}
-	}
-	.slider-list{
-		width: 100%;
-		height: 100%;
-		text-align: center;
-	}
-	.slider-item{
-		position: absolute;
-		left: 50%;
-		margin-left: -960px;
-		@include transition5 ;
-		height: 100%;
-		@include opacity(0);
-		@media screen and (max-width: 1180px){
-			margin-left: -640px;
-		}
-		&.current{
-			@include opacity(1);
-		}
-		img{
-			height: 100%;
-		}
-	}
-	%cr{
-		display: block;
-		line-height: 80px;
-		width: 50px;
-		font-size: 20px;
-		font-weight: 600;
-		text-align: center;
-		background:rgba(0,0,0,.1) ;
-		color: $yellow02;
-		cursor: pointer;
-		position: absolute;
-		top: 50%;
-		margin-top: -40px;
-		@include user-select-no;
-		@include transition2;
-		&:hover{
-			background:rgba(0,0,0,.4) ;
-		}
-	}
-	.ctrl-prev{
-		@extend %cr;
-		left: 0;
-		font-size: 50px;
-	}
-	.ctrl-next{
-		@extend %cr;
-		font-size: 50px;
-		right: 0;
-	}
 
-	.dots{
-		width: 300px;
-		height: 24px;
-		position: absolute;
-		bottom: 20px;
-		left: 50%;
-		margin-left: -150px;
-		li{
-			width: 16px;
-			line-height: 16px;
-			margin: 0 10px;
-			display: inline-block;
-			text-align: center;
-			cursor: pointer;
-			overflow: hidden;
-			text-indent: -9999em;
-			@include border-radius(50%);
-			background: rgba(0, 0, 0, 0.3);
-			border: 4px solid rgba(222, 222, 222, 0.4);
-			@include transition5 ;
-		}
-		.current{
-			background: rgba(222, 222, 222, 0.4);
-			border-color: rgba(0, 0, 0, 0.3);;
-		}
-	}
-}
-//分类
-.sort{
-	padding-bottom: 40px;
-	.sort-list{
-		width: 1224px;
-		height: 330px;
-		padding-left: 15px;
-		margin-left: -15px;
-		overflow: hidden;
-		@media screen and (max-width: 1180px){
-			width: 968px;
-			.sm-hide{
-				display: none;
-			}
-		}
-	}
-	.sort-item{
-		float: left;
-		width: 232px;
-		height: 290px;
-		margin: 20px 10px 20px 0;
-		cursor: pointer;
-		position: relative;
-		overflow: hidden;
-		@include transition2;
-		&:hover{
-			@include transform(translate3d(0,-6px,0));
-			@include bug3d;
-			@include box-shadow(0 10px 20px rgba(0,0,0,.4));
-			span{
-				background: rgba(255,255,255,.8);
-				background:	#eee \0;
-				color: $color-Main;
-			}
-		}
-		img{
-			width: 232px;
-			height: 290px;
-		}
-		span{
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			width: 232px;
-			height: 60px;
-			background: rgba(0,0,0,.7);
-			background:	#333 \0;
-			filter: alpha(opacity=70) \0;
-			color: $whilt;
-			text-align: center;
-			font-size: 18px;
-			font-weight: 500;
-			line-height: 60px;
-			@include transition2;
-		}
-	}
-}
-//品牌
-.brand{
-	box-sizing: border-box;
-	height: 80px;
-	margin:0 20px 48px 20px	;
-	overflow: hidden;
-	position: relative;
-	@media screen and (max-width: 1180px){
-		margin:0 28px 30px;
-	}
-	border-bottom: 1px solid $yellow02;
-	.brand-list{
-		width: 100%;
-		position: absolute;
-		left: 0;
-		border-left: 15px solid $blue009;
-		border-right: 15px solid $blue009;
-		@include user-select-no;
-	}
-	.brand-item{
-		width: 70px;
-		height: 62px;
-		float: left;
-		overflow: hidden;
-		padding: 5px;
-		text-align: center;
-		margin: 0 5px;
-		border-bottom: 4px solid transparent;
-		@include transition2;
-		&:hover{
-			border-bottom: 4px solid $color-Main;
-		}
-		a{
-			display: block;
-		}
-	}
-	img{
-		float: left;
-		text-align: center;
-		height: 45px;
-		width: 67.5px;
-		line-height: 50;
-	}
-	.brand-name{
-		display: block;
-		width: 70px;
-		line-height: 20px;
-		text-align: center;
-		color: $gray02;
-	}
-}
-//产品
-.product{
-	background-color: #e3f2f5;
-	padding: 10px 0 40px 0;
-}
+

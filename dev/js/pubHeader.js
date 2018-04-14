@@ -47,7 +47,28 @@
 				location.href = "./pass/login.html"
 			});
 		}();
+		// 屏幕滚动事件
+		if(C("#Search_showStite").leng()!==0){
+			~function(){
+				// 定点的盒子距离文档顶部位置
+				var stiteT = C("#Search_showStite").get(0).offsetTop;
+				//搜索盒子距离文档顶部位置
+				var searchTop=C(".header-search").get(0).offsetTop;
+				//搜索栏dom
+				var dom_Search=C("#fixd-search");
+				//滚动检测
+				C(window).on("scroll", showSearch);
+				function showSearch(){
+					if(stiteT - C.scrollTop() < C.windowH()){
+						dom_Search.animate({targent:{height:70},time:8,step:5,avg:true});
+					}else if(C.scrollTop()<=searchTop+36){
+						dom_Search.animate({targent:{height:0},time:8,step:5,avg:true});
+					}
+				}
+			}();
+		}
 	});
 }();
+
 
 

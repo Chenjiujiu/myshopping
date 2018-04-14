@@ -1,0 +1,60 @@
+@charset "UTF-8";
+//首页分类
+.sort{
+	padding-bottom: 40px;
+	.sort-list{
+		width: 1224px;
+		height: 330px;
+		padding-left: 15px;
+		margin-left: -15px;
+		overflow: hidden;
+		@media screen and (max-width: 1180px){
+			width: 968px;
+			.sm-hide{
+				display: none;
+			}
+		}
+	}
+	.sort-item{
+		float: left;
+		width: 232px;
+		height: 290px;
+		margin: 20px 10px 20px 0;
+		cursor: pointer;
+		position: relative;
+		overflow: hidden;
+		@include transition2;
+		&:hover{
+			@include transform(translate3d(0,-6px,0));
+			@include bug3d;
+			@include box-shadow(0 10px 20px rgba(0,0,0,.4));
+			position: relative;
+			top: -5px \0;
+			span{
+				background: rgba(255,255,255,.8);
+				background:	#eee \0;
+				color: $color-Main;
+			}
+		}
+		img{
+			width: 232px;
+			height: 290px;
+		}
+		span{
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 232px;
+			height: 60px;
+			background: rgba(0,0,0,.7);
+			background:	#333 \0;
+			filter: alpha(opacity=70) \0;
+			color: $whilt;
+			text-align: center;
+			font-size: 18px;
+			font-weight: 500;
+			line-height: 60px;
+			@include transition2;
+		}
+	}
+}

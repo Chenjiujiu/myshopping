@@ -1,0 +1,92 @@
+@charset "UTF-8";
+//轮播图
+.slider{
+	background-color: $whilt;
+	text-align: center;
+	margin-bottom: 40px;
+	.slider-box{
+		position: relative;
+		height: 600px;
+		@media screen and (max-width: 1180px){
+			height: 400px;
+		}
+	}
+	.slider-list{
+		width: 100%;
+		height: 100%;
+		text-align: center;
+	}
+	.slider-item{
+		position: absolute;
+		left: 50%;
+		margin-left: -960px;
+		@include transition5 ;
+		height: 100%;
+		@include opacity(0);
+		@media screen and (max-width: 1180px){
+			margin-left: -640px;
+		}
+		&.current{
+			@include opacity(1);
+		}
+		img{
+			height: 100%;
+		}
+	}
+	%cr{
+		display: block;
+		line-height: 80px;
+		width: 50px;
+		font-size: 20px;
+		font-weight: 600;
+		text-align: center;
+		background:rgb(0,0,0) ;
+		@include opacity(0.1);
+		color: $yellow02;
+		cursor: pointer;
+		position: absolute;
+		top: 50%;
+		margin-top: -40px;
+		@include user-select-no;
+		@include transition2;
+		&:hover{
+			@include opacity(0.4);
+		}
+	}
+	.ctrl-prev{
+		@extend %cr;
+		left: 0;
+		font-size: 50px;
+	}
+	.ctrl-next{
+		@extend %cr;
+		font-size: 50px;
+		right: 0;
+	}
+	.dots{
+		width: 300px;
+		height: 24px;
+		position: absolute;
+		bottom: 20px;
+		left: 50%;
+		margin-left: -150px;
+		li{
+			width: 16px;
+			line-height: 16px;
+			margin: 0 10px;
+			display: inline-block;
+			text-align: center;
+			cursor: pointer;
+			overflow: hidden;
+			text-indent: -9999em;
+			@include border-radius(50%);
+			background: $color-Main;
+			border: 4px solid $gray01;
+			@include transition5 ;
+		}
+		.current{
+			background: transparent;
+			border-color: $color-Main;
+		}
+	}
+}

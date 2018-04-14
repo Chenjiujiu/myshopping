@@ -1,0 +1,58 @@
+@charset "UTF-8";
+//楼层导航
+.floorNav{
+	position: fixed;
+	width: 0;
+	bottom: 80px;
+	height: 0;
+	left: 50%;
+	background-color: $blue008;
+	margin-left: -600px-40px-20px;
+	overflow: hidden;
+	@include transition2;
+	@media screen and (max-width: 1180px) {
+		margin-left: -480px-40px-10px;
+	}
+	//导航背景
+	.floorNav-bg{
+		display: block;
+		width: 40px;
+		height: 40px;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	//导航列表
+	.floorNav-list{
+		width: 40px;
+		position: relative;
+		//楼层
+		.floorNav-item{
+			width: 40px;
+			height: 40px;
+			a{
+				line-height: 14px;
+				height: 28px;
+				padding: 6px 4px ;
+				text-align: center;
+				display: block;
+				font-size: 12px;
+				color: #0024fb;
+				overflow: hidden;
+			}
+			&:first-child{
+				a{
+					line-height: 28px;
+					background-color: $color-Main;
+					color: $whilt;
+				}
+			}
+			&:last-child{
+				a{
+					line-height: 28px;
+					background-color: $gray05;
+				}
+			}
+		}
+	}
+}
