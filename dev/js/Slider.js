@@ -34,12 +34,7 @@ Slider.prototype = {
   },
   //绑定轮播项
   bindItem: function () {
-    var that = this;
-    var str = '';
-    for (var i = 0; i < this.data.length; i++) {
-      str += C.tempStr(that.itemTemp, that.data[i]);
-    }
-    this.config.slideBox.html(str)
+    this.config.slideBox.bindHtml(this.itemTemp,this.data)
   },
   //生成小圆点
   creatDots: function () {

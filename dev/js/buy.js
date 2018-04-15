@@ -1,4 +1,5 @@
 "use strict";
+// 商品信息加载
 ~function(){
 	var fid = C.getserch("fid");
 	C.ajax({
@@ -11,6 +12,8 @@
 	function callback(data){
 		console.log(data);
 		window.a=data;
+		new Product(data);
 	}
 }();
+
 

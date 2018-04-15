@@ -16,7 +16,7 @@
 }
 //商品选择
 .pro-choose {
-	//右侧商品图片
+	//左侧商品图片
 	.choose-view {
 		width: 540px;
 		height: 600px;
@@ -96,7 +96,7 @@
 			right: 0;
 		}
 	}
-	//左侧商品信息
+	//右侧商品信息
 	.choose-info {
 		width: 580px;
 		padding: 0 10px;
@@ -110,7 +110,7 @@
 			line-height: 40px;
 			padding-bottom: 20px;
 			border-bottom: 1px solid $yellow02;
-			.title-name {
+			.title-brand {
 				padding: 0 8px;
 			}
 		}
@@ -197,7 +197,8 @@
 		.choose-size {
 			.size-list {
 				display: inline-block;
-				width: 420px;
+				width: 460px;
+
 			}
 			.size-item {
 				display: inline-block;
@@ -224,14 +225,16 @@
 			margin-top: 20px;
 			.color-list {
 				display: inline-block;
-				width: 420px;
+				width: 510px;
+				@media screen and (max-width:1180px){
+					width: 480px;
+				}
 			}
 			.color-item {
 				display: inline-block;
-				width: 120px;
 				height: 50px;
 				margin: 5px;
-				font-size: 16px;
+				font-size: 12px;
 				background-color: $gray04;
 				border: 2px dotted $yellow01;
 				@include transition2;
@@ -242,14 +245,14 @@
 				}
 				img {
 					float: left;
-					width: 60px;
+					width: 50px;
 					height: 50px;
 				}
 				span {
 					float: right;
-					width: 60px;
 					line-height: 50px;
 					text-align: center;
+					padding: 0 6px;
 				}
 			}
 			.current {
@@ -366,7 +369,6 @@
 .show-box {
 	//详细信息
 	.information {
-		display: none;
 		.info-title {
 			padding: 10px 0;
 			line-height: 30px;
@@ -377,7 +379,7 @@
 		//详细参数
 		.info-s {
 			table {
-				width: 900px;
+				width: 960px;
 				margin: 30px auto 0;
 			}
 			tr {
@@ -386,7 +388,7 @@
 			}
 			td {
 				padding: 0 10px;
-				width: 150px;
+				width: 200px;
 				line-height: 30px;
 			}
 			td:nth-child(2n) {
@@ -395,6 +397,7 @@
 			}
 			td:nth-child(2n-1) {
 				background-color: $gray04;
+				width: 80px;
 			}
 		}
 		//尺码对照表
@@ -422,7 +425,7 @@
 	}
 	//评论
 	.comment {
-		//display: none;
+		display: none;
 		margin-top: 30px;
 		overflow: hidden;
 		//评分

@@ -59,10 +59,11 @@
 				//滚动检测
 				C(window).on("scroll", showSearch);
 				function showSearch(){
-					if(stiteT - C.scrollTop() < C.windowH()){
-						dom_Search.animate({targent:{height:70},time:8,step:5,avg:true});
-					}else if(C.scrollTop()<=searchTop+36){
+					if(C.scrollTop()<=searchTop+36){
 						dom_Search.animate({targent:{height:0},time:8,step:5,avg:true});
+
+					}else if(stiteT - C.scrollTop() < C.windowH()){
+						dom_Search.animate({targent:{height:70},time:8,step:5,avg:true});
 					}
 				}
 			}();

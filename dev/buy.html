@@ -16,12 +16,12 @@
 <body>
 	<!--公共页头盒子-->
 	<div class="pubHeader"></div>
-
 	<div class="main">
 		<!--购买页路径-->
-		<div class="buy-path ">
+		<div class="buy-path" id="buy_path">
 			<div class="w">
-				<h3>您当前的位置：疾风步--><span>运动鞋</span>--><span>耐克</span>--><span>耐克007</span></h3>
+				<h3>您当前的位置：疾风步--><span class="type">运动鞋</span>--><span class="brand">耐克</span>--><span class="name">耐克007</span>
+				</h3>
 			</div>
 		</div>
 		<!--商品选择-->
@@ -49,34 +49,32 @@
 								<li class="mini-item"><img src="./images/product/101/1001s4.jpg" alt=""></li>
 								<li class="mini-item"><img src="./images/product/101/1001s5.jpg" alt=""></li>
 								<li class="mini-item"><img src="./images/product/101/1001s6.jpg" alt=""></li>
-
 							</ul>
 						</div>
 						<span class="mini-next">2</span>
 					</div>
 				</div>
 				<!--右侧选择详细信息-->
-				<div class="choose-info">
+				<div class="choose-info" id="choose_info">
 					<!--商品名称-->
-					<h2 class="choose-title"><span class="title-name">耐克</span>2018男士运动鞋最新款潮流</h2>
+					<h2 class="choose-title"><span class="title-brand"><!--耐克--></span><!--2018男士运动鞋最新款潮流--></h2>
 					<!--商品价格-->
 					<div class="choose-price">
 						<!--原价-->
 						<div class="bid-price">
-							<span class="title">价&nbsp;&nbsp;&nbsp;&nbsp;格：</span>
-							<del class="bid-price-n">¥998</del>
+							<span class="title">吊牌价：</span>
+							<del class="bid-price-n">¥<!--998--></del>
 						</div>
 						<!--疾风价-->
 						<div class="jf-price">
 							<span class="title">疾风价：</span>
-							<span class="jf-price-n"><i>¥</i>799.00</span>
-							<span class="spare">省199</span>
+							<span class="jf-price-n"><i>¥</i><!--799.00--></span>
+							<span class="spare"><!--省199--></span>
 						</div>
 						<!--促销-->
 						<div class="promo">
 							<span class="title">活&nbsp;&nbsp;&nbsp;&nbsp;动：</span>
-							<span class="promo-item">满300-20</span>
-							<span class="promo-item">买2免1</span>
+							<span class="promo-item"><!--满300-20--></span>
 						</div>
 					</div>
 					<!--配送地址-->
@@ -92,31 +90,17 @@
 					<div class="choose-size clearfix">
 						<span class="title">尺&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
 						<ul class="size-list">
-							<li class="size-item current">38 <i></i></li>
-							<li class="size-item">39 <i></i></li>
-							<li class="size-item">40 <i></i></li>
-							<li class="size-item">41 <i></i></li>
-							<li class="size-item">42 <i></i></li>
-							<li class="size-item">43 <i></i></li>
+							<!--<li class="size-item current">38 <i></i></li>-->
 						</ul>
 					</div>
 					<!--颜色-->
 					<div class="choose-color clearfix">
 						<span class="title">颜&nbsp;&nbsp;&nbsp;&nbsp;色：</span>
 						<ul class="color-list">
-							<li class="color-item current">
+							<!--<li class="color-item current">
 								<img src="./images/product/101/1001s1.jpg" alt="">
 								<span>白色</span>
-							</li>
-							<li class="color-item">
-								<img src="./images/product/101/1001s2.jpg" alt="">
-								<span>黑色</span>
-							</li>
-							<li class="color-item">
-								<img src="./images/product/101/1001s3.jpg" alt="">
-								<span>红色</span>
-							</li>
-
+							</li>-->
 						</ul>
 					</div>
 					<!--数量-->
@@ -136,7 +120,7 @@
 				</div>
 			</div>
 		</div>
-		<!--商品展示-->
+		<!--商品介绍-->
 		<div class="pro-show clearfix">
 			<div class="w">
 				<div class="show-tab clearfix">
@@ -154,30 +138,30 @@
 						<!--详细参数-->
 						<div class="info-s">
 							<h3 class="info-title">商品详细参数 DETAIL</h3>
-							<table>
+							<table id="order-info">
 								<tr>
 									<td>品牌</td>
-									<td>乔丹</td>
+									<td><!--xx--></td>
 									<td>分类</td>
-									<td>运动鞋</td>
+									<td><!--xxx--></td>
 									<td>产地</td>
-									<td>美国</td>
+									<td><!--xx--></td>
 								</tr>
 								<tr>
 									<td>性别</td>
-									<td>男</td>
+									<td><!--xx--></td>
 									<td>鞋面材质</td>
-									<td>尼龙布，网面</td>
+									<td><!--xxx--></td>
 									<td>款式</td>
-									<td>2018最🦅</td>
+									<td><!--xxx--></td>
 								</tr>
 								<tr>
 									<td>鞋帮款式</td>
-									<td>中帮</td>
+									<td><!--xx--></td>
 									<td>功能</td>
-									<td>防滑,耐磨,透气,减震</td>
+									<td><!--xx--></td>
 									<td>闭合方式</td>
-									<td>系带</td>
+									<td><!--xx--></td>
 								</tr>
 							</table>
 						</div>
@@ -258,17 +242,20 @@
 								</tbody>
 							</table>
 						</div>
+						<div id="Search_showStite"></div>
 						<!--商品展示-->
-						<div class="info-pic">
+						<div class="info-pic" id="show-info-pic">
 							<h3 class="info-title">商品展示</h3>
-							<img src="./images/product/101/101d1.jpg" alt="">
-							<img src="./images/product/101/101d2.jpg" alt="">
-							<img src="./images/product/101/101d3.jpg" alt="">
-							<img src="./images/product/101/101d4.jpg" alt="">
-							<img src="./images/product/101/101d5.jpg" alt="">
-							<img src="./images/product/101/101d6.jpg" alt="">
-							<img src="./images/product/101/101d7.jpg" alt="">
-							<img src="./images/product/101/101d8.jpg" alt="">
+							<div class="img-box">
+								<img src="./images/product/101/101d1.jpg" alt="">
+								<img src="./images/product/101/101d2.jpg" alt="">
+								<img src="./images/product/101/101d3.jpg" alt="">
+								<img src="./images/product/101/101d4.jpg" alt="">
+								<img src="./images/product/101/101d5.jpg" alt="">
+								<img src="./images/product/101/101d6.jpg" alt="">
+								<img src="./images/product/101/101d7.jpg" alt="">
+								<img src="./images/product/101/101d8.jpg" alt="">
+							</div>
 						</div>
 					</div>
 					<!--评论列表-->
@@ -447,121 +434,12 @@
 			</div>
 		</div>
 	</div>
-
-
 	<!--公共页脚盒子-->
-	<div class="pubFooter">
-		<div class="w">
-			<!--服务-->
-			<div class="footer-service clearfix">
-				<ul>
-					<li class="col-service"><i class="icon-font">&#xe911;</i>正品保障</li>
-					<li class="col-service"><i class="icon-font">&#xe90f;</i>满499包邮</li>
-					<li class="col-service"><i class="icon-font">&#xe910;</i>退换无忧</li>
-					<li class="col-service"><i class="icon-font">&#xe90e;</i>货到付款</li>
-					<li class="col-service"><i class="icon-font">&#xe912;</i>极速发货</li>
-				</ul>
-			</div>
-			<!--帮助-->
-			<div class="footer-help clearfix">
-				<div class="col-helps clearfix">
-					<dl class="help-item">
-						<dt>新手指南</dt>
-						<dd><a href="#">正品保障</a></dd>
-						<dd><a href="#">在线帮助</a></dd>
-						<dd><a href="#">防骗提示</a></dd>
-						<dd><a href="#">找回密码</a></dd>
-					</dl>
-					<dl class="help-item">
-						<dt>售后服务</dt>
-						<dd><a rel="#">售后政策</a></dd>
-						<dd><a href="#">签收说明</a></dd>
-						<dd><a rel="#">订单状态</a></dd>
-						<dd><a rel="#">投诉与建议</a></dd>
-					</dl>
-					<dl class="help-item">
-						<dt>支付方式</dt>
-						<dd><a href="#">在线支付</a></dd>
-						<dd><a href="#">货到付款</a></dd>
-						<dd><a href="#">分期付款</a></dd>
-						<dd><a href="#">银行转账</a></dd>
-						<dd><a href="#">发票说明</a></dd>
-					</dl>
-					<dl class="help-item">
-						<dt>物流配送</dt>
-						<dd><a href="#">合作快递</a></dd>
-						<dd><a href="#">配送政策</a></dd>
-						<dd><a href="#">配送费收取标准</a></dd>
-						<dd><a href="#">配送时间查询</a></dd>
-					</dl>
-					<dl class="help-item">
-						<dt>会员服务</dt>
-						<dd><a href="#">会员注册</a></dd>
-						<dd><a href="#">积分政策</a></dd>
-						<dd><a href="#">级别和特权</a></dd>
-						<dd><a href="#">会员通道</a></dd>
-					</dl>
-				</div>
-				<!--联系我们-->
-				<div class="col-contact">
-					<h3 class="title">客服热线</h3>
-					<p class="tell">400-110-0120</p>
-					<span>周一至周日 9:00-18:00<br>（免长途费）</span>
-					<a href="#" class="btn"><i class="icon-font">&#xe90b;</i> 在线客服</a>
-				</div>
-			</div>
-		</div>
-		<!--版权-->
-		<div class="footer-copyright">
-			<div class="w">
-				<div class="copyright-links">
-					<a href="#">关于我们</a>
-					<span class="split-line">|</span>
-					<a href="#">联系我们</a>
-					<span class="split-line">|</span>
-					<a href="#">联系客服</a>
-					<span class="split-line sm-hide">|</span>
-					<a href="#" class="sm-hide">合作招商</a>
-					<span class="split-line">|</span>
-					<a href="#">诚聘英才</a>
-					<span class="split-line">|</span>
-					<a href="#">免责条款</a>
-					<span class="split-line sm-hide">|</span>
-					<a href="#" class="sm-hide">友情链接</a>
-					<span class="split-line">|</span>
-					<a href="#">隐私政策</a>
-					<span class="split-line sm-hide">|</span>
-					<a href="#" class="sm-hide">问题反馈</a>
-					<span class="split-line">|</span>
-					<a href="#">鞋码对照表</a>
-					<span class="split-line">|</span>
-					<a href="#">品牌大全</a>
-					<span class="split-line">|</span>
-					<a href="#">法律申明</a>
-					<span class="split-line">|</span>
-					<a href="#">English</a>
-
-				</div>
-				<div class="copyright-info">
-					<p><a href="#">粤公网安备 7417417474741号 </a><span class="split-line">|</span>粤ICP证74741号<span
-							class="split-line">|</span><a href="#">互联网经营许可证741741号</a><span class="split-line">|</span>消费者维权热线：4006067733
-					</p>
-					<p>Copyright © 2018 chenjiujiu.com 版权所有</p>
-				</div>
-				<div class="copyright-pic">
-					<a class="pic cop0" href="#"></a>
-					<a class="pic cop1" href="#"></a>
-					<a class="pic cop2" href="#"></a>
-					<a class="pic cop3" href="#"></a>
-					<a class="pic cop4" href="#"></a>
-					<a class="pic cop5" href="#"></a>
-				</div>
-			</div>
-		</div>
-	</div>
+	<div class="pubFooter"></div>
 </body>
 <script src="./js/cjj.js"></script>
 <script src="./js/pubHeader.js"></script>
+<script src="./js/pubFooter.js"></script>
 <script src="./js/product.js"></script>
 <script src="./js/buy.js"></script>
 </html>

@@ -126,7 +126,7 @@
 		//获取url参数
 		getserch:function(arg){
 			// ?uid=1&uname=xiaomin&&upwd=123;
-			var result={};
+			var result = {};
 			var search = location.search.slice(1);
 			search = decodeURIComponent(search);
 			if(arg === undefined){
@@ -135,11 +135,11 @@
 				for(var i = 0; i < data.length; i++){
 					var item = data[i].split("=");
 					if(item[1] !== undefined){
-						result[item[0]]= item[1];
+						result[item[0]] = item[1];
 					}
 				}
 			}else{
-				search='&'+search+'&';
+				search = '&' + search + '&';
 				var star = search.indexOf("=", search.indexOf(arg));
 				var end = search.indexOf("&", search.indexOf(arg));
 				result = this.trim(search.slice(star + 1, end));
@@ -171,11 +171,17 @@
 		isNull:function(val){
 			return this.type(val) === "[object Null]";
 		},
-		isObj:function(val){
-			if(val === null || typeof val === 'undefined'){
-				return false;
+		isObj:function(){
+			var val = arguments[0];
+			var flag = arguments[1] || false;
+			if(flag){
+				return this.type(val) === "[object Object]";
+			}else{
+				if(val === null || typeof val === 'undefined'){
+					return false;
+				}
+				return typeof val === 'object';
 			}
-			return typeof val === 'object';
 		},
 		isArray:function(val){
 			return this.type(val) === "[object Array]";
@@ -197,8 +203,8 @@
 			//id选择器
 			var that = this;
 			function id(ele){
-				var dom=document.getElementById(ele);
-				if(dom!==null){
+				var dom = document.getElementById(ele);
+				if(dom !== null){
 					pushDoms([dom]);
 				}
 				return this;
@@ -206,8 +212,8 @@
 			// tag选择器
 			function tag(ele, context){
 				context = context || document;
-				var dom=context.getElementsByTagName(ele);
-				if(dom!==null){
+				var dom = context.getElementsByTagName(ele);
+				if(dom !== null){
 					pushDoms(dom);
 				}
 				return this;
@@ -217,8 +223,8 @@
 				context = context || document;
 				ele = that.trim(ele);
 				if(context.getElementsByClassName){
-					var doms=context.getElementsByClassName(ele);
-					if(doms!==null){
+					var doms = context.getElementsByClassName(ele);
+					if(doms !== null){
 						pushDoms(doms);
 					}
 					return this;
@@ -240,8 +246,8 @@
 			//h5选择器
 			function all(ele, context){
 				context = context || document;
-				var dom=context.querySelectorAll(ele);
-				if(dom!==null){
+				var dom = context.querySelectorAll(ele);
+				if(dom !== null){
 					pushDoms(dom);
 				}
 				return this
@@ -461,7 +467,7 @@
 				}else{
 					for(var i = 0; i < this.doms.length; i++){
 						var obj = this.doms[i];
-						obj.style[k] = v;
+						obj.style[k]=v;
 					}
 				}
 				return this;
@@ -496,11 +502,11 @@
 			if(h !== undefined){
 				for(var i = 0; i < this.doms.length; i++){
 					var obj = this.doms[i];
-					obj.innerText = h;
+						obj.innerHTML = h;
 				}
 				return this;
 			}else{
-				return this.get(0).innerText;
+					return this.get(0).innerText|| this.get(0).textContent;
 			}
 		},
 		val:function(v){
@@ -587,10 +593,22 @@
 		scroll 滚动的
 		*/
 		windowH:function(){
-			return window.innerHeight;
+			var h;
+			if(window.innerHeight){
+				h=window.innerHeight;
+			}else{
+				h=document.documentElement.clientHeight;
+			}
+			return h
 		},
 		windowW:function(){
-			return window.innerWidth;
+			var w;
+			if(window.innerWidth){
+				w=window.innerWidth;
+			}else{
+				w=document.documentElement.clientWidth;
+			}
+			return w
 		},
 		scrollTop:function(){
 			return window.pageYOffset || /*ie9+以及最新浏览器*/
@@ -889,7 +907,7 @@
 				"path":data.path || "/",
 				"days":-10,
 				"value":""
-			})
+			});
 			return this;
 		}
 	});
@@ -898,24 +916,28 @@
 		//模版字符串
 		tempStr:function(str, data){
 			//hahahahhaha#{name}fwhfawh	 用data里面的数据来替代#{name}
-			if(this.isObj(data)){
+			if(this.isObj(data,true)||data.length===0){
 				return str.replace(/#\{(\w+)\}/g, function(m, key){
 					return typeof data[key] === 'undefined' ? '' : data[key]
 				});
+			}else if(this.isArray(data)){
+				var html='';
+				for(var i = 0; i < data.length; i++){
+					html+=this.tempStr(str,data[i]);
+				}
+				return html;
 			}else{//如果data不是数组或者对象则直接替代
 				return str.replace(/#\{(\w+)\}/g, data);
 			}
-		},
+		}
 	});
 	//给目标绑定html，定一个以html模板item，数据data
 	Cjj.prototype.extend({
 		bindHtml:function(item, data){
 			var html = '';
-			for(var i = 0; i < data.length; i++){
-				html += this.tempStr(item, data[i])
-			}
+			html += this.tempStr(item, data);
 			this.html(html);
-			return this;
+			return this
 		}
 	});
 
