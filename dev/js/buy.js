@@ -1,18 +1,9 @@
 "use strict";
-// 商品信息加载
+
 var fid = C.getserch("fid");
+// 商品信息加载
 ~function(){
-	C.ajax({
-		url:'./data/buy.php',
-		type:'post',
-		data:{"fid":fid},
-		dataType:"json",
-		fn:callback
-	});
-	function callback(data){
-		window.a = data;
-		new Product(data);
-	}
+		new Product(fid);
 }();
 //页面基本效果
 ~function(){
@@ -25,6 +16,7 @@ var fid = C.getserch("fid");
 		C(show_box.child().get(this.cIndex)).show()
 	}, true);
 	var getCommenntDate = true;
+	// 点击切换详细菜单
 	show_tab.child().click(comm);
 	function comm(){
 		if(this.cIndex === 1 && getCommenntDate){

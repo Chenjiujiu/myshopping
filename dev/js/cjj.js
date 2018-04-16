@@ -873,8 +873,6 @@
 			}
 			if(data.path){
 				cookieText += "; path=" + data.path;
-			}else{
-				cookieText += "; path=/";
 			}
 			if(data.domain){
 				cookieText += "; domain=" + data.domain;

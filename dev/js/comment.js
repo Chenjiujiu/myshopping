@@ -3,6 +3,7 @@ function Comment(fid){
 	this.fid = fid;
 	this.pnoNow=1;
 	this.init();
+	this.getCommentFlag=true;
 }
 Comment.prototype = {
 	//初始化
@@ -60,22 +61,23 @@ Comment.prototype = {
 	getComment:function(pno){
 		var that = this;
 		pno=parseInt(pno);
-		C.ajax({
-			url:'./data/getComment.php',
-			data:{fid:that.fid, pno:pno},
-			type:'get',
-			dataType:'json',
-			fn:function(data){
-				that.pnoNow=data.page.now;
-				that.bindComment(data);
-				that.bindPnoCtrl(data.page);
-			}
-		})
+			C.ajax({
+				url:'./data/getComment.php',
+				data:{fid:that.fid, pno:pno},
+				type:'get',
+				dataType:'json',
+				fn:function(data){
+					that.pnoNow=data.page.now;
+					that.bindComment(data);
+					that.bindPnoCtrl(data.page);
+					that.getCommentFlag=true;
+				}
+			})
 	},
 	//绑定评论
 	bindComment:function(data){
 		var html = '';
-		for(var i = 0, len = data.info.length - 1; i < len; i++){
+		for(var i = 0, len = data.info.length; i < len; i++){
 			var obj = data.info[i];
 			var item = C.tempStr(this.temp.comment, obj);
 			var container = C("<div></div>");
@@ -135,15 +137,24 @@ Comment.prototype = {
 	},
 	//页面控制按钮事件
 	pnoCtrlEvent:function(){
-		var flag = true;
 		var that=this;
-		this.config.pno_ctrlbox.child().child().click(function(e){
+		this.config.pno_ctrlbox.child().child().click(function(){
 			if(C(this).hasClass("prev")&&!C(this).hasClass("pno-disabl")){
-				that.getComment(parseInt(that.pnoNow)-1);
+				if(that.getCommentFlag){
+					that.getCommentFlag=false;
+					that.getComment(parseInt(that.pnoNow)-1);
+				}
 			}else if(C(this).hasClass("next")&&!C(this).hasClass("pno-disabl")){
-				that.getComment(parseInt(that.pnoNow)+1);
+				if(that.getCommentFlag){
+					that.getCommentFlag=false;
+					that.getComment(parseInt(that.pnoNow) + 1);
+				}
 			}else if(C(this).hasClass("pno-item")&&!C(this).hasClass("pno-disabl")){
-				console.log(this.innerHTML);
+				if(that.getCommentFlag){
+					that.getCommentFlag=false;
+					var num = this.innerHTML;
+					that.getComment(parseInt(num));
+				}
 			}else{
 					return 	;
 			}

@@ -1,18 +1,14 @@
 "use strict";
 // 产品对象
-function Product(data){
-	this.data = data;
+function Product(fid){
+	this.fid = fid;
 	this.init();
 }
 Product.prototype = {
 	// 初始化
 	init:function(){
-		this.bindProduct();
-		this.bindImages();
-		this.bindImagesEvent();
-		this.add2car();
-		this.bindOrder();
-		this.bindOrderImg();
+		this.getProductData();
+		this.getpicData(0);
 	},
 	//dom元素集合
 	config:{
@@ -26,6 +22,9 @@ Product.prototype = {
 		order_info:C('#order-info'),	//详细参数列表
 		show_info_pic:C('#show-info-pic'),	//详细参数列表
 		order_pic:C('#show-info-pic .img-box'),	//详细参数列表
+		mini_list:C("#mini-list"),// 小图片容器
+		big_pic:C(".view-main img"),// 大图片
+		colors:C('.color-list')//颜色列表
 	},
 	//绑定模板
 	temp:{
@@ -46,44 +45,48 @@ Product.prototype = {
 		//商品详细介绍图片模板
 		order_pic:'<img src="./images/#{pic}" alt="">'
 	},
-	// 绑定基本信息
-	bindProduct:function(){
-		this.config.choose_title.bindHtml(this.temp.choose_title, this.data.order);//绑定标题
-		this.config.bid_price.bindHtml(this.temp.bid_price, this.data.order);//绑定原价
-		this.config.jf_price.bindHtml(this.temp.jf_price, this.data.order);//绑定疾风价
+	//获取商品基本信息
+	getProductData:function(){
+		var that = this;
+		C.ajax({
+			url:'./data/buy.php',
+			type:'post',
+			data:{"fid":that.fid},
+			dataType:"json",
+			fn:function(data){
+				that.bindProduct(data);
+				that.bindOrder(data);
+				that.bindOrderImg(data);
+				that.bindColorEvent();	
+				that.bindSizeEvent();
+			}
+		});
+	},
+	//绑定基本信息
+	bindProduct:function(data){
+		this.config.choose_title.bindHtml(this.temp.choose_title, data.order);//绑定标题
+		this.config.bid_price.bindHtml(this.temp.bid_price, data.order);//绑定原价
+		this.config.jf_price.bindHtml(this.temp.jf_price, data.order);//绑定疾风价
 		// 绑定优惠
-		var spare = parseFloat(this.data.order.delprice) - parseFloat(this.data.order.price);
+		var spare = parseFloat(data.order.delprice) - parseFloat(data.order.price);
 		this.config.spare.html("省" + spare);
 		//绑定活动标签
-		var promos = this.data.order.tag.split('/');
+		var promos = data.order.tag.split('/');
 		var proHtml = '<span class="title">活&nbsp;&nbsp;&nbsp;&nbsp;动：</span>';
 		proHtml += C.tempStr(this.temp.promo, promos);
 		this.config.promo.html(proHtml);
 		//绑定尺码
-		this.config.size_list.bindHtml(this.temp.size_list, this.data.allSize);
+		this.config.size_list.bindHtml(this.temp.size_list, data.allSize);
 		//绑定颜色
-		this.config.color_list.bindHtml(this.temp.color_list, this.data.allColor)
+		this.config.color_list.bindHtml(this.temp.color_list, data.allColor)
 		//绑定路径
-
 	},
-	// 绑定图片信息
-	bindImages:function(){
-
-	},
-	// 绑定图片事件
-	bindImagesEvent:function(){
-
-	},
-	// 添加购物车
-	add2car:function(){
-
-	},
-	//	绑定详细参数
-	bindOrder:function(){
-		this.config.order_info.bindHtml(this.temp.order_info, this.data.order)
+	//绑定详细参数
+	bindOrder:function(data){
+		this.config.order_info.bindHtml(this.temp.order_info, data.order)
 	},
 	//绑定商品图片
-	bindOrderImg:function(){
+	bindOrderImg:function(data){
 		var top = this.config.show_info_pic.get(0).offsetTop - C.windowH();
 		var flag = true;
 		C(window).on("scroll", loadImg);
@@ -92,8 +95,69 @@ Product.prototype = {
 			if(C.scrollTop() >= top && flag){
 				flag = false;
 				C(window).un("scroll", loadImg);
-				that.config.order_pic.bindHtml(that.temp.order_pic, that.data.order_pic)
+				that.config.order_pic.bindHtml(that.temp.order_pic, data.order_pic)
 			}
 		}
+	},
+	//获取图片基本信息
+	getpicData:function(cid){
+		var that = this;
+		var isExist=C.getCookie(that.fid+"c"+cid);
+		if(isExist===undefined){
+			C.ajax({
+				url:'./data/getPicData.php',
+				type:'post',
+				data:{fid:that.fid, cid:cid},
+				dataType:"json",
+				fn:function(data){
+					//实力化一个左右滚动图
+					C.setCookie({name:that.fid+"c"+cid,value:JSON.stringify(data)});
+					var scroolpic=new ScroolPic(data);
+					scroolpic.init();
+					that.bindImagesEvent();
+				}
+			})
+		}else{
+			var data=JSON.parse(isExist);
+			var scroolpic=new ScroolPic(data);
+			scroolpic.init();
+			that.bindImagesEvent();
+		}
+	},
+	// 绑定图片事件
+	bindImagesEvent:function(){
+		//图片点击
+		var that=this;
+		this.config.mini_list.child().click(function(){
+			C(this).sibl().remClass("current");
+			C(this).addClass("current");
+			var src=C(this).attr("data-m");
+			that.config.big_pic.attr("src",src)
+		});
+		this.config.mini_list.child().get(0).click();
+	},
+	//绑定颜色单击事件
+	bindColorEvent:function(){
+		var that=this;
+		this.config.colors.child().click(function(){
+			if(C(this).hasClass("current")){
+				return false;
+			}else{
+				var cid=C(this).attr("data-cid");
+				that.getpicData(cid);
+				C(this).sibl().remClass("current");
+				C(this).addClass("current");
+			}
+		})
+		
+	},
+	//绑定尺码单击事件
+	bindSizeEvent:function(){
+		
+	},
+	// 添加购物车
+	add2car:function(){
+
 	}
+
 };

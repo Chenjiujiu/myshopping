@@ -35,16 +35,11 @@
 		margin: 60px 0 0 0;
 		border: 1px solid $gray01;
 		overflow: hidden;
-		.main-item {
-			position: absolute;
-			top: 0;
-			text-align: center;
+		text-align: center;
+		img {
+			height: 100%;
 			width: 100%;
-			img {
-				width: 100%;
-			}
 		}
-
 	}
 	.view-mini {
 		width: 100%;
@@ -54,14 +49,19 @@
 		padding: 0 50px;
 		.mini-box {
 			overflow: hidden;
+			width: 100%;
+			height: 80px;
+			position: relative;
 			.mini-list {
 				height: 80px;
-				width: 1000px;
+				width: 100%;
+				position: absolute;
+				left: 0;
 				.mini-item {
 					float: left;
 					height: 76px;
 					width: 76px;
-					margin: 0 3px;
+					margin: 0 4px;
 					border: 2px solid transparent;
 					cursor: pointer;
 					@include transition2;
@@ -72,6 +72,9 @@
 					&:hover {
 						border: 2px solid $color-Main;
 					}
+				}
+				.current{
+					border: 2px solid $color-Main;
 				}
 			}
 		}
@@ -85,7 +88,7 @@
 			color: rgba(0, 0, 0, .1);
 			font-weight: 600;
 			z-index: 100;
-			font-size: 22px;
+			font-size: 40px;
 			@include transition2;
 			&:hover {
 				color: rgba(0, 0, 0, .5);
@@ -332,8 +335,8 @@
 	}
 	@media screen and (max-width: 1180px) {
 		.choose-view {
-			width: 355px;
-			margin-right: 10px;
+			width: 364px;
+			margin-right: 5px;
 		}
 		.view-main {
 			height: 377px;
@@ -581,14 +584,14 @@
 					img {
 						width: 60px;
 						height: 60px;
-						cursor: url("../images/tobig.ico"),auto;
+						cursor: url("../images/tobig.ico"), auto;
 					}
 				}
 				.img-big {
 					overflow: hidden;
 					display: none;
-					cursor: url("../images/tosmall.ico"),auto;
-					&img{
+					cursor: url("../images/tosmall.ico"), auto;
+					&img {
 						max-height: 500px;
 					}
 				}
