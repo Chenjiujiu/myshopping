@@ -282,6 +282,7 @@
 							id(sel);
 							context = this.doms;
 						}else if(first === '.'){//类
+
 							if(context.length){
 								for(var j = 0, conlen = context.length; j < conlen; j++){
 									cla(sel, context[j]);
@@ -481,9 +482,13 @@
 			}
 		},
 		attr:function(k, v){
-			for(var i = 0; i < this.doms.length; i++){
-				var obj = this.doms[i];
-				obj.setAttribute(k, v);
+			if(v){
+				for(var i = 0; i < this.doms.length; i++){
+					var obj = this.doms[i];
+					obj.setAttribute(k, v);
+				}
+			}else{
+				return this.doms[0].getAttribute(k);
 			}
 			return this;
 		},
@@ -938,6 +943,11 @@
 			html += this.tempStr(item, data);
 			this.html(html);
 			return this
+		},
+		//好像有点vue的感觉
+		bindData:function(data){//{ele:标签,data:数据}
+			this.html(this.tempStr(this.html(),data));
+			return this;
 		}
 	});
 

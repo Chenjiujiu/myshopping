@@ -25,17 +25,26 @@ Product.prototype = {
 		color_list:C("#choose_info .color-list"),	//颜色dom
 		order_info:C('#order-info'),	//详细参数列表
 		show_info_pic:C('#show-info-pic'),	//详细参数列表
-		order_pic:C('#show-info-pic .img-box')	//详细参数列表
+		order_pic:C('#show-info-pic .img-box'),	//详细参数列表
 	},
 	//绑定模板
 	temp:{
-		choose_title:'<span class=\"title-brand\">#{brand}</span>#{name}',//标题模板
-		bid_price:'<del class="bid-price-n">¥#{delprice}</del>',	//原价模板
-		jf_price:'<span class="jf-price-n"><i>¥</i>#{price}</span>',	//疾风价模板
-		promo:'<span class="promo-item">#{tag}</span>',	//活动模板
-		size_list:'<li class="size-item" data-zid="#{zid}">#{size}<i></i></li>',	//尺码模板
-		color_list:'<li class="color-item" data-cid="#{cid}"><img src="./images/#{img}" alt=""><span>#{color}</span></li>',	//颜色
-		order_info:'<tr> <td>品牌</td> <td>#{brand}</td> <td>分类</td> <td>#{type}</td> <td>产地</td> <td>#{origin}</td> </tr> <tr> <td>性别</td> <td>#{sex}</td> <td>鞋面材质</td> <td>#{trsture}</td> <td>上市时间</td> <td>#{time}</td> </tr> <tr> <td>鞋帮款式</td> <td>#{height}</td> <td>功能</td> <td>#{fun}</td> <td>闭合方式</td> <td>#{close}</td> </tr>'//商品详细信息
+		//标题模板
+		choose_title:'<span class=\"title-brand\">#{brand}</span>#{name}',
+		//原价模板
+		bid_price:'<del class="bid-price-n">¥#{delprice}</del>',
+		//疾风价模板
+		jf_price:'<span class="jf-price-n"><i>¥</i>#{price}</span>',
+		//活动模板
+		promo:'<span class="promo-item">#{tag}</span>',
+		//尺码模板
+		size_list:'<li class="size-item" data-zid="#{zid}">#{size}<i></i></li>',
+		//颜色模板
+		color_list:'<li class="color-item" data-cid="#{cid}"><img src="./images/#{img}" alt=""><span>#{color}</span></li>',
+		//商品详细信息模板
+		order_info:'<tr> <td>品牌</td> <td>#{brand}</td> <td>分类</td> <td>#{type}</td> <td>产地</td> <td>#{origin}</td> </tr> <tr> <td>性别</td> <td>#{sex}</td> <td>鞋面材质</td> <td>#{trsture}</td> <td>上市时间</td> <td>#{time}</td> </tr> <tr> <td>鞋帮款式</td> <td>#{height}</td> <td>功能</td> <td>#{fun}</td> <td>闭合方式</td> <td>#{close}</td> </tr>',
+		//商品详细介绍图片模板
+		order_pic:'<img src="./images/#{pic}" alt="">'
 	},
 	// 绑定基本信息
 	bindProduct:function(){
@@ -76,24 +85,14 @@ Product.prototype = {
 	//绑定商品图片
 	bindOrderImg:function(){
 		var top = this.config.show_info_pic.get(0).offsetTop - C.windowH();
-		var fid = 321;
 		var flag = true;
 		C(window).on("scroll", loadImg);
+		var that = this;
 		function loadImg(){
 			if(C.scrollTop() >= top && flag){
 				flag = false;
 				C(window).un("scroll", loadImg);
-				C.ajax({
-					url:'123',
-					type:'get',
-					data:{fid:fid},
-					dateType:'json',
-					fn:callback
-				});
-			}
-			function callback(data){
-			console.log(data);
-			
+				that.config.order_pic.bindHtml(that.temp.order_pic, that.data.order_pic)
 			}
 		}
 	}

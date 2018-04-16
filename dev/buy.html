@@ -124,20 +124,19 @@
 		<div class="pro-show clearfix">
 			<div class="w">
 				<div class="show-tab clearfix">
-					<ul class="tab-list">
+					<ul class="tab-list" id="pro-show-tab">
 						<li class="tab-item current">商品详情</li>
-						<li class="tab-item">评论列表</li>
+						<li class="tab-item comment_btn">评论列表</li>
 						<li class="tab-item">购物保障</li>
 						<li class="tab-item">无忧退换</li>
 						<li class="tab-item">支付与配送</li>
 					</ul>
 				</div>
-				<div class="show-box">
-					<!--详细信息-->
+				<div class="show-box" id="pro-show-box">
 					<div class="information">
 						<!--详细参数-->
 						<div class="info-s">
-							<h3 class="info-title">商品详细参数 DETAIL</h3>
+							<h3 class="info-title">商品详细参数:</h3>
 							<table id="order-info">
 								<tr>
 									<td>品牌</td>
@@ -167,7 +166,7 @@
 						</div>
 						<!--尺码对照表-->
 						<div class="info-size">
-							<h3 class="info-title">尺码对照表</h3>
+							<h3 class="info-title">尺码对照表:</h3>
 							<table>
 								<tbody>
 									<tr>
@@ -245,190 +244,77 @@
 						<div id="Search_showStite"></div>
 						<!--商品展示-->
 						<div class="info-pic" id="show-info-pic">
-							<h3 class="info-title">商品展示</h3>
+							<h3 class="info-title">商品展示:</h3>
 							<div class="img-box">
-								<img src="./images/product/101/101d1.jpg" alt="">
-								<img src="./images/product/101/101d2.jpg" alt="">
-								<img src="./images/product/101/101d3.jpg" alt="">
-								<img src="./images/product/101/101d4.jpg" alt="">
-								<img src="./images/product/101/101d5.jpg" alt="">
-								<img src="./images/product/101/101d6.jpg" alt="">
-								<img src="./images/product/101/101d7.jpg" alt="">
-								<img src="./images/product/101/101d8.jpg" alt="">
+								<!--<img src="./images/product/101/101d1.jpg" alt="">-->
 							</div>
 						</div>
 					</div>
-					<!--评论列表-->
-					<div class="comment clearfix">
+					<div class="comment clearfix" id="comment_box">
 						<!--评分-->
 						<div class="comment-grade clearfix">
 							<div class="grade">
 								<h4>商品评分</h4>
-								<strong>4.8</strong>
-								<p><span><em></em><i></i></span></p>
+								<strong id="grade-num"><!--4.8--></strong>
+								<p><span><em class="grade-bar"></em><i class="grade-arr"></i></span></p>
 							</div>
 							<!--买家印象-->
 							<div class="tag-box">
 								<div class="com-tag-label"><span>买家印象</span></div>
-								<div class="com-tag-list clearfix">
-									<span class="tag-item good"><a href="#">质量不错(58)</a></span>
-									<span class="tag-item good"><a href="#">鞋很舒服(38)</a></span>
-									<span class="tag-item good"><a href="#">鞋型很好(32)</a></span>
-									<span class="tag-item good"><a href="#">态度不错(29)</a></span>
-									<span class="tag-item good"><a href="#">很便宜(18)</a></span>
-									<span class="tag-item good"><a href="#">码挺正(15)</a></span>
-									<span class="tag-item bad"><a href="#">尺寸有偏差(11)</a></span>
-									<span class="tag-item bad"><a href="#">尺寸有偏差(11)</a></span>
+								<div class="com-tag-list clearfix keywords">
+									<!--<span class="tag-item good"><a href="#">态度不错(29)</a></span>-->
+									<!--<span class="tag-item good"><a href="#">很便宜(18)</a></span>-->
+									<!--<span class="tag-item good"><a href="#">码挺正(15)</a></span>-->
+									<!--<span class="tag-item bad"><a href="#">尺寸有偏差(11)</a></span>-->
+									<!--<span class="tag-item bad"><a href="#">尺寸有偏差(11)</a></span>-->
 								</div>
 								<span title="显示所有信息"></span></div>
 						</div>
 						<!--评论盒子-->
 						<div class="comment-box">
-							<ul class="com-list">
-								<li class="com-item ">
+							<ul class="com-list" id="com-list">
+								<!--<li class="com-item">
 									<div class="content">
-										<p>福建省电话客服收到回复闪电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到回复老师电话发拉煽风点火拉加多少分福建省电话客服收事都荒废了阿瑟费红辣椒收到 </p>
-										<ul class="img-small">
-											<li><img src="./images/ewm.png" alt=""></li>
-											<li class="img-small-current"><img src="./images/ewm.png" alt=""></li>
-										</ul>
-										<ul class="img-big">
-											<li><img src="./images/ewm.png" alt=""></li>
-											<li class="img-big-current"><img src="./images/ewm.png" alt=""></li>
-										</ul>
-										<i class="time">2018-03-29</i>
-										<p class="reply"><span>回复：</span>福建省电话客服收到回复闪电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到回复老师电话发拉煽风点火拉加多少分福建省电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到
-										</p>
+										<p>#{txt}</p>
+										<div class="img">
+											<ul class="img-small">
+												<li><img src="./images/ewm.png" alt=""></li>
+												<li><img src="./images/ewm.png" alt=""></li>
+											</ul>
+											<div class="img-big"><img src="./images/pla1.gif" alt=""></div>
+										</div>
+										<i class="time">#{time}</i>
+										<p class="reply #{replyType}"><span>回复：</span>#{reply}</p>
 									</div>
 									<div class="info">
 										<div class="type">
-											<p>尺码：<span>34</span></p>
-											<p>颜色：<span>红</span></p>
+											<p>尺码：<span>#{size}</span></p>
+											<p>颜色：<span>#{color}</span></p>
 										</div>
-										<div class="author">nishibushsha<i class="anonymous">(匿名)</i></div>
+										<div class="author">#{author}<i class="anonymous">#{tag}</i></div>
 									</div>
-								</li>
-								<li class="com-item ">
-									<div class="content">
-										<p>福建省电话客服收到回复闪电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到回复老师电话发拉煽风点火拉加多少分福建省电话客服收事都荒废了阿瑟费红辣椒收到 <i
-												class="time">03/29</i></p>
-										<p class="reply"><span>回复：</span>福建省电话客服收到回复闪电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到回复老师电话发拉煽风点火拉加多少分福建省电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到
-										</p>
-									</div>
-									<div class="info">
-										<div class="type">
-											<p>尺码：<span>34</span></p>
-											<p>颜色：<span>红</span></p>
-										</div>
-										<div class="author">nishibushsha<i class="anonymous">(匿名)</i></div>
-									</div>
-								</li>
-								<li class="com-item ">
-									<div class="content">
-										<p>福建省电话客服收到回复闪电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到回复老师电话发拉煽风点火拉加多少分福建省电话客服收事都荒废了阿瑟费红辣椒收到 <i
-												class="time">03/29</i></p>
-										<p class="reply"><span>回复：</span>福建省电话客服收到回复闪电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到回复老师电话发拉煽风点火拉加多少分福建省电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到
-										</p>
-									</div>
-									<div class="info">
-										<div class="type">
-											<p>尺码：<span>34</span></p>
-											<p>颜色：<span>红</span></p>
-										</div>
-										<div class="author">nishibushsha<i class="anonymous">(匿名)</i></div>
-									</div>
-								</li>
-								<li class="com-item ">
-									<div class="content">
-										<p>福建省电话客服收到回复闪电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到回复老师电话发拉煽风点火拉加多少分福建省电话客服收事都荒废了阿瑟费红辣椒收到 <i
-												class="time">03/29</i></p>
-										<p class="reply"><span>回复：</span>福建省电话客服收到回复闪电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到回复老师电话发拉煽风点火拉加多少分福建省电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到
-										</p>
-									</div>
-									<div class="info">
-										<div class="type">
-											<p>尺码：<span>34</span></p>
-											<p>颜色：<span>红</span></p>
-										</div>
-										<div class="author">nishibushsha<i class="anonymous">(匿名)</i></div>
-									</div>
-								</li>
-								<li class="com-item ">
-									<div class="content">
-										<p>福建省电话客服收到回复闪电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到回复老师电话发拉煽风点火拉加多少分福建省电话客服收事都荒废了阿瑟费红辣椒收到 <i
-												class="time">03/29</i></p>
-										<p class="reply"><span>回复：</span>福建省电话客服收到回复闪电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到回复老师电话发拉煽风点火拉加多少分福建省电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到
-										</p>
-									</div>
-									<div class="info">
-										<div class="type">
-											<p>尺码：<span>34</span></p>
-											<p>颜色：<span>红</span></p>
-										</div>
-										<div class="author">nishibushsha<i class="anonymous">(匿名)</i></div>
-									</div>
-								</li>
-								<li class="com-item ">
-									<div class="content">
-										<p>福建省电话客服收到回复闪电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到回复老师电话发拉煽风点火拉加多少分福建省电话客服收事都荒废了阿瑟费红辣椒收到 <i
-												class="time">03/29</i></p>
-										<p class="reply"><span>回复：</span>福建省电话客服收到回复闪电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到回复老师电话发拉煽风点火拉加多少分福建省电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到
-										</p>
-									</div>
-									<div class="info">
-										<div class="type">
-											<p>尺码：<span>34</span></p>
-											<p>颜色：<span>红</span></p>
-										</div>
-										<div class="author">nishibushsha<i class="anonymous">(匿名)</i></div>
-									</div>
-								</li>
-								<li class="com-item ">
-									<div class="content">
-										<p>福建省电话客服收到回复闪电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到回复老师电话发拉煽风点火拉加多少分福建省电话客服收事都荒废了阿瑟费红辣椒收到 <i
-												class="time">03/29</i></p>
-										<p class="reply"><span>回复：</span>福建省电话客服收到回复闪电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到回复老师电话发拉煽风点火拉加多少分福建省电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到
-										</p>
-									</div>
-									<div class="info">
-										<div class="type">
-											<p>尺码：<span>34</span></p>
-											<p>颜色：<span>红</span></p>
-										</div>
-										<div class="author">nishibushsha<i class="anonymous">(匿名)</i></div>
-									</div>
-								</li>
-								<li class="com-item ">
-									<div class="content">
-										<p>福建省电话客服收到回复闪电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到回复老师电话发拉煽风点火拉加多少分福建省电话客服收事都荒废了阿瑟费红辣椒收到 <i
-												class="time">03/29</i></p>
-										<p class="reply"><span>回复：</span>福建省电话客服收到回复闪电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到回复老师电话发拉煽风点火拉加多少分福建省电发货闪电发哈老师电话凡事都荒废了阿瑟费红辣椒收到
-										</p>
-									</div>
-									<div class="info">
-										<div class="type">
-											<p>尺码：<span>34</span></p>
-											<p>颜色：<span>红</span></p>
-										</div>
-										<div class="author">nishibushsha<i class="anonymous">(匿名)</i></div>
-									</div>
-								</li>
+								</li>-->
 							</ul>
 						</div>
-						<div class="comment-pno">
+						<div class="comment-pno" id="comment-pno">
 							<ul class="pno-list">
 								<li class="prev">&lt;&lt;上一页</li>
-								<li class="pno-item">1</li>
-								<li class="pno-item disabled">2</li>
-								<li class="pno-item">3</li>
+								<li class="pno-item pno-pre"></li>
+								<li class="pno-item pno-disabl pno-current"></li>
+								<li class="pno-item pno-next"></li>
 								<li class="pno-item pno-more">···</li>
 								<li class="next">下一页&gt;&gt;</li>
 							</ul>
 						</div>
 					</div>
-					<!--售后保障-->
-					<div class="safeguard">
-
+					<div class="safe">
+						购物保障
+					</div>
+					<div class="goback">
+						无忧退换
+					</div>
+					<div class="play">
+						支付与配送
 					</div>
 				</div>
 			</div>
@@ -441,5 +327,6 @@
 <script src="./js/pubHeader.js"></script>
 <script src="./js/pubFooter.js"></script>
 <script src="./js/product.js"></script>
+<script src="./js/comment.js"></script>
 <script src="./js/buy.js"></script>
 </html>

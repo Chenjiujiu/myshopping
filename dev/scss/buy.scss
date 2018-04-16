@@ -1,9 +1,13 @@
 @charset "UTF-8";
-@import "base";//初始化css
-@import "mixins/cjj";	//引入scss函数库 包含占位符，函数，mixin
-@import "mixins/variable";	//引入变量，
-@import "modules/pubHeader";	//引入页头样式
-@import "modules/pubFooter";	//引入页脚样式
+@import "base";
+//初始化css
+@import "mixins/cjj";
+//引入scss函数库 包含占位符，函数，mixin
+@import "mixins/variable";
+//引入变量，
+@import "modules/pubHeader";
+//引入页头样式
+@import "modules/pubFooter"; //引入页脚样式
 /*=====引入页面主样式=====*/
 .main {
 	padding: 20px 0;
@@ -226,7 +230,7 @@
 			.color-list {
 				display: inline-block;
 				width: 510px;
-				@media screen and (max-width:1180px){
+				@media screen and (max-width: 1180px) {
 					width: 480px;
 				}
 			}
@@ -326,15 +330,15 @@
 			}
 		}
 	}
-	@media screen and (max-width:1180px){
-		.choose-view{
+	@media screen and (max-width: 1180px) {
+		.choose-view {
 			width: 355px;
 			margin-right: 10px;
 		}
-		.view-main{
+		.view-main {
 			height: 377px;
 		}
-		.choose-info{
+		.choose-info {
 			width: 550px;
 		}
 	}
@@ -367,8 +371,9 @@
 	}
 }
 .show-box {
-	//详细信息
+	//商品详情
 	.information {
+		display: block;
 		.info-title {
 			padding: 10px 0;
 			line-height: 30px;
@@ -423,7 +428,7 @@
 			text-align: center;
 		}
 	}
-	//评论
+	//评论列表
 	.comment {
 		display: none;
 		margin-top: 30px;
@@ -435,7 +440,7 @@
 				float: left;
 				height: 80px;
 				width: 150px;
-				margin:0 20px;
+				margin: 0 20px;
 				text-align: center;
 				h4 {
 					font-size: 12px;
@@ -459,20 +464,22 @@
 							left: 0;
 							top: 0;
 							height: 10px;
-							width: 88%;
+							width: 0;
 							background-color: $color-Main;
 							z-index: 10;
+							@include transition5;
 							@include border-radius(5px);
 						}
 						i {
 							position: absolute;
 							bottom: -5px;
-							left: 88%;
+							left: 0;
 							margin-left: -8px;
 							border: 5px solid transparent;
 							border-bottom-color: $color-Main;
 							width: 0;
 							height: 0;
+							@include transition5;
 						}
 					}
 				}
@@ -534,12 +541,12 @@
 					}
 				}
 			}
-			@media screen and (max-width:1180px){
-				.grade{
+			@media screen and (max-width: 1180px) {
+				.grade {
 					margin: 0 10px;
 				}
-				.tag-box{
-					.com-tag-list{
+				.tag-box {
+					.com-tag-list {
 						width: 710px;
 					}
 				}
@@ -559,38 +566,42 @@
 				.img-small {
 					height: 72px;
 					width: 860px;
+					margin-top: 5px;
 					overflow: hidden;
 					li {
 						float: left;
 						border: 2px solid $gray01;
 						margin-right: 10px;
 						padding: 2px;
-						&.img-small-current {
+						@include transition2;
+						&.current {
 							border: 2px solid $color-Main;
 						}
 					}
 					img {
 						width: 60px;
 						height: 60px;
-						cursor: pointer;
+						cursor: url("../images/tobig.ico"),auto;
 					}
 				}
 				.img-big {
 					overflow: hidden;
-					li {
-						display: none;
-						&.img-big-current {
-							display: block;
-						}
+					display: none;
+					cursor: url("../images/tosmall.ico"),auto;
+					&img{
+						max-height: 500px;
 					}
 				}
 				.reply {
-					color: $blue02;
+					color: $color-Main;
 					span {
 						padding-right: 10px;
 					}
 				}
-				@media screen and (max-width:1180px){
+				.replyHiden {
+					display: none;
+				}
+				@media screen and (max-width: 1180px) {
 					width: 640px;
 				}
 			}
@@ -627,7 +638,7 @@
 			.anonymous {
 				display: block;
 				font-size: 12px;
-				color: $gray03;
+				color: $red01;
 			}
 		}
 		//翻页
@@ -661,17 +672,27 @@
 				border-bottom: none;
 				color: $gray03;
 			}
-			.disabled {
+			.pno-disabl {
 				color: $gray03;
 				cursor: default;
 			}
-
 		}
 	}
+	//购物保障
+	.safe {
+		display: none;
+	}
+	//无忧退换
+	.goback {
+		display: none;
+	}
+	//支付与配送
+	.play {
+		display: none;
+	}
 }
-
-@media screen and (max-width:1180px){
-	.w{
+@media screen and (max-width: 1180px) {
+	.w {
 		width: 960px;
 	}
 }

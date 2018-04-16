@@ -24,10 +24,10 @@ $data["allSize"]=$size;
 $sql="select group_concat(img separator ',') as order_pic from order_pic where `fid`=$fid";
 $result=mysqli_query($conn,$sql);
 $pics=mysqli_fetch_row($result);
-
 $order_pic=explode(',',$pics[0]);
-
-
 $data["order_pic"]=$order_pic;
+
+$data["fid"]=$fid;
+
 echo JSON_encode($data);
 ?>
