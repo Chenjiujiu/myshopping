@@ -217,6 +217,7 @@
 				cursor: pointer;
 				color: $gray02;
 				@include transition2;
+				@include user-select-no;
 				&:hover {
 					border: 2px solid $color-Main;
 					color: $color-Main;
@@ -230,6 +231,10 @@
 				border: 2px dashed $gray01;
 				color: $gray01;
 				cursor: default;
+				&:hover{
+					border: 2px dashed $gray01;
+					color: $gray01;
+				}
 			}
 		}
 		//颜色
@@ -250,6 +255,7 @@
 				background-color: $gray04;
 				border: 2px dotted $yellow01;
 				@include transition2;
+				@include user-select-no;
 				cursor: pointer;
 				&:hover {
 					border: 2px solid $color-Main;

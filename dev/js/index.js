@@ -38,4 +38,9 @@
 	floorNav.init();
 }();
 
+//实例化楼层
+~function(){
+	new Floor(1);
+}();
+
 

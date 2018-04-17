@@ -20,7 +20,7 @@
 		<!--购买页路径-->
 		<div class="buy-path" id="buy_path">
 			<div class="w">
-				<h3>您当前的位置：疾风步--><span class="type">运动鞋</span>--><span class="brand">耐克</span>--><span class="name">耐克007</span>
+				<h3>您当前的位置：疾风步--><span class="type"><!--运动鞋--></span>--><span class="brand"><!--耐克--></span>--><span class="name"><!--耐克007--></span>
 				</h3>
 			</div>
 		</div>
@@ -77,9 +77,10 @@
 					<!--尺码-->
 					<div class="choose-size clearfix">
 						<span class="title">尺&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
-						<ul class="size-list">
+						<div class="size-list">
 							<!--<li class="size-item current">38 <i></i></li>-->
-						</ul>
+							<input type="radio" name="size" value="">
+						</div>
 					</div>
 					<!--颜色-->
 					<div class="choose-color clearfix">
@@ -95,9 +96,9 @@
 					<div class="choose-nums clearfix">
 						<span class="title">数&nbsp;&nbsp;&nbsp;&nbsp;量：</span>
 						<ul class="nums-list">
-							<li class="nums-item nums-ctrl"><a href="#" class="reduce">-</a></li>
-							<li class="nums-item"><input type="text" class="inp" value="1"></li>
-							<li class="nums-item nums-ctrl"><a href="#" class="add">+</a></li>
+							<li class="nums-item nums-ctrl ctrl-red"><a href="javascript:void(0);" class="reduce">-</a></li>
+							<li class="nums-item ctrl-num"><input type="text" class="inp numble" value="1"></li>
+							<li class="nums-item nums-ctrl ctrl-add"><a href="javascript:void(0);" class="add">+</a></li>
 						</ul>
 					</div>
 					<!--按钮-->

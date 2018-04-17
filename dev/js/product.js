@@ -10,6 +10,7 @@ Product.prototype = {
 	init:function(){
 		this.getProductData();
 		this.getpicData(0);
+		this.bindnum();
 	},
 	//dom元素集合
 	config:{
@@ -24,7 +25,12 @@ Product.prototype = {
 		show_info_pic:C('#show-info-pic'),	//详细参数列表
 		order_pic:C('#show-info-pic .img-box'),	//详细参数列表
 		mini_list:C("#mini-list"),// 小图片容器
-		big_pic:C(".view-main img")// 大图片
+		big_pic:C(".view-main img"),// 大图片
+		path_type:C("#buy_path .type"),//路径类型
+		path_brand:C("#buy_path .brand"),//路径类型
+		path_name:C("#buy_path .name"),//路径名字
+		num_btns:C(".choose-nums .nums-list"	),//数量控制
+		num_num:C(".choose-nums .numble")//数量
 	},
 	//绑定模板
 	temp:{
@@ -55,9 +61,11 @@ Product.prototype = {
 			dataType:"json",
 			fn:function(data){
 				that.bindProduct(data);
+				that.bindPath(data);
 				that.bindOrder(data);
 				that.bindOrderImg(data);
 				that.bindColorEvent();
+				that.bindSizeEvent();
 			}
 		});
 	},
@@ -110,7 +118,10 @@ Product.prototype = {
 				dataType:"json",
 				fn:function(data){
 					//实力化一个左右滚动图
-					C.setCookie({name:that.fid + "c" + cid, value:JSON.stringify(data)});
+					C.setCookie({
+						name:that.fid + "c" + cid,
+						value:JSON.stringify(data)
+					});
 					var scroolpic = new ScroolPic(data.pic);
 					scroolpic.init();
 					that.bindImagesEvent();
@@ -148,6 +159,7 @@ Product.prototype = {
 			}else if(that.colorBtnFlag){
 				that.colorBtnFlag = false;	//颜色按钮状态禁用
 				var cid = C(this).attr("data-cid");
+				that.config.color_list.attr('select-cid',cid);
 				that.getpicData(cid);	//重新获取数据并绑定
 				C(this).sibl().remClass("current");
 				C(this).addClass("current");
@@ -157,12 +169,26 @@ Product.prototype = {
 		})
 
 	},
+	//尺码点击事件
+	bindSizeEvent:function(){
+		var that = this;
+		this.config.size_list.child().click(function(){
+			if(C(this).hasClass("current")||C(this).hasClass("no-size")){
+				return false;
+			}else{
+				var zid = C(this).attr("data-zid");
+				that.config.size_list.attr("select-zid",zid);
+				C(this).sibl().remClass("current");
+				C(this).addClass("current");
+			}
+		})
+
+	},
 	//尺码是否可用
-	hasSize:function(data){
-		console.log(data);
+	hasSize:function(num){
 		var sizes = this.config.size_list;
 		sizes.child().addClass("no-size");
-		var data=";"+data+";";
+		var data=";"+num+";";
 		for(var i = 0, len = sizes.child().leng(); i < len; i++){
 			var item=C(sizes.child().get(i));
 			var zid=";"+item.attr("data-zid")+";";
@@ -171,6 +197,29 @@ Product.prototype = {
 			}
 
 		}
+	},
+	//绑定路径
+	bindPath:function(data){
+		this.config.path_brand.html(data.order.brand);
+		this.config.path_type.html(data.order.type);
+		this.config.path_name.html(data.order.name);
+	},
+	//绑定数量按钮
+	bindnum:function(){
+		var btns=this.config.num_btns;
+		var num=this.config.num_num;
+		btns.child().click(function(){
+			var now=parseInt(num.val());
+			if(C(this).hasClass("ctrl-red")){
+				if(num.val()<=1){
+					return false;
+				}else{
+					num.val(--now);
+				}
+			}else if(C(this).hasClass("ctrl-add")){
+				num.val(++now);
+			}
+		})
 	},
 	// 添加购物车
 	add2car:function(){
