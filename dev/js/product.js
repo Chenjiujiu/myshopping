@@ -2,6 +2,7 @@
 // 产品对象
 function Product(fid){
 	this.fid = fid;
+	this.colorBtnFlag = true;
 	this.init();
 }
 Product.prototype = {
@@ -23,8 +24,7 @@ Product.prototype = {
 		show_info_pic:C('#show-info-pic'),	//详细参数列表
 		order_pic:C('#show-info-pic .img-box'),	//详细参数列表
 		mini_list:C("#mini-list"),// 小图片容器
-		big_pic:C(".view-main img"),// 大图片
-		colors:C('.color-list')//颜色列表
+		big_pic:C(".view-main img")// 大图片
 	},
 	//绑定模板
 	temp:{
@@ -57,8 +57,7 @@ Product.prototype = {
 				that.bindProduct(data);
 				that.bindOrder(data);
 				that.bindOrderImg(data);
-				that.bindColorEvent();	
-				that.bindSizeEvent();
+				that.bindColorEvent();
 			}
 		});
 	},
@@ -102,8 +101,8 @@ Product.prototype = {
 	//获取图片基本信息
 	getpicData:function(cid){
 		var that = this;
-		var isExist=C.getCookie(that.fid+"c"+cid);
-		if(isExist===undefined){
+		var isExist = C.getCookie(that.fid + "c" + cid);
+		if(isExist === undefined){
 			C.ajax({
 				url:'./data/getPicData.php',
 				type:'post',
@@ -111,49 +110,67 @@ Product.prototype = {
 				dataType:"json",
 				fn:function(data){
 					//实力化一个左右滚动图
-					C.setCookie({name:that.fid+"c"+cid,value:JSON.stringify(data)});
-					var scroolpic=new ScroolPic(data);
+					C.setCookie({name:that.fid + "c" + cid, value:JSON.stringify(data)});
+					var scroolpic = new ScroolPic(data.pic);
 					scroolpic.init();
 					that.bindImagesEvent();
+					that.hasSize(data.allZid);
+					that.colorBtnFlag = true;	//归零颜色按钮状态
 				}
 			})
 		}else{
-			var data=JSON.parse(isExist);
-			var scroolpic=new ScroolPic(data);
+			var data = JSON.parse(isExist);
+			var scroolpic = new ScroolPic(data.pic);
 			scroolpic.init();
 			that.bindImagesEvent();
+			that.colorBtnFlag = true;	//归零颜色按钮状态
+			that.hasSize(data.allZid)
 		}
 	},
 	// 绑定图片事件
 	bindImagesEvent:function(){
 		//图片点击
-		var that=this;
+		var that = this;
 		this.config.mini_list.child().click(function(){
 			C(this).sibl().remClass("current");
 			C(this).addClass("current");
-			var src=C(this).attr("data-m");
-			that.config.big_pic.attr("src",src)
+			var src = C(this).attr("data-m");
+			that.config.big_pic.attr("src", src)
 		});
 		this.config.mini_list.child().get(0).click();
 	},
 	//绑定颜色单击事件
 	bindColorEvent:function(){
-		var that=this;
-		this.config.colors.child().click(function(){
+		var that = this;
+		this.config.color_list.child().click(function(){
 			if(C(this).hasClass("current")){
 				return false;
-			}else{
-				var cid=C(this).attr("data-cid");
-				that.getpicData(cid);
+			}else if(that.colorBtnFlag){
+				that.colorBtnFlag = false;	//颜色按钮状态禁用
+				var cid = C(this).attr("data-cid");
+				that.getpicData(cid);	//重新获取数据并绑定
 				C(this).sibl().remClass("current");
 				C(this).addClass("current");
+			}else{
+				return false;
 			}
 		})
-		
+
 	},
-	//绑定尺码单击事件
-	bindSizeEvent:function(){
-		
+	//尺码是否可用
+	hasSize:function(data){
+		console.log(data);
+		var sizes = this.config.size_list;
+		sizes.child().addClass("no-size");
+		var data=";"+data+";";
+		for(var i = 0, len = sizes.child().leng(); i < len; i++){
+			var item=C(sizes.child().get(i));
+			var zid=";"+item.attr("data-zid")+";";
+			if(data.indexOf(zid)!==-1){
+				item.remClass("no-size");
+			}
+
+		}
 	},
 	// 添加购物车
 	add2car:function(){

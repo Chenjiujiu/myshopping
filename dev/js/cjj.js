@@ -532,7 +532,9 @@
 		addClass:function(c){
 			for(var i = 0; i < this.doms.length; i++){
 				var obj = this.doms[i];
-				obj.className = obj.className + " " + c;
+				if(!C(obj).hasClass(c)){
+					obj.className = obj.className + " " + c;
+				}
 			}
 			return this;
 		},

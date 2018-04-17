@@ -226,6 +226,11 @@
 				border: 2px solid $color-Main;
 				color: $color-Main;
 			}
+			.no-size{
+				border: 2px dashed $gray01;
+				color: $gray01;
+				cursor: default;
+			}
 		}
 		//颜色
 		.choose-color {

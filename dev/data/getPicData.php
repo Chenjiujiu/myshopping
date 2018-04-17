@@ -10,6 +10,15 @@ if($cid){
 }
 $result=mysqli_query($conn,$sql);
 $pic=mysqli_fetch_all($result,MYSQLI_ASSOC);
-echo JSON_encode($pic);
+$data["pic"]=$pic;
+if($cid){
+    $sql=" select group_concat(`zid` separator ';')as allZid ";
+    $sql.=" from `shoes` where fid=$fid and `cid`=$cid";
+    $result=mysqli_query($conn,$sql);
+    $size=mysqli_fetch_row($result);
+    $data["allZid"]=$size[0];
+}
+
+echo JSON_encode($data);
 ?>
 
