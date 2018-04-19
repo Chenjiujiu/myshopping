@@ -1,0 +1,11 @@
+@charset "UTF-8";
+@import "base";//初始化css
+@import "mixins/cjj";	//引入scss函数库 包含变量，占位符，函数，mixin
+@import "mixins/variable";	//引入变量，
+@import "modules/pubHeader";	//	引入页脚样式
+@import "modules/pubFooter";	//	引入页脚样式
+
+/*=====引入页面主样式=====*/
+.main{
+	height: 200px;
+}

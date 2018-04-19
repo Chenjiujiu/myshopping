@@ -1,0 +1,407 @@
+@charset "UTF-8";
+//初始化css
+@import "base";
+//scss函数库 包含变量，占位符，函数，mixin
+@import "mixins/cjj";
+//变量，
+@import "mixins/variable";
+//页头样式
+@import "modules/pubHeader";
+//页脚样式
+@import "modules/pubFooter";
+body{
+	overflow-x: hidden;
+}
+/*====页面主样式=====*/
+.search {
+	width: 100%;
+	//搜索头部
+	.search-header {
+		width: 100%;
+		margin: 30px 0 20px 0;
+	}
+}
+//已选
+.selected {
+	height: 20px;
+	font-size: 12px;
+	h4 {
+		float: left;
+	}
+	ul {
+		float: left;
+		li {
+			float: left;
+			margin: 0 5px;
+			padding-left: 5px;
+			border: 1px solid $gray01;
+			cursor: pointer;
+			@include transition2;
+			.txt {
+				color: $color-Main;
+			}
+			i {
+				color: $color-Main;
+				width: 18px;
+				height: 18px;
+				text-align: center;
+				line-height: 18px;
+				float: right;
+				font-size: 10px;
+				margin-left: 10px;
+				@include transition2;
+			}
+			&:hover {
+				border: 1px solid $color-Main;
+				.title {
+					color: $color-Main;
+				}
+				i {
+					background-color: $color-Main;
+					color: $yellow01;
+				}
+			}
+		}
+	}
+	.reset {
+		float: right;
+		height: 28px;
+		line-height: 28px;
+		padding: 0 10px;
+		background-color: $gray04;
+		border: 1px solid $blue007;
+		cursor: pointer;
+		color: $gray02;
+		@include transition2;
+		&:hover {
+			color: $color-Main;
+			border: 1px solid $color-Main;
+		}
+	}
+}
+//选择框
+.selection {
+	margin-top: 20px;
+	width: 100%;
+	border: 1px solid $gray01;
+	background-color: $blue007;
+	.sele-brand{
+		.sele-content{
+			height: 104px;
+			padding: 5px 140px 5px 50px;
+			li{
+				width: 75px;
+				height: 50px;
+				overflow: hidden;
+				margin: 0;
+				padding: 0;
+				border: 1px solid $gray01;
+				margin-right: -1px;
+				margin-top: -1px;
+			}
+		}
+	}
+	.sele {
+		width: 100%;
+		border-top: 1px solid $gray01;
+		position: relative;
+		&:first-child {
+			border-top: none;
+		}
+	}
+	.sele-title {
+		font-size: 12px;
+		float: left;
+		line-height: 25px;
+		height: 25px;
+		padding: 5px 0 5px 20px;
+		color: $gray03;
+	}
+	.sele-content {
+		height: 35px;
+		margin-left: 130px;
+		padding-right: 130px;
+		padding-left: 15px;
+		background-color: $whilt;
+		a {
+			color: $blue02;
+			&:hover {
+				color: $red01;
+			}
+		}
+		li {
+			float: left;
+			padding: 0 5px;
+			height: 34px;
+			line-height: 35px;
+			margin-right: 50px;
+			a {
+				font-size: 12px;
+				line-height: 34px;
+			}
+		}
+	}
+	.sele-option {
+		float: right;
+		width: 120px;
+		position: absolute;
+		top: 5px;
+		right: 0;
+		padding: 0 10px;
+		a {
+			font-size: 12px;
+			margin-right: 15px;
+			@include transition2;
+			&:hover{
+				color: $red01;
+				i{
+					border: 1px solid $red01;
+				}
+			}
+		}
+		i{
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+			line-height: 16px;
+			text-align: center;
+			border: 1px solid $gray01;
+			@include transition2;
+		}
+		.option-s{
+			float: right;
+			padding: 0 3px;
+			border: 1px solid $gray01;
+			&:hover{
+				border: 1px solid $red01;
+			}
+		}
+	}
+	.option-more{
+		float: left;
+	}
+	.sele-ul{
+		float: left;
+	}
+	.sele-in{
+		float: left;
+		display: inline-block;
+		height: 30px;
+		padding-top: 5px;
+		input{
+			width: 30px;
+			height: 20px;
+			border: 1px solid $gray01;
+			padding:0 5px;
+		}
+	}
+}
+//搜索排序
+.sort{
+	height: 30px;
+	background-color: $blue007;
+	padding: 5px 10px;
+	font-size: 12px;
+	a{
+		font-size: 12px;
+	}
+	ul{
+		float: left;
+		li{
+			float: left;
+			height: 28px;
+			line-height: 28px;
+			text-align: center;
+			padding: 0 6px;
+			border: 1px	solid $yellow01;
+			background-color: $whilt;
+			margin-right: -1px;
+			position: relative;
+			&:hover{
+				border: 1px	solid $red01;
+				z-index: 10;
+			}
+		}
+		.current{
+			background-color: $red01;
+			border: 1px	solid $red01;
+			a{
+				color: $whilt;
+			}
+		}
+	}
+	.info{
+		float: right;
+		p{
+			display: inline-block;
+			height: 30px;
+			line-height: 30px;
+			padding: 0 5px;
+			span{
+				color: $red01;
+				font-weight: 700;
+			}
+		}
+		.top-pages{
+			margin-right: 10px;
+		}
+		.ctrl-top-pno{
+			display: inline-block;
+			text-align: center;
+			height: 20px;
+			width: 40px;
+			background-color: $whilt;
+			border: 1px solid $gray01;
+			@include  transition1;
+			&:hover{
+				color: $red01;
+				border: 1px solid $red01;
+			}
+		}
+	}
+}
+//搜索结果
+.content{
+	padding-top: 10px;
+	.product-item{
+		float: left;
+		width: 220px;
+		height: 350px;
+		border: 2px solid transparent;
+		padding: 5px;
+		margin: 12px 3px 0;
+		@include transition2;
+		&:hover{
+			border: 2px solid $red01;
+		}
+		.img{
+			width: 220px;
+			height: 220px;
+			img{
+				width: 220px;
+				height: 220px;
+			}
+		}
+		.price{
+			height: 22px;
+			line-height: 22px;
+			color: $color-Main;
+			font-size: 20px;
+			padding-top: 4px;
+			margin-bottom: 9px;
+			em{
+				font-size: 16px;
+			}
+		}
+		.desc{
+			display: block;
+			font-size: 12px;
+			color: $gray02;
+			height: 38px;
+			overflow: hidden;
+		}
+		.comm{
+			font-size: 12px;
+			color: $gray03;
+			span{
+				padding: 0 5px;
+				color: $color-Main;
+				font-weight: 700;
+			}
+		}
+		.btn{
+			margin-top: 10px;
+			a{
+				font-size: 12px;
+				display: inline-block;
+				border: 1px solid $gray01;
+				padding: 2px 5px;
+				@include transition2;
+				&:hover{
+					color: $red01;
+					border: 1px solid $red01;
+				}
+			}
+			.add2car{
+				color: $red01;
+			}
+		}
+	}
+}
+//页码
+.bottom-page{
+	height: 40px;
+	text-align: center;
+	.page-box{
+		height: 40px;
+		display: inline-block;
+		.page-ctrl{
+			float: left;
+			.btn-prev,
+			.btn-next{
+				height: 20px;
+				line-height: 20px;
+				padding: 10px 8px;
+				text-align: center;
+				border: 1px solid $gray01;
+				float: left;
+			}
+			.dot{
+				height: 40px;
+				line-height: 40px;
+				padding: 0 3px;
+				text-align: center;
+				float: left;
+			}
+			.page{
+				height: 40px;
+				line-height: 40;
+				float: left;
+				li{
+					float: left;
+					height: 40px;
+					line-height: 38px;
+					padding: 0 15px;
+					border: 1px solid $gray01;
+					cursor: pointer;
+					border-left: none;
+					@include user-select-no;
+				}
+				.current{
+					background-color: $gray01;
+				}
+			}
+		}
+		.page-go{
+			float: left;
+			height: 40px;
+			line-height: 40px;
+			margin-left: 20px;
+			span{
+				color: $color-Main;
+				padding: 0 4px;
+			}
+			input{
+				width: 28px;
+				height: 20px;
+				line-height: 20px;
+				margin: 0 5px;
+				padding: 0 5px;
+				border: 1px solid $gray01;
+			}
+			button{
+				display: inline-block;
+				width: 48px;
+				height: 22px;
+				line-height: 20px;
+				margin: 0 5px;
+				padding: 0 5px;
+				border: 1px solid $gray01;
+				background-color: $blue007;
+				cursor: pointer;
+				color: $gray02;
+			}
+		}
+	}
+
+}

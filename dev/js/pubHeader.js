@@ -48,28 +48,44 @@
 			});
 		}();
 		// 屏幕滚动事件
-		if(C("#Search_showStite").leng()!==0){
+		if(C("#Search_showStite").leng() !== 0){
 			~function(){
 				// 定点的盒子距离文档顶部位置
 				var stiteT = C("#Search_showStite").get(0).offsetTop;
 				//搜索盒子距离文档顶部位置
-				var searchTop=C(".header-search").get(0).offsetTop;
+				var searchTop = C(".header-search").get(0).offsetTop;
 				//搜索栏dom
-				var dom_Search=C("#fixd-search");
+				var dom_Search = C("#fixd-search");
 				//滚动检测
 				C(window).on("scroll", showSearch);
 				function showSearch(){
-					if(C.scrollTop()<=searchTop+36){
-						dom_Search.animate({targent:{height:0},time:8,step:5,avg:true});
+					if(C.scrollTop() <= searchTop + 36){
+						dom_Search.animate({targent:{height:0}, time:8, step:5, avg:true});
 
 					}else if(stiteT - C.scrollTop() < C.windowH()){
-						dom_Search.animate({targent:{height:70},time:8,step:5,avg:true});
+						dom_Search.animate({targent:{height:70}, time:8, step:5, avg:true});
 					}
 				}
 			}();
 		}
+		//搜索框效果
+		~function(){
+			var searIn=C("#header-search-text");
+			C(".pub-header .hot-words a").click(function(e){
+				C.prevDef(e);
+				searIn.val(C(this).html());
+			});
+			C(".pub-header .search-box .input-btn").click(function(e){
+				C.prevDef(e);
+				var keyword=C.trim(searIn.val());
+				if(keyword!==''){
+					location.href="./search.html?keywords="+keyword;
+				}
+			})
+		}();
 	});
 }();
+
 
 
 

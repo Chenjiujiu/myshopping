@@ -1,5 +1,5 @@
 "use strict";
-// 品牌滚动对象
+// 品牌滚动对象 无限循环，鼠标经过暂停
 function BrandRoll(data){
 	// 数据
 	this.data = data;

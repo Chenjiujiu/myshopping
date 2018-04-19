@@ -126,6 +126,7 @@
 	//内容
 	.prod-container {
 		width: 1230px;
+		min-height: 200px;
 		//1列
 		@extend %cl;
 		%sol {
@@ -164,6 +165,14 @@
 				@extend %cl;
 			}
 		}
+		.table-main{
+			ul{
+				display: none;
+				&:first-child{
+					display: block;
+				}
+			}
+		}
 		//6列
 		.sol-6 {
 			@extend %sol;
@@ -185,9 +194,10 @@
 				//图片
 				.img {
 					text-align: center;
+					border-bottom: 1px solid $gray01;
 					a {
 						width: 190px;
-						height: 170px;
+						height: 169px;
 						display: block;
 					}
 					img {
@@ -272,7 +282,7 @@
 					margin-left: -30px;
 					text-align: center;
 				}
-				.flag-reduce {
+				.flag-sale {
 					@extend %flag;
 					background-color: rgb(2, 140, 232);
 					@include opacity(0.9);
@@ -281,6 +291,9 @@
 					@extend %flag;
 					background-color: rgb(131, 196, 78) ;
 					@include opacity(0.9);
+				}
+				.flag-null{
+					display: none;
 				}
 			}
 			//占用4格的盒子
@@ -313,6 +326,10 @@
 					a{
 						width: 230px;
 						height: 230px;
+						img{
+							width: 230px;
+							height: 230px;
+						}
 					}
 				}
 			}
@@ -375,11 +392,16 @@
 		.roll-box {
 			overflow: hidden;
 			width: 1200px;
+			height: 235px;
 			padding-top: 12px;
 			margin-top: -2px;
+			position: relative;
 			.roll-list {
 				@extend %cl;
-				width: 4960px;
+				width: 200%;
+				height: 235px;
+				position: absolute;
+				left: 0;
 			}
 		}
 		@media screen and (max-width: 1180px) {

@@ -40,7 +40,22 @@
 
 //实例化楼层
 ~function(){
-	new Floor(1);
+	var flag=true;
+	C(window).on("scroll", addFloor);
+	function addFloor(){
+		if(C.scrollTop()>=C("#product").get(0).offsetTop &&flag){
+			C(window).un("scroll", addFloor);
+			flag=false;
+			new Floor();
+		}
+	}
+
+}();
+
+~function(){
+	C('img').on("error",function(){
+		this.src="./images/pla1.gif"
+	})
 }();
 
 
