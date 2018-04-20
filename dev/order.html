@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+				content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description"
+				content="鞋子商城,专业卖鞋网站,经营阿迪达斯，NIKE耐克、李宁、安踏、新百伦、Kappa、亚瑟士、斯凯奇等超值名牌鞋。正品保障，极速发货，退货无忧！">
+	<title>购物车 - 疾风而至，疾步如飞</title>
+	<meta name="keywords" content="疾风步,阿迪，耐克,李宁,特步，新百伦">
+	<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="./css/base.css">
+	<link rel="stylesheet" href="./css/order.css">
+</head>
+<body>
+	<!--公共页头盒子-->
+	<div class="pubHeader">
+		<div class="pub-topbar">
+			<div class="w clearfix">
+				<!--左侧登录-->
+				<div class="topbar-login">
+					<span class="welcome">嗨！欢迎来到疾风步</span>
+					<span class="split-line">|</span>
+					<a class="login" href="./pass/login.html">请登录</a>
+					<span class="split-line">|</span>
+					<a class="register" href="./pass/register.html">立即注册</a>
+				</div>
+				<div class="topbar-welcome">
+					<span class="welcome" id="welcome-uname"></span>
+					<span class="split-line">|</span>
+					<span class="logout" id="logout">退出</span>
+				</div>
+				<!--右侧功能-->
+				<div class="topbar-fun">
+					<ul class="clearfix">
+						<li class="fun-item fun-app">
+							<a href="javascript:void(0);"><i class="icon-font">&#xe90a;</i>手机版</a>
+							<div class="app-box">
+								<img src="./images/ewm.png" alt="鞋子商城app">
+								<h4>扫码下载鞋子商城App</h4>
+							</div>
+							<i class="icon-arrow"></i>
+						</li>
+						<li class="fun-item"><span class="split-line">|</span></li>
+						<li class="fun-item fun-myxk">
+							<a href="javascript:void(0);">我的鞋库</a>
+							<div class="myxk-box">
+								<ul class="myxk-list clearfix">
+									<li class="myxk-item"><a href="#">我的订单</a></li>
+									<li class="myxk-item"><a href="#"><i class="icon-font">&#xe90b;</i>消息</a></li>
+									<li class="myxk-item"><a href="#">我的收藏</a></li>
+									<li class="myxk-item"><a href="#">我的积分</a></li>
+									<li class="myxk-item"><a href="#">我的优惠券</a></li>
+									<li class="myxk-item"><a href="#">我的地址</a></li>
+									<li class="myxk-item"><a href="#">返修退换货</a></li>
+									<li class="myxk-item"><a href="#">密码管理</a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="fun-item"><span class="split-line">|</span></li>
+						<li class="fun-item"><a class="fun-serve" href="#">客户服务</a></li>
+						<li class="fun-item fun-car">
+							<div class="car-info">
+								<i class="icon-font"><i class="icon-font">&#xe905;</i></i>
+								购物车
+								<span class="car-num">(0)</span>
+							</div>
+							<!--购物车盒子-->
+							<div class="car-box">
+								<!--产品列表-->
+								<ul class="car-list">
+									<!--<li class="car-empty">购物车空空如也，赶紧选购吧！</li>-->
+									<li class="car-item">
+										<div class="img">
+											<img src="./images/l1a.jpg" alt="">
+										</div>
+										<div class="des">
+											<a href="#">乔丹特步361度全场清货</a>
+										</div>
+										<div class="price">
+											<span>900元</span>x<i>1</i>
+										</div>
+										<i class="close">X</i>
+									</li>
+									<li class="car-item">
+										<div class="img">
+											<img src="./images/l1a.jpg" alt="">
+										</div>
+										<div class="des">
+											<a href="#">乔丹特步361度全场清货卖完回家过年走过路过不要错过</a>
+										</div>
+										<div class="price">
+											<span>900元</span>x<i>1</i>
+										</div>
+										<i class="close">X</i>
+									</li>
+								</ul>
+								<!--结算-->
+								<div class="car-sum clearfix">
+									<div class="info">
+										<h3>共<i>2</i>件商品</h3>
+										<p><span>1800</span>元</p>
+									</div>
+									<div class="gotocar"><a href="#">去购物车结算</a></div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="main">
+		<div class="w">
+			<!--步骤-->
+			<div class="order-stepbar">
+				<!--logo-->
+				<h1 class="order-logo">
+					<a href="./index.html"> 疾风步</a>
+				</h1>
+				<!--step-->
+				<ol class="step-list clearfix">
+					<li class="step-item">浏览商品</li>
+					<li class="step-item">添加到购物车</li>
+					<li class="step-item">支付款项</li>
+					<li class="step-item">确认收货</li>
+					<li class="step-item">评价商品</li>
+				</ol>
+			</div>
+			<!--确认收货地址-->
+			<div class="order-address">
+				<h3 class="address-header">
+					<span class="confirm-address">确认收货地址</span>
+					<a href="#" class="manage-address">管理收货地址</a>
+				</h3>
+				<ul class="address-list clearfix">
+					<li class="address-item current">
+						<div>
+							<p class="detail"><span>广东省 广州市 海珠区 </span></p>
+							<p class="address">呐呐呐呐 南安哪啊</p>
+							<p class="consignee">(<span>陈赳赳&nbsp;收</span>)<span class="uiphone">17777777777</span>
+							</p>
+							<p class="default"><span>默认地址</span></p>
+						</div>
+					</li>
+					<li class="address-item">
+						<div>
+							<p class="detail"><span>广东省 广州市 海珠区 </span></p>
+							<p class="address">呐呐呐呐 南安哪啊</p>
+							<p class="consignee">
+								<span>陈赳赳</span>收
+								<span class="uiphone">17777777777</span>
+							</p>
+
+							<p class="default"><span>默认地址</span></p>
+
+						</div>
+					</li>
+					<li class="address-item">
+						<div>
+							<p class="detail"><span>广东省 广州市 海珠区 </span></p>
+							<p class="address">呐呐呐呐 南安哪啊</p>
+							<p class="consignee">
+								<span>陈赳赳</span>收
+								<span class="uiphone">17777777777</span>
+							</p>
+
+							<p class="default"><span>默认地址</span></p>
+
+						</div>
+					</li>
+					<li class="address-item">
+						<div>
+							<p class="detail"><span>广东省 广州市 海珠区 </span></p>
+							<p class="address">呐呐呐呐 南安哪啊</p>
+							<p class="consignee">
+								<span>陈赳赳</span>收
+								<span class="uiphone">17777777777</span>
+							</p>
+
+							<p class="default"><span>默认地址</span></p>
+
+						</div>
+					</li>
+					<li class="address-item">
+						<div>
+							<p class="detail"><span>广东省 广州市 海珠区 </span></p>
+							<p class="address">呐呐呐呐 南安哪啊</p>
+							<p class="consignee">
+								<span>陈赳赳</span>收
+								<span class="uiphone">17777777777</span>
+							</p>
+
+							<p class="default"><span>默认地址</span></p>
+
+						</div>
+					</li>
+					<li class="address-item">
+						<div>
+							<p class="detail"><span>广东省 广州市 海珠区 </span></p>
+							<p class="address">呐呐呐呐 南安哪啊</p>
+							<p class="consignee">
+								<span>陈赳赳</span>收
+								<span class="uiphone">17777777777</span>
+							</p>
+
+							<p class="default"><span>默认地址</span></p>
+
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!--订单头部-->
+			<div class="order-orderDesc">
+				<h2>确认订单信息</h2>
+				<ul class="clearfix">
+					<li class="orderDesc-info">鞋子信息</li>
+					<li class="orderDesc-type">鞋子属性</li>
+					<li class="orderDesc-price">单价</li>
+					<li class="orderDesc-num">数量</li>
+					<li class="orderDesc-sale">优惠</li>
+					<li class="orderDesc-sum">小计</li>
+				</ul>
+			</div>
+			<!--订单信息-->
+			<div class="order-box">
+				<div class="order-list">
+					<ul class="order-item clearfix">
+						<li class="img"><img src="./images/product/101/1001s3.jpg"></li>
+						<li class="desc">好饿捏大捏大文法晚饭捏大文法晚饭捏大文法晚饭文法晚饭后</li>
+						<li class="info">
+							<span class="info-color">颜色：<em>红色</em></span>
+							<span class="info-size">尺码：<em>12</em></span>
+						</li>
+						<li class="price">400.00</li>
+						<li class="num">3</li>
+						<li class="sale">省200</li>
+						<li class="minsum">40.00</li>
+						</li>
+					</ul>
+					<ul class="order-item clearfix">
+						<li class="img"><img src="./images/product/101/1001s3.jpg"></li>
+						<li class="desc">好饿捏大捏大文法晚饭捏大文法晚饭捏大文法晚饭文法晚饭后</li>
+						<li class="info">
+							<span class="info-color">颜色：<em>红色</em></span>
+							<span class="info-size">尺码：<em>12</em></span>
+						</li>
+						<li class="price">400.00</li>
+						<li class="num">3</li>
+						<li class="sale">省200</li>
+						<li class="minsum">40.00</li>
+						</li>
+					</ul>
+					<ul class="order-item clearfix">
+						<li class="img"><img src="./images/product/101/1001s3.jpg"></li>
+						<li class="desc">好饿捏大捏大文法晚饭捏大文法晚饭捏大文法晚饭文法晚饭后</li>
+						<li class="info">
+							<span class="info-color">颜色：<em>红色</em></span>
+							<span class="info-size">尺码：<em>12</em></span>
+						</li>
+						<li class="price">400.00</li>
+						<li class="num">3</li>
+						<li class="sale">省200</li>
+						<li class="minsum">40.00</li>
+						</li>
+					</ul>
+					<ul class="order-item clearfix">
+						<li class="img"><img src="./images/product/101/1001s3.jpg"></li>
+						<li class="desc">好饿捏大捏大文法晚饭捏大文法晚饭捏大文法晚饭文法晚饭后</li>
+						<li class="info">
+							<span class="info-color">颜色：<em>红色</em></span>
+							<span class="info-size">尺码：<em>12</em></span>
+						</li>
+						<li class="price">400.00</li>
+						<li class="num">3</li>
+						<li class="sale">省200</li>
+						<li class="minsum">40.00</li>
+						</li>
+					</ul>
+					<ul class="order-item clearfix">
+						<li class="img"><img src="./images/product/101/1001s3.jpg"></li>
+						<li class="desc">好饿捏大捏大文法晚饭捏大文法晚饭捏大文法晚饭文法晚饭后</li>
+						<li class="info">
+							<span class="info-color">颜色：<em>红色</em></span>
+							<span class="info-size">尺码：<em>12</em></span>
+						</li>
+						<li class="price">400.00</li>
+						<li class="num">3</li>
+						<li class="sale">省200</li>
+						<li class="minsum">40.00</li>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!--订单信息-->
+			<div class="order-info clearfix">
+				<div class="info-box">
+					<h3>实付款：<em>¥</em><span class="allPrice">400.00</span></h3>
+					<p class="info-address">
+						<span class="to">配送至：</span>
+						<span class="province">广东省</span>
+						<span class="city">广州市</span>
+						<span class="county">还住区</span>
+						<span class="address">fw分为扶危济困家娃俄方看见我会发我尽快回复爱我服务</span>
+					</p>
+					<p class="info-consignee">收货人：<span class="consignee">成赳赳</span><span class="uphone">177777777</span></p>
+				</div>
+			</div>
+			<!--提交-->
+			<div class="order-submit clearfix">
+				<button type="button">提交订单</button>
+				<a href="./car.html">返回购物车</a>
+			</div>
+		</div>
+	</div>
+
+	<!--公共页脚盒子-->
+	<div class="pubFooter">
+		<div class="footer-copyright">
+			<div class="w">
+				<div class="copyright-links">
+					<a href="#">关于我们</a>
+					<span class="split-line">|</span>
+					<a href="#">联系我们</a>
+					<span class="split-line">|</span>
+					<a href="#">联系客服</a>
+					<span class="split-line sm-hide">|</span>
+					<a href="#" class="sm-hide">合作招商</a>
+					<span class="split-line">|</span>
+					<a href="#">诚聘英才</a>
+					<span class="split-line">|</span>
+					<a href="#">免责条款</a>
+					<span class="split-line sm-hide">|</span>
+					<a href="#" class="sm-hide">友情链接</a>
+					<span class="split-line">|</span>
+					<a href="#">隐私政策</a>
+					<span class="split-line sm-hide">|</span>
+					<a href="#" class="sm-hide">问题反馈</a>
+					<span class="split-line">|</span>
+					<a href="#">鞋码对照表</a>
+					<span class="split-line">|</span>
+					<a href="#">品牌大全</a>
+					<span class="split-line">|</span>
+					<a href="#">法律申明</a>
+					<span class="split-line">|</span>
+					<a href="#">English</a>
+
+				</div>
+				<div class="copyright-info">
+					<p><a href="#">粤公网安备 7417417474741号 </a><span class="split-line">|</span>粤ICP证74741号<span
+							class="split-line">|</span><a href="#">互联网经营许可证741741号</a><span class="split-line">|</span>消费者维权热线：4006067733
+					</p>
+					<p>Copyright © 2018 chenjiujiu.com 版权所有</p>
+				</div>
+				<div class="copyright-pic">
+					<a class="pic cop0" href="#"></a>
+					<a class="pic cop1" href="#"></a>
+					<a class="pic cop2" href="#"></a>
+					<a class="pic cop3" href="#"></a>
+					<a class="pic cop4" href="#"></a>
+					<a class="pic cop5" href="#"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="./js/cjj.js"></script>
+<script src="./js/order.js"></script>
+</html>

@@ -8,10 +8,10 @@ var ScroolPic = function(data){
 		pic_box:C("#choose-view .mini-list")	//图片列表盒子
 	};
 	this.temp = '<li class="mini-item" data-m="./images/#{m}"><img src="./images/#{s}"></li>';//图片元素模板
-	this.itemMagin = 8;	//当个图片高度
+	this.itemMagin = 8;	//图片magin数值
 	this.itemW;
 	this.time=10;
-	this.step=1;
+	this.step=2;
 };
 ScroolPic.prototype = {
 	init:function(){
@@ -24,6 +24,7 @@ ScroolPic.prototype = {
 		this.itemW=this.config.pic_box.child().get(0).offsetWidth+this.itemMagin;
 		var maxW = this.itemW * this.data.length + 'px';
 		this.config.pic_box.css("width", maxW);
+		this.config.pic_box.css("left",'0');
 	},
 	//绑定左右按钮事件
 	bindEvent:function(){
@@ -32,9 +33,8 @@ ScroolPic.prototype = {
 		var pic_box_w = this.config.pic_box.get(0).offsetWidth;
 		var maxLeft = pic_cont_w - pic_box_w;
 		var nowLeft = parseInt(this.config.pic_box.css("left"));
-
 		this.config.ctrl_prev.click(function(){
-			if(maxLeft < 0){
+			if(maxLeft <= 0){
 				if(nowLeft >= 0){
 					nowLeft = 0;
 				}else{
@@ -51,7 +51,7 @@ ScroolPic.prototype = {
 			});
 		});
 		this.config.ctrl_next.click(function(){
-			if(maxLeft < 0){
+			if(maxLeft <= 0){
 				if(nowLeft <= maxLeft){
 					nowLeft = maxLeft;
 				}else{

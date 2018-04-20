@@ -4,37 +4,28 @@
 	<meta charset="UTF-8">
 	<title>Title</title>
 	<style>
-		body {
-			position: relative;
-		}
-		#demo {
-			width: 100px;
-			height: 100px;
-			position: absolute;
-			left: 40%;
-			top: 40%;
-			background-color: red;
-		}
+		
 	</style>
 </head>
 <body>
-	<div id="demo">
-		<input type="radio" name="size" value="41">
-		<input type="radio" name="size" value="41">
-		<input type="radio" name="size" value="41">
-		<input type="radio" name="size" value="41">
-		<input type="radio" name="size" value="41">
-
-	</div>
+	<input type="text" id="input" value="1">
+	<button type="button" id="btn">点击+1</button>
 </body>
 </html>
 <script src="./js/cjj.js"></script>
 <script>
-	var html=C("#demo").html();
-html=C.trim(html);
-console.log(html);
+	var inp=document.getElementById("input");
+	var btn=document.getElementById("btn");
 
-	console.log(	C(html));
-	
+	 inp.oninput=function(ev){
+	 	console.log(this.value);
+	 };
+
+	btn.onclick=function(ev){
+	 	var a=parseInt(inp.value)+1;
+		inp.setAttribute('value',a);
+	}
+
+
 </script>
 

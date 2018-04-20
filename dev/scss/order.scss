@@ -1,0 +1,309 @@
+@charset "UTF-8";
+//初始化css
+@import "base";
+//scss函数库 包含变量，占位符，函数，mixin
+@import "mixins/cjj";
+//变量，
+@import "mixins/variable";
+//页头样式
+@import "modules/pubHeader";
+//页脚样式
+@import "modules/pubFooter";
+
+//页面主样式
+.main{
+	margin-bottom: 50px;
+}
+.order-stepbar {
+	height: 70px;
+	margin-top: 20px;
+	.order-logo {
+		float: left;
+		a {
+			display: block;
+			width: 192px;
+			height: 70px;
+			text-indent: -9999em;
+			background: url("../images/logo_70.png") no-repeat center center;
+		}
+	}
+	.step-list {
+		float: right;
+		.step-item {
+			margin-top: 45px;
+			margin-right: 4px;
+			width: 145px;
+			height: 25px;
+			float: left;
+			text-align: center;
+			line-height: 25px;
+			background-color: $color-Main;
+			color: $whilt;
+		}
+	}
+}
+.order-address {
+	margin-top: 40px;
+	overflow: hidden;
+	.address-header {
+		height: 25px;
+		line-height: 25px;
+		border-bottom: 1px solid $gray01;
+		.confirm-address {
+			float: left;
+			font-weight: 600;
+			font-size: 16px;
+		}
+		.manage-address {
+			float: right;
+			color: $color-Main;
+			font-size: 12px;
+		}
+	}
+	.address-list {
+		width: 103%;
+		margin-top: 20px;
+	}
+	.address-item {
+		float: left;
+		width: 262px;
+		height: 100px;
+		border: 2px dotted $gray01;
+		padding: 10px;
+		margin-right: 20px;
+		margin-bottom: 20px;
+		cursor: pointer;
+		color: $gray05;
+		.default {
+			span {
+				font-size: 12px;
+				float: right;
+				font-weight: 400;
+				margin-top: 10px;
+				color: $color-Main;
+			}
+		}
+	}
+	.current {
+		border: 2px solid $color-Main;
+		font-weight: 600;
+		background-color: $blue007;
+		color: $black;
+		.address {
+			font-weight: 400;
+			color: $gray02;
+		}
+		.consignee {
+			span {
+				padding: 0 5px;
+			}
+		}
+		.uiphone {
+			color: $gray03;
+		}
+	}
+}
+.order-orderDesc {
+	h2 {
+		height: 25px;
+		line-height: 25px;
+		font-weight: 600;
+		font-size: 16px;
+		border-bottom: 1px solid $gray01;
+	}
+	ul {
+		li {
+			width: 180px;
+			height: 30px;
+			line-height: 30px;
+			padding-top: 10px;
+			margin: 0 2px;
+			color: $gray02;
+			text-align: center;
+			float: left;
+			border-bottom: 2px solid $blue009;
+		}
+	}
+	.orderDesc-info{
+		width: 395px;
+	}
+	.orderDesc-type{
+		width: 200px;
+	}
+	.orderDesc-price{
+		width: 130px;
+	}
+	.orderDesc-num{
+		width: 130px;
+	}
+	.orderDesc-sale{
+		width: 130px;
+	}
+	.orderDesc-sum{
+		float: right;
+	}
+}
+.order-box{
+	.order-item{
+		padding: 10px	;
+		border-top: 1px solid $gray01;
+		&:first-child{
+			border: none;
+		}
+		li{
+			float: left;
+			height: 75px;
+			margin-right: 5px;
+		}
+		.img{
+			width: 75px;
+			margin-right: 10px;
+			img{
+				width: 75px;
+				height: 75px;
+			}
+		}
+		.desc{
+			width: 300px;
+			overflow: hidden;
+			text-align: left;
+			margin-right: 10px;
+		}
+		.info{
+			width: 200px;
+			.info-color{
+				display: block;
+			}
+			.info-size{
+				display: block;
+			}
+			em{
+				color: $gray03;
+			}
+		}
+		.price{
+			width: 130px;
+		}
+		.num{
+			width: 130px;
+		}
+		.sale{
+			width: 130px;
+		}
+		.minsum{
+			float: right;
+			width: 150px;
+			text-align: right;
+			color: $color-Main;
+		}
+	}
+}
+.order-info{
+	text-align: right;
+	padding-top: 30px;
+	border-top: 1px dotted $gray01;
+	.info-box{
+		text-align: right;
+		height: 100px;
+		border: 1px solid $color-Main;
+		padding: 10px	;
+		float: right;
+		h3{
+			font-weight: 600;
+			em{
+				font-size: 26px;
+				color: $gray03;
+				padding: 0 3px;
+			}
+			span{
+				color: $color-Main;
+				font-size: 26px;
+			}
+		}
+		.info-address{
+			font-size: 12px;
+			.to{
+				font-weight: 700;
+				font-size: 14px;
+			}
+		}
+		.info-consignee{
+			padding-top: 10px;
+			font-weight: 700;
+			.consignee,
+			.uphone{
+				font-weight: 400;
+				font-size: 12px;
+				padding: 0 5px;
+			}
+		}
+	}
+}
+.order-submit{
+	button{
+		float: right;
+		height: 40px;
+		width: 180px;
+		line-height: 40px;
+		text-align: center;
+		color: $whilt;
+		background-color: $color-Main;
+		cursor: pointer;
+	}
+	a{
+		float: right;
+		margin-top: 10px;
+		margin-right: 40px;
+		line-height: 20px;
+		text-align: center;
+		color: $color-Main;
+		&:hover{
+			color: $red01;
+		}
+	}
+}
+@media screen and (max-width: 1180px) {
+	.order-orderDesc {
+		.orderDesc-info{
+			width: 340px;
+		}
+		.orderDesc-type{
+			width: 150px;
+		}
+		.orderDesc-price{
+			width: 100px;
+		}
+		.orderDesc-num{
+			width: 80px;
+		}
+		.orderDesc-sale{
+			width: 100px;
+		}
+		.orderDesc-sum{
+			width: 140px;
+			float: right;
+		}
+	}
+	.order-box{
+		.order-item{
+			.desc{
+				width: 250px;
+			}
+			.info{
+				width: 150px;
+			}
+			.price{
+				width: 100px;
+			}
+			.num{
+				width: 80px;
+			}
+			.sale{
+				width: 100px;
+			}
+			.minsum{
+				width: 140px;
+			}
+		}
+	}
+}

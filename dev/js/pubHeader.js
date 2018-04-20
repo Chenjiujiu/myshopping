@@ -4,35 +4,26 @@
 	C(".pubHeader").load("./public/pubHeader.html", function(){
 		//cookie判断
 		~function(){
-			var uid = window.C.getCookie("uid");
-			if(uid !== undefined){
-				var callback = function(data){
-					if(data !== undefined){
+			var uname = window.C.getCookie("uname");
+			uname=decodeURIComponent(uname);
+			if(uname !== 'undefined'){
+					if(uname !== undefined){
 						var str = "";
 						var nowH = new Date().getHours();
 						if(nowH >= 5 && nowH < 9){
-							str = "早上好，<a href='#'>" + data + "</a>";
+							str = "早上好，<a href='#'>" + uname + "</a>";
 						}else if(nowH >= 9 && nowH < 12){
-							str = "上午好，<a href='#'>" + data + "</a>";
+							str = "上午好，<a href='#'>" + uname + "</a>";
 						}else if(nowH >= 12 && nowH < 19){
-							str = "下午好，<a href='#'>" + data + "</a>";
+							str = "下午好，<a href='#'>" + uname + "</a>";
 						}else if(nowH >= 19 || nowH < 5){
-							str = "晚上好，<a href='#'>" + data + "</a>";
+							str = "晚上好，<a href='#'>" + uname + "</a>";
 						}
 						C("#welcome-uname").html(str);
 						C(".topbar-login").hide().next().show();
 					}else{
 						C(".topbar-login").show().next().hide();
 					}
-				};
-				C.ajax({
-					type:'post',
-					url:'./data/islogin.php',
-					data:{
-						"uid":uid
-					},
-					fn:callback
-				});
 			}else{
 				C(".topbar-login").show().next().hide();
 			}
@@ -43,6 +34,10 @@
 				C.delCookie({
 					"name":"uid",
 					"path":"/"
+				});
+				C.ajax({
+					url:'./data/logout.php',
+					type:'get'
 				});
 				location.href = "./pass/login.html"
 			});
@@ -61,7 +56,6 @@
 				function showSearch(){
 					if(C.scrollTop() <= searchTop + 36){
 						dom_Search.animate({targent:{height:0}, time:8, step:5, avg:true});
-
 					}else if(stiteT - C.scrollTop() < C.windowH()){
 						dom_Search.animate({targent:{height:70}, time:8, step:5, avg:true});
 					}

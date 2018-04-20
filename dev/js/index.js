@@ -43,7 +43,7 @@
 	var flag=true;
 	C(window).on("scroll", addFloor);
 	function addFloor(){
-		if(C.scrollTop()>=C("#product").get(0).offsetTop &&flag){
+		if(C.scrollTop()>=C("#product").get(0).offsetTop-C.windowH() &&flag){
 			C(window).un("scroll", addFloor);
 			flag=false;
 			new Floor();

@@ -52,8 +52,9 @@
 		if(unameFlag&&upwdFlag&&flag){
 			var callback = function(data){
 				if(data.flag===1){	//登录成功
+					var uname=encodeURIComponent(data.uname);
+					C.setCookie({"name":"uname","value":uname,"days":30,"path":"/"});
 					window.location.href="../index.html";
-					C.setCookie({"name":"uid","value":data.uid,"days":30,"path":"/"});
 				}else{
 					tip.html('用户名或密码错误!').css("opacity","1");
 					flag=false;

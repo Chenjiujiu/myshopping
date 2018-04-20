@@ -193,6 +193,21 @@
 				return obj && typeof obj === 'object' && obj.nodeType === 1;
 			}
 
+		},
+		float2:function(obj){
+			var obj=parseFloat(obj);
+			obj=Math.ceil(obj*100)/100;
+			var objarr=obj.toString().split(".");
+			if(objarr.length===1){
+				obj=obj.toString()+".00";
+				return obj;
+			}
+			if(objarr.length>1){
+				if(objarr[1].length<2){
+					obj=obj.toString()+"0";
+				}
+				return obj
+			}
 		}
 	});
 	//选择框架
@@ -774,6 +789,11 @@
 			this.on('click', fn, flag);
 			return this;
 		},
+		one:function(fn){
+			this.get(0).onclick=function(){
+				fn()
+			}
+		},
 		mEnter:function(fn, flag){
 			this.on('mouseenter', fn, flag);
 			return this;
@@ -790,6 +810,11 @@
 				this.on('mouseout', outfn, flag)
 			}
 			return this;
+		},
+		//表单修改
+		change:function(fn,flag){
+				this.on('input',fn, flag);
+				this.on('propertychange',fn, flag);
 		},
 		// 拖拽
 		drag:function(data){//box,x,y

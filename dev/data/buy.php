@@ -27,7 +27,27 @@ $pics=mysqli_fetch_row($result);
 $order_pic=explode(',',$pics[0]);
 $data["order_pic"]=$order_pic;
 
-$data["fid"]=$fid;
+$sql="select `cid`,`s`,`m`,`l`,`xl` from `shoes_pic` where `fid`=$fid";
+$result=mysqli_query($conn,$sql);
+$pro_pics=mysqli_fetch_all($result,MYSQLI_ASSOC);
+$pic=array();
+foreach($pro_pics as $k => $v){
+if( in_array($v['cid'],$v))
+    $pic[$v['cid']][]=$v;
+}
+$data["pic"]=$pic;
+
+$sql=" select `cid`,group_concat(`zid` separator ';')as allZid ";
+$sql.=" from `shoes` where fid=$fid group by `cid`";
+$result=mysqli_query($conn,$sql);
+$size=mysqli_fetch_all($result,MYSQLI_ASSOC);
+$allZid=array();
+foreach($size as $k => $v){
+if( in_array($v['cid'],$v))
+    $allZid[$v['cid']]=$v;
+}
+$data["allZid"]=$allZid;
+
 
 echo JSON_encode($data);
 ?>

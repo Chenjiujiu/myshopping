@@ -19,19 +19,19 @@
 	<div class="main">
 		<div class="w">
 			<div class="car-box">
-					<!--头部-->
+				<!--头部-->
 				<div class="car-header">
 					<ul>
 						<li class="check">
-							<input type="text" id="allsele">
-							<label for="allsele"> <i class="icon-font">&#xe913;</i>全选</label>
+							选择
 						</li>
 						<li class="item">
 							<div class="item-pic">
 							</div>
 							<div class="item-info">
 								<p>商品信息</p>
-							</div></li>
+							</div>
+						</li>
 						<li class="info"></li>
 						<li class="price">单价</li>
 						<li class="nums">数量</li>
@@ -42,122 +42,40 @@
 				<!--主体-->
 				<div class="car-body">
 					<!--购物车列表-->
-					<div class="pro-list">
-						<!--单个产品-->
-						<div class="pro-item">
-							<ul class="clearfix">
-								<li class="check"><input type="text" id="pro-check"> <label for="pro-check"><i class="icon-font">&#xe913;</i></label></li>
-								<li class="item">
-									<div class="item-pic">
-										<img src="images/product/101/1001m3.jpg">
-									</div>
-									<div class="item-info">
-										<p>睡觉睡觉啊链接啊分类看见阿列克；就</p>
-									</div>
-								</li>
-								<li class="info">
-									<p>颜色：红色</p>
-									<p>尺码：44</p>
-								</li>
-								<li class="price">
-									<p class="price-del"><del>¥999.00</del></p>
-									<p>¥222.00</p>
-								</li>
-								<li class="nums">
-									<a href="#" class="nums-redus">-</a>
-									<input  type="text" class="nums-num">
-									<a href="#" class="nums-add">+</a>
-								</li>
-								<li class="sum">
-									<span>¥300.00</span>
-								</li>
-								<li class="del">
-									<a href="#">删除&nbsp;x</a>
-								</li>
-							</ul>
-						</div>
-						<div class="pro-item">
-							<ul class="clearfix">
-								<li class="check"><input type="text" id="pro-check2"> <i class="icon-font">&#xe913;</i><label for="pro-check2"></label></li>
-								<li class="item">
-									<div class="item-pic">
-										<img src="images/product/101/1001m3.jpg">
-									</div>
-									<div class="item-info">
-										<p>睡觉睡觉啊链接啊分类看见阿列克；就</p>
-									</div>
-								</li>
-								<li class="info">
-									<p>颜色：红色</p>
-									<p>尺码：44</p>
-								</li>
-								<li class="price">
-									<p class="price-del"><del>¥999.00</del></p>
-									<p>¥222.00</p>
-								</li>
-								<li class="nums">
-									<a href="#" class="nums-redus">-</a>
-									<input  type="text" class="nums-num">
-									<a href="#" class="nums-add">+</a>
-								</li>
-								<li class="sum">
-									<span>¥300.00</span>
-								</li>
-								<li class="del">
-									<a href="#">删除&nbsp;x</a>
-								</li>
-							</ul>
-						</div>
-						<div class="pro-item">
-							<ul class="clearfix">
-								<li class="check"><input type="text" id="pro-check3"> <i class="icon-font">&#xe913;</i><label for="pro-check3"></label></li>
-								<li class="item">
-									<div class="item-pic">
-										<img src="images/product/101/1001m3.jpg">
-									</div>
-									<div class="item-info">
-										<p>睡觉睡觉啊链接啊分类看见阿列克；就</p>
-									</div>
-								</li>
-								<li class="info">
-									<p>颜色：红色</p>
-									<p>尺码：44</p>
-								</li>
-								<li class="price">
-									<p class="price-del"><del>¥999.00</del></p>
-									<p>¥222.00</p>
-								</li>
-								<li class="nums">
-									<a href="#" class="nums-redus">-</a>
-									<input  type="text" class="nums-num">
-									<a href="#" class="nums-add">+</a>
-								</li>
-								<li class="sum">
-									<span>¥300.00</span>
-								</li>
-								<li class="del">
-									<a href="#">删除&nbsp;x</a>
-								</li>
-							</ul>
-						</div>
+					<div class="pro-list" id="pro-list">
 					</div>
 				</div>
 			</div>
 			<div class="car-sum">
 				<ul>
-					<li class="select">
+					<li class="select allsele">
 						<input type="text" id="allsele-b">
 						<label for="allsele-b"> <i class="icon-font">&#xe913;</i>全选</label>
 					</li>
-					<li class="info">
-						已选商品<span>10</span>件
+					<li class="select inverse">
+						<input type="text" id="inverse">
+						<label for="inverse"> <i class="icon-font">&#xe913;</i>反选</label>
 					</li>
+					<li class="sum-btn"><a href="#">结&nbsp;算</a></li>
 					<li class="allPrice">
-						合计:<span>¥1900.00</span>
+						合计:<span>¥0.00</span>
 					</li>
-					<li class="sum-btn"><a href="">结&nbsp;算</a></li>
+					<li class="info">
+						已选商品<span>0</span>件
+					</li>
 				</ul>
 			</div>
+		</div>
+	</div>
+	<div class="mod-box">
+		<div class="mod-info">
+			<h3 class="title">删除商品</h3>
+			<p>确定要删除商品吗？</p>
+			<div class="ctrl">
+				<a href="#" class="ok">确定</a>
+				<a href="#" class="cancel">取消</a>
+			</div>
+			<i class="icon-font close">&#xe90d;</i>
 		</div>
 	</div>
 	<!--公共页脚盒子-->
@@ -167,5 +85,5 @@
 <script src="./js/pubHeader.js"></script>
 <script src="./js/pubFooter.js"></script>
 
-<script src="./js/car.js"></script>
+<script src="./js/cart.js"></script>
 </html>

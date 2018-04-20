@@ -1,5 +1,6 @@
 <?php
 header("content-Type:application/json");
+session_start();
 $uname=$_REQUEST['uname'];
 $upwd=$_REQUEST["upwd"];
 require ('init.php');
@@ -8,7 +9,8 @@ $result=mysqli_query($conn,$sql);
 $result=mysqli_fetch_assoc($result);
 if($upwd===$result['upwd'] & $result['upwd'] != null){
     $data['flag']=1;
-    $data['uid']=$result['uid'];
+    $data['uname']=$uname;
+    $_SESSION["uid"]=$result['uid'];
     echo JSON_encode($data);
 }else{
     $data['flag']=0;
