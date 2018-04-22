@@ -4,28 +4,58 @@
 	<meta charset="UTF-8">
 	<title>Title</title>
 	<style>
-		
+		#father {
+			width: 200px;
+			border: 3px solid red;
+			margin: 100px auto;
+		}
+		#top-son {
+			width: 150px;
+			background-color: #fff;
+		}
+		#top-son-son{
+			width: 150px;
+			height: 100px;
+			background-color: gold;
+		}
+		#bottom-son {
+			width: 150px;
+			height: 100px;
+			background-color: blue;
+		}
 	</style>
 </head>
 <body>
-	<input type="text" id="input" value="1">
-	<button type="button" id="btn">点击+1</button>
+	<div id="father">
+		<div id="top-son">这是上面的盒子</div>
+		<div id="bottom-son">这是下面的盒子</div>
+	</div>
 </body>
 </html>
-<script src="./js/cjj.js"></script>
 <script>
-	var inp=document.getElementById("input");
-	var btn=document.getElementById("btn");
+	var father = document.getElementById("father");
+	var topSon = document.getElementById("top-son");
+	var topSonSon = '<div id="top-son-son">这是上面的小盒子</div>';
+//鼠标进入大盒子，上面的小盒子添加内容，内容为一个小盒子
 
-	 inp.oninput=function(ev){
-	 	console.log(this.value);
-	 };
-
-	btn.onclick=function(ev){
-	 	var a=parseInt(inp.value)+1;
-		inp.setAttribute('value',a);
+	var flag=true;
+	father.onmouseenter = function(event){
+		if(flag){
+			flag=false;
+			topSon.innerHTML = topSonSon;
+			console.log('鼠标进入父盒子');
+		}
+	};
+	father.onmouseleave=function(ev){
+		flag=true;
 	}
 
+
+
+	//问题  鼠标从上面或者左边进入father的时候
+	// 也就是直接进入son-son,而中途没有经过father原来就存在的区域
+	//从右边或下面进去会经过father原有区域
+	//进入后  会重复出发进入事件console
 
 </script>
 

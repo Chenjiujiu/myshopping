@@ -21,8 +21,17 @@ Cart.prototype = {
 			fn:callback
 		});
 		function callback(data){
-			for(var k in data){
-				that.products[k] = new Product(data[k]);
+			if(data===0){
+				var nologintemp='<div class="car-noLogin"><p>未登录，请先登录！</p><a href="./pass/login.html">点击前往登录！</a> </div>';
+				C(".car-box .car-body .pro-list").html(nologintemp);
+			}else{
+				for(var k in data){
+					that.products[k] = new Product(data[k]);
+				}
+				if(that.products.length===0){
+					var empcar='<div class="car-emp"><p>购物车空空如也</p><a href="./index.html">马上去购物！</a></div>';
+					C(".car-box .car-body .pro-list").html(empcar);
+				}
 			}
 		}
 	},
@@ -55,17 +64,29 @@ Cart.prototype = {
 		var that = this;
 		// 全选
 		C(".car-sum .allsele label").click(function(){
-			// 自己变成选中
-			C(this).addClass("checked").child("i").html("&#xe914;");
-			// 反选清空选中
-			C(".car-sum .inverse label").remClass("checked").child("i").html("&#xe913;");
-			// 遍历所有添加选中
-			for(var k in that.products){
-				var obj = that.products[k];
-				obj.checked = true;
-				var dom = C(".check label", obj.dom.get(0));
-				dom.addClass("checked").child("i").html("&#xe914;");
+			if(!C(this).hasClass('checked')){
+				// 自己变成选中
+				C(this).addClass("checked").child("i").html("&#xe914;");
+				// 遍历所有添加选中
+				for(var k in that.products){
+					var obj = that.products[k];
+					obj.checked = true;
+					var dom = C(".check label", obj.dom.get(0));
+					dom.addClass("checked").child("i").html("&#xe914;");
+				}
+			}else{
+				// 自己清除选中
+				C(this).remClass("checked").child("i").html("&#xe913;");
+				// 遍历所有清除选中
+				for(var k in that.products){
+					var obj = that.products[k];
+					obj.checked = false;
+					var dom = C(".check label", obj.dom.get(0));
+					dom.remClass("checked").child("i").html("&#xe913;");
+				}
 			}
+			// 清空反选
+			C(".car-sum .inverse label").remClass("checked").child("i").html("&#xe913;");
 			//重新绑定价格
 			that.bindDom();
 		});
@@ -104,26 +125,26 @@ Cart.prototype = {
 				if(that.products[k].checked){
 					cartlist.push({
 						sid:that.products[k].data.sid,
-						count:that.products[k].data.num
+						count:that.products[k].data.num,
+						cid:that.products[k].data.carid
 					})
 				}
 			}
-			C.ajax({
-				url:'./data/addorder.php',
-				data:{data:JSON.stringify(cartlist)},
-				type:'post',
-				fn:function(data){
-					console.log(data);
-				}
-			});
-
-			console.log(cartlist);
-			// 跳转到订单页面
-			// location.href="./order.html"
+			if(cartlist.length===0){
+				return false;
+			}else{
+				C.ajax({
+					url:'./data/addorder.php',
+					data:{data:JSON.stringify(cartlist)},
+					type:'post',
+					fn:function(data){
+						location.href="./order.html"
+					}
+				});
+			}
 		})
 	}
 };
-
 //产品
 function Product(data){
 	this.data = data;
@@ -160,6 +181,7 @@ Product.prototype = {
 	},
 	//绑定数据
 	creatDom:function(){
+		this.cid=this.data.carid;
 		this.dom = C('<div></div>').addClass("pro-item");
 		this.dom.bindHtml(this.temp, this.data);
 		C(".sum span", this.dom.get(0)).html('¥' + this.getsum());
@@ -242,7 +264,7 @@ Product.prototype = {
 	},
 	bindDom:function(){
 		C('#pro-list').get(0).appendChild(this.dom.get(0));
-	},
+	}
 };
 
 var car = new Cart();

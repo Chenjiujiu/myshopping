@@ -74,7 +74,9 @@
 		margin-bottom: 20px;
 		cursor: pointer;
 		color: $gray05;
-		.default {
+		@include transition2;
+		@include user-select-no;
+		.default1 {
 			span {
 				font-size: 12px;
 				float: right;
@@ -82,6 +84,9 @@
 				margin-top: 10px;
 				color: $color-Main;
 			}
+		}
+		.default0{
+			display: none;
 		}
 	}
 	.current {
@@ -202,6 +207,7 @@
 	text-align: right;
 	padding-top: 30px;
 	border-top: 1px dotted $gray01;
+	@include user-select-no;
 	.info-box{
 		text-align: right;
 		height: 100px;
@@ -259,6 +265,36 @@
 		color: $color-Main;
 		&:hover{
 			color: $red01;
+		}
+	}
+}
+.mod-box{
+	display: none;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	background-color: rgba(0,0,0,.5);
+	.mod-info{
+		width: 320px;
+		height: 80px;
+		padding: 20px 30px;
+		background-color: $whilt;
+		border: 3px solid rgba(0,0,0,.7);
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -60px;
+		margin-left: -181px;
+		.title{
+			text-align: center;
+			color: $red01;
+			line-height: 80px;
+			margin-bottom: 20px;
+			font-weight: 700;
+			font-size: 16px;
 		}
 	}
 }

@@ -16,7 +16,9 @@
 	//搜索头部
 	.search-header {
 		width: 100%;
-		margin: 30px 0 20px 0;
+		margin: 10px 0 20px 0;
+		padding-top: 30px;
+		border-top: 1px solid $gray01;
 	}
 }
 //已选
@@ -85,7 +87,6 @@
 	background-color: $blue007;
 	.sele-brand{
 		.sele-content{
-			height: 104px;
 			padding: 5px 140px 5px 50px;
 			li{
 				width: 75px;
@@ -116,7 +117,6 @@
 		color: $gray03;
 	}
 	.sele-content {
-		height: 35px;
 		margin-left: 130px;
 		padding-right: 130px;
 		padding-left: 15px;

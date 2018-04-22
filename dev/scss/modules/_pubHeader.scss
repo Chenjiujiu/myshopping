@@ -16,17 +16,17 @@
 			float: left;
 		}
 		//退出条
-		.topbar-welcome{
+		.topbar-welcome {
 			display: none;
 			float: left;
-			.welcome{
-				a{
+			.welcome {
+				a {
 					@extend %shen-m
 				}
 			}
-			.logout{
+			.logout {
 				cursor: pointer;
-				&:hover{
+				&:hover {
 					color: $color-Main;
 				}
 			}
@@ -39,7 +39,7 @@
 			}
 		}
 		.fun-app {
-			.icon-font{
+			.icon-font {
 				font-size: 15px;
 			}
 			position: relative;
@@ -111,9 +111,9 @@
 				padding: 0 10px;
 				overflow: hidden;
 				@include transition2;
-				.icon-font{
+				.icon-font {
 					font-size: 16px;
-					margin-right: 3px	;
+					margin-right: 3px;
 				}
 			}
 			.myxk-list {
@@ -133,18 +133,18 @@
 			cursor: pointer;
 			position: relative;
 			text-align: center;
-			transition: all .2s linear .2s;
+			transition: all .2s linear;
 			&:hover {
 				background-color: $whilt;
-				transition: all .2s linear;
+				@include transition2;
 				.car-info {
-					transition: all .2s linear;
+					@include transition2;
 					color: $color-Main;
 				}
 			}
-			.car-info{
-				transition: all .2s linear .2s;
-				.icon-font{
+			.car-info {
+				transition: all .2s linear;
+				.icon-font {
 					font-size: 16px;
 					line-height: 16px;
 					vertical-align: -1px;
@@ -152,114 +152,96 @@
 			}
 		}
 		.car-box {
-			height: 0;
-			width: 330px;
+			display: none;
+			width: 340px;
 			position: absolute;
 			top: 40px;
 			right: 0;
 			background-color: $whilt;
 			overflow: hidden;
-			@include transition2;
 			z-index: 1000;
 			box-shadow: 0 3px 3px 0 #{$yellow01};
 		}
 		.car-list {
-			padding: 10px 20px;
+			padding: 10px 10px;
+			max-height: 71*5px;
+			overflow-y: auto;
 		}
 		.car-item {
 			height: 60px;
 			padding: 5px 0;
 			position: relative;
 			font-size: 12px;
-			border: 1px solid $yellow01;
-			&:hover {
-				.close {
-					opacity: 1;
-					display: block;
-				}
-			;
-			}
-			&:last-child {
+			border-top: 1px solid $yellow01;
+			overflow: hidden;
+			&:first-child {
 				border: none;
 			}
-			.img {
-				float: left;
+		}
+		.img {
+			float: left;
+			width: 60px;
+			height: 60px;
+			img {
 				width: 60px;
 				height: 60px;
-				img {
-					width: 60px;
-					height: 60px;
-				}
-			}
-			.des {
-				float: left;
-				width: 120px;
-				height: 40px;
-				line-height: 20px;
-				padding: 10px 10px 0 10px;
-				overflow: hidden;
-				a {
-					color: #333;
-					line-height: 20px;
-					text-align: left;
-					font-size: 12px;
-					&:hover {
-						color: $color-Main;
-					}
-				}
-			}
-			.price {
-				float: left;
-				width: 90px;
-				overflow: hidden;
-				span, i {
-					padding: 0 4px;
-				}
-			}
-			.close {
-				opacity: 0;
-				width: 18px;
-				line-height: 18px;
-				position: absolute;
-				right: 0;
-				top: 16px;
-				color: $gray05;
-				@include transition2;
-				&:hover {
-					color: #333;
-				}
 			}
 		}
-		.car-sum {
+		.des {
+			float: left;
+			width: 120px;
 			height: 40px;
-			background-color: $yellow01;
-			padding: 15px 20px;
-			.info {
-				float: left;
-				h3 {
-					line-height: 10px;
-				}
-				p {
+			line-height: 20px;
+			padding: 10px 10px 0 10px;
+			overflow: hidden;
+			a {
+				color: #333;
+				line-height: 20px;
+				text-align: left;
+				font-size: 12px;
+				&:hover {
 					color: $color-Main;
 				}
-				span {
-					font-size: 24px;
-					font-weight: 400;
-				}
-			}
-			.gotocar {
-				float: right;
-				height: 40px;
-				background-color: $color-Main;
-				padding: 0 20px;
-				a {
-					color: $whilt;
-				}
 			}
 		}
-		.car-empty {
-			padding: 25px 10px;
+		.price {
+			float: left;
+			overflow: hidden;
+			span, i {
+				padding: 0 4px;
+			}
 		}
+	}
+	.car-sum {
+		display: none;
+		height: 40px;
+		background-color: $yellow01;
+		padding: 15px 20px;
+		.info {
+			float: left;
+			h3 {
+				line-height: 10px;
+			}
+			p {
+				color: $color-Main;
+			}
+			span {
+				font-size: 24px;
+				font-weight: 400;
+			}
+		}
+		.gotocar {
+			float: right;
+			height: 40px;
+			background-color: $color-Main;
+			padding: 0 20px;
+			a {
+				color: $whilt;
+			}
+		}
+	}
+	.car-empty {
+		padding: 25px 10px;
 	}
 	//搜索导航
 	.pub-header {
@@ -285,7 +267,7 @@
 			width: 600px;
 			margin-top: 30px;
 			margin-left: 50px;
-			@media screen and (max-width: 1180px){
+			@media screen and (max-width: 1180px) {
 				margin-left: 0;
 				width: 510px;
 			}
@@ -335,7 +317,7 @@
 				height: 100px;
 				margin-top: 20px;
 				overflow: hidden;
-				img{
+				img {
 					width: 200px;
 					height: 100px;
 				}
@@ -344,26 +326,26 @@
 		//导航
 		.header-nav {
 			margin-top: 20px;
-			border-bottom: 1px solid$yellow02;
-			.nav-item{
+			border-bottom: 1px solid $yellow02;
+			.nav-item {
 				float: left;
 				text-align: center;
-				a{
+				a {
 					font-size: 16px;
 					display: block;
 					@extend %b-m;
 					padding: 10px;
 				}
-				.list-item{
+				.list-item {
 					text-align: left;
 				}
 			}
-			.nav-all{
+			.nav-all {
 				margin-right: 50px;
 				width: 175px;
 				height: 44px;
 				position: relative;
-				.all-title{
+				.all-title {
 					display: block;
 					font-size: 16px;
 					line-height: 44px;
@@ -371,23 +353,23 @@
 					color: $whilt;
 					cursor: pointer;
 				}
-				&:hover{
-					.nav-box{
+				&:hover {
+					.nav-box {
 						display: block;
 					}
 				}
 			}
-			.icon-font{
+			.icon-font {
 				float: right;
 			}
-			.nav-box{
+			.nav-box {
 				display: none;
 				position: absolute;
 				top: 44px;
 				left: 0;
 				z-index: 9999;
 			}
-			.nav-list{
+			.nav-list {
 				width: 174px;
 				height: 340px;
 				padding: 10px 0;
@@ -395,24 +377,26 @@
 				background-color: $whilt;
 				opacity: .98;
 			}
-			.list-item{
+			.list-item {
 				height: 42px;
 				cursor: pointer;
-				&:hover{
+				&:hover {
 					background-color: $color-Main;
-					&>a{color: $whilt}
-					.list-box{
+					& > a {
+						color: $whilt
+					}
+					.list-box {
 						display: block;
 					}
 				}
-				a{
+				a {
 					display: block;
 					width: 153px;
 					line-height: 22px;
 					font-size: 14px;
 				}
 			}
-			.list-box{
+			.list-box {
 				display: none;
 				height: 360px;
 				position: absolute;
@@ -422,11 +406,11 @@
 				background-color: $whilt;
 				z-index: 500;
 				overflow: hidden;
-				ul{
+				ul {
 					float: left;
 					width: 190px;
 				}
-				li{
+				li {
 					float: left;
 					width: 170px;
 					line-height: 60px;
@@ -434,27 +418,27 @@
 					padding-left: 10px;
 					display: block;
 					overflow: hidden;
-					a{
+					a {
 						line-height: 60px;
 						padding: 0;
 					}
-					.img{
+					.img {
 						display: inline-block;
 						width: 75px;
 						height: 55px;
 						margin: 5px 10px 5px 0;
 						text-align: center;
 						float: left;
-						img{
+						img {
 							max-width: 100%;
 							max-height: 100%;
 						}
 					}
-					span{
+					span {
 						line-height: 65px;
 						float: left;
 					}
-					&:hover span{
+					&:hover span {
 						color: $color-Main;
 					}
 				}
@@ -473,7 +457,7 @@
 			}
 		}
 		//固定搜索
-		.fixd-search{
+		.fixd-search {
 			//display: none;
 			width: 100%;
 			height: 0;
@@ -483,27 +467,28 @@
 			top: 0;
 			left: 0;
 			z-index: 9999;
-			@include box-shadow( 0 1px 6px 0 rgba(0,0,0,.3));
-			border-bottom:1px solid  $yellow02 \0;
-			.logo{
+			@include box-shadow(0 1px 6px 0 rgba(0, 0, 0, .3));
+			border-bottom: 1px solid $yellow02 \0
+		;
+			.logo {
 				display: block;
 				text-indent: -9999px;
 				white-space: nowrap;
 				overflow: hidden;
-				a{
+				a {
 					height: 70px;
 					margin-top: 0;
 					background: url("./../images/logo_70.png") no-repeat top center;
 				}
 			}
-			.search-box{
+			.search-box {
 				margin-top: 10px;
 			}
 		}
 	}
-}
-@media screen and (max-width: 1180px) {
-	.w{
-		width: 960px;
+	@media screen and (max-width: 1180px) {
+		.w {
+			width: 960px;
+		}
 	}
 }
