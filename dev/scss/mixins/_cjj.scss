@@ -245,6 +245,12 @@ $prefixO	:	true !default;   //opera前缀:o前缀
 	overflow : hidden;
 	text-overflow: ellipsis;
 }
+//盒模型
+@mixin	box-size(){
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
 //强制折行;
 @mixin break{
 	word-break:break-all; //支持IE，chrome，Fox不支持

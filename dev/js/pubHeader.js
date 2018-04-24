@@ -67,13 +67,24 @@
 		//搜索框效果
 		~function(){
 			var searIn=C("#header-search-text");
+			var fixIn = C("#fixd-input-text");
 			C(".pub-header .hot-words a").click(function(e){
 				C.prevDef(e);
 				searIn.val(C(this).html());
+				fixIn.val(C(this).html());
 			});
-			C(".pub-header .search-box .input-btn").click(function(e){
+			C(".pub-header .header-search .input-btn").click(function(e){
 				C.prevDef(e);
 				var keyword=C.trim(searIn.val());
+				keyword=keyword.replace(/\s+/g," ");
+				keyword=encodeURIComponent(keyword);
+				if(keyword!==''){
+					location.href="./search.html?keywords="+keyword;
+				}
+			});
+			C(".pub-header .fixd-search .input-btn").click(function(e){
+				C.prevDef(e);
+				var keyword=C.trim(fixIn.val());
 				keyword=keyword.replace(/\s+/g," ");
 				keyword=encodeURIComponent(keyword);
 				if(keyword!==''){
@@ -83,9 +94,20 @@
 			// 回车事件
 			searIn.on("keyup",function(e){
 				var event=C.event(e);
+				this.value = this.value.replace(/[^(0-9a-zA-Z)|(\s)|(\u4e00-\u9fa5)]/g, "");
 				var code=event.charCode || event.keyCode;
 				if(code===13){
 					C(".pub-header .search-box .input-btn").get(0).click();
+				}else{
+					return false;
+				}
+			});
+			fixIn.on("keyup",function(e){
+				var event=C.event(e);
+				this.value = this.value.replace(/[^(0-9a-zA-Z)|(\s)|(\u4e00-\u9fa5)]/g, "");
+				var code=event.charCode || event.keyCode;
+				if(code===13){
+					C(".pub-header .fixd-search .input-btn").get(0).click();
 				}else{
 					return false;
 				}

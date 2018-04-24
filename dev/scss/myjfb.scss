@@ -1,0 +1,342 @@
+@charset "UTF-8";
+@import "base";
+//初始化css
+@import "mixins/cjj";
+//引入scss函数库 包含占位符，函数，mixin
+@import "mixins/variable";
+//引入变量，
+@import "modules/pubHeader";
+//引入模态框，
+@import "modules/modal";
+//引入页头样式
+@import "modules/pubFooter"; //引入页脚样式
+/*=====引入页面主样式=====*/
+.main {
+	margin-top: 50px;
+	padding: 50px 0;
+	background-color: $gray04;
+	.nav {
+		width: 200px;
+		text-align: center;
+		background-color: $whilt;
+		padding: 10px 0;
+		float: left;
+		.nav-head {
+			height: 60px;
+			line-height: 60px;
+			font-size: 16px;
+			font-weight: 500;
+		}
+		.nav-item {
+			a {
+				display: block;
+				height: 40px;
+				line-height: 40px;
+				font-size: 14px;
+				color: $gray02;
+				&:hover {
+					color: $color-Main;
+				}
+			}
+		}
+		position: relative;
+		z-index: 2;
+	}
+	.content {
+		float: right;
+		width: 100%;
+		@include box-size;
+		margin-left: -200px;
+		.content-box {
+			display: none;
+			margin-left: 220px;
+			padding: 36px 48px;
+			background-color: $whilt;
+		}
+
+	}
+}
+.address {
+	.address-head {
+		h3 {
+			font-size: 30px;
+			font-weight: 500;
+			line-height: 68px;
+			color: $gray02;
+		}
+	}
+	.address-bord {
+		.new-address {
+			color: $gray05;
+			font-size: 18px;
+			text-align: center;
+			cursor: pointer;
+			i {
+				display: block;
+				margin-top: 60px;
+			}
+			&:hover {
+				color: $gray02;
+			}
+		}
+		.address-list {
+			padding-top: 30px;
+			.address-item {
+				float: left;
+				width: 268px;
+				height: 178px;
+				border: 1px solid $gray01;
+				margin-right: 18px;
+				margin-bottom: 20px;
+				@include transition2;
+				position: relative;
+				overflow: hidden;
+				dl {
+					padding: 15px 24px 0;
+					cursor: pointer;
+				}
+				.consignee {
+					line-height: 30px;
+					height: 30px;
+					font-size: 18px;
+					margin-bottom: 10px;
+					font-weight: 500;
+				}
+				.cellphone,
+				.address {
+					line-height: 22px;
+					font-size: 14px;
+					color: $gray02;
+				}
+				.ctrl {
+					display: none;
+					position: absolute;
+					right: 20px;
+					bottom: 10px;
+					a {
+						color: $red01;
+						margin-right: 5px;
+						font-weight: 600;
+					}
+				}
+				&:hover {
+					border: 1px solid $gray02;
+					.ctrl {
+						display: block;
+					}
+				}
+			}
+		}
+	}
+}
+.modal-address {
+	display: none;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	background-color: rgba(0, 0, 0, .5);
+	.maddress-box {
+		@include opacity(0);
+		width: 660px;
+		height: 460px;
+		margin-left: -330px;
+		margin-top: -230px;
+		background-color: $whilt;
+		border: 3px solid rgba(0, 0, 0, .5);
+		position: absolute;
+		overflow: hidden;
+		top: 50%;
+		left: 50%;
+		.maddress-head {
+			padding: 14px 20px;
+			height: 32px;
+			font-size: 18px;
+			font-weight: 500;
+			line-height: 32px;
+			position: relative;
+			background-color: $blue007;
+			.close {
+				width: 30px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				cursor: pointer;
+				position: absolute;
+				top: 14px;
+				right: 14px;
+			}
+		}
+		.maddress-body {
+			height: 280px;
+			width: 580px;
+			padding: 40px 40px 0;
+			.form-section {
+				margin-bottom: 14px;
+				float: left;
+				position: relative;
+				.input-text {
+					width: 546px;
+					padding: 10px 16px;
+					border: 1px solid $gray01;
+					@include transition2;
+					&::placeholder {
+						color: transparent;
+					}
+				}
+				label {
+					position: absolute;
+					left: 12px;
+					top: 11px;
+					font-size: 14px;
+					line-height: 18px;
+					z-index: 5;
+					background-color: $whilt;
+					color: $gray03;
+					cursor: inherit;
+					@include transition2;
+				}
+				i {
+					position: absolute;
+					right: 12px;
+					top: 10px;
+					font-size: 12px;
+					color: $red01;
+					display: none;
+				}
+				.tip {
+					display: none;
+					position: absolute;
+					top: -16px;
+					left: 10px;
+					font-size: 12px;
+					background-color: red;
+					color: $whilt;
+					padding: 3px 10px;
+					font-weight: 600;
+					z-index: 20;
+				}
+			}
+			.form-consignee {
+				margin-right: 14px;
+			}
+			.form-fixedphone {
+				margin-right: 14px;
+			}
+			.form-short {
+				.input-text {
+					width: 249px;
+					height: 18px;
+				}
+			}
+			#addaddress {
+				width: 546px;
+				padding: 10px 16px;
+				border: 1px solid $gray01;
+				@include transition2;
+				height: 3em;
+				&::placeholder {
+					color: transparent;
+					@include user-select-no;
+				}
+			}
+			.form-city {
+				position: relative;
+				label {
+					cursor: pointer;
+				}
+			}
+			@at-root .city-select {
+				display: none;
+				.sele-content {
+					border: 1px solid $red01;
+					position: absolute;
+					top: 45px;
+					left: 0;
+					width: 546px;
+					background-color: #fff;
+					padding: 10px 16px;
+					z-index: 10;
+					min-height: 33px;
+					li {
+						float: left;
+						padding: 5px;
+						cursor: pointer;
+						&:hover {
+							color: $color-Main;
+						}
+					}
+				}
+			}
+			.active {
+				.input-text {
+					border-color: $red01;
+				}
+				label {
+					color: $red01;
+					top: -8px;
+				}
+			}
+			.over {
+				.input-text {
+					border-color: $gray01;
+				}
+				label {
+					color: $gray03;
+					top: -8px;
+				}
+			}
+			.error {
+				i {
+					display: inline;
+				}
+				.tip {
+					display: block;
+				}
+			}
+		}
+		.maddress-ctrl {
+			padding: 20px 0;
+			height: 40px;
+			position: relative;
+			background-color: $blue007;
+			text-align: center;
+			%ctrl {
+				width: 158px;
+				height: 38px;
+				margin: 0 8px;
+				display: inline-block;
+				font-size: 14px;
+				line-height: 38px;
+				font-weight: 600;
+				text-align: center;
+				color: $whilt;
+				border: 1px solid transparent;
+				@include transition2;
+			}
+			.ok {
+				@extend %ctrl;
+				background-color: $color-Main*1.1;
+				border: 1px solid $color-Main;
+				&:hover {
+					background-color: $color-Main;
+				}
+			}
+			.cancel {
+				background-color: $gray03*1.1;
+				border: 1px solid $gray03;
+				@extend %ctrl;
+				&:hover {
+					background-color: $gray03;
+				}
+			}
+		}
+	}
+}
+@media screen and (max-width: 1180px) {
+	.w {
+		width: 960px;
+	}
+}

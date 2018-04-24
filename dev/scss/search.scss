@@ -88,6 +88,9 @@
 	.sele-brand{
 		.sele-content{
 			padding: 5px 140px 5px 50px;
+			a{
+				display: block;
+			}
 			li{
 				width: 75px;
 				height: 50px;
@@ -261,20 +264,24 @@
 //搜索结果
 .content{
 	padding-top: 10px;
+	margin-bottom: 30px	;
 	.product-item{
 		float: left;
 		width: 220px;
-		height: 350px;
 		border: 2px solid transparent;
 		padding: 5px;
 		margin: 12px 3px 0;
-		@include transition2;
+		@include transition1;
+		position: relative;
 		&:hover{
 			border: 2px solid $red01;
 		}
 		.img{
 			width: 220px;
 			height: 220px;
+			a{
+				display: block;
+			}
 			img{
 				width: 220px;
 				height: 220px;
@@ -291,7 +298,7 @@
 				font-size: 16px;
 			}
 		}
-		.desc{
+		.name{
 			display: block;
 			font-size: 12px;
 			color: $gray02;
@@ -324,12 +331,43 @@
 				color: $red01;
 			}
 		}
+		.tip{
+			display: none;
+			height: 40px;
+			width: 220px;
+			line-height: 40px;
+			text-align: center;
+			background-color: $red01;
+			color: $whilt;
+			font-weight: 700;
+			font-size: 14px;
+			@include opacity(0.98);
+			position: absolute;
+			top: 50%;
+			left: 5px;
+			margin-top: -4px;
+		}
+	}
+	.search-no{
+		text-align: center;
+		span{
+			display: inline-block;
+			font-size: 20px;
+			font-weight: 700;
+			color: $red01;
+			padding-top: 50px;
+			margin-bottom: 50px;
+			line-height: 40px;
+			height: 40px;
+			border-bottom: 2px solid $red01;
+		}
 	}
 }
 //页码
 .bottom-page{
 	height: 40px;
 	text-align: center;
+	margin-bottom: 50px;
 	.page-box{
 		height: 40px;
 		display: inline-block;
@@ -402,4 +440,73 @@
 		}
 	}
 
+}
+//模态框
+.mod-box{
+	display: none;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	background-color: rgba(0,0,0,.1);
+	.mod-info{
+		width: 320px;
+		height: 110px;
+		padding: 20px 30px;
+		background-color: $whilt;
+		border: 3px solid rgba(02,140,232,.6);
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -76px;
+		margin-left: -181px;
+		text-align: center;
+		.title{
+			height: 21px;
+			line-height: 21px;
+			padding: 0 20px 10px;
+			margin-bottom: 10px;
+			font-weight: 700;
+			font-size: 16px;
+			text-align: center;
+			border-bottom: 1px solid $gray01;
+		}
+		.ctrl{
+			height: 30px;
+			margin-top: 20px	;
+			text-align: center;
+			a{
+				display: inline-block;
+				width: 220px;
+				height: 28px;
+				line-height: 28px;
+				text-align: center;
+				border: 1px solid $gray01;
+				margin-left: 10px;
+				font-size: 14px;
+				cursor: pointer;
+				@include transition1;
+				&:hover{
+					color: $red01;
+				}
+			}
+			.ok{
+				background-color: $color-Main;
+				color: $whilt;
+			}
+		}
+		.close{
+			position: absolute;
+			right: 30px;
+			top: 20px	;
+			cursor: pointer;
+			color: $gray02;
+			@include transition1;
+			&:hover{
+				color: $red01;
+			}
+		}
+	}
 }

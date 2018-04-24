@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+				content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description"
+				content="鞋子商城,专业卖鞋网站,经营阿迪达斯，NIKE耐克、李宁、安踏、新百伦、Kappa、亚瑟士、斯凯奇等超值名牌鞋。正品保障，极速发货，退货无忧！">
+	<title>个人中心 - 疾风而至，疾步如飞</title>
+	<meta name="keywords" content="疾风步,阿迪，耐克,李宁,特步，新百伦">
+	<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="./css/base.css">
+	<link rel="stylesheet" href="./css/myjfb.css">
+
+</head>
+<body>
+	<!--公共页头盒子-->
+	<div class="pubHeader"></div>
+	<!--页面主体-->
+	<div class="main clearfix">
+		<div class="w clearfix">
+			<!--左侧导航-->
+			<div class="nav">
+				<!--订单中心-->
+				<dl class="nav-box">
+					<dt class="nav-head">订单中心</dt>
+					<dd class="nav-item"><a href="my-order">我的订单</a></dd>
+					<dd class="nav-item"><a href="my-comment">我的评价</a></dd>
+					<dd class="nav-item"><a href="my-like">我喜欢的</a></dd>
+				</dl>
+				<!--个人中心-->
+				<dl class="nav-box">
+					<dt class="nav-head">个人中心</dt>
+					<dd class="nav-item"><a href="my-data">个人资料</a></dd>
+					<dd class="nav-item"><a href="changePWD">修改密码</a></dd>
+					<dd class="nav-item nav-address"><a href="address">收货地址</a></dd>
+					<dd class="nav-item"><a href="message">消息通知</a></dd>
+				</dl>
+				<!--服务中心-->
+				<dl class="nav-box">
+					<dt class="nav-head">服务中心</dt>
+					<dd class="nav-item"><a href="serve">售后服务</a></dd>
+					<dd class="nav-item"><a href="complaint">投诉与建议</a></dd>
+				</dl>
+			</div>
+			<!--右侧内容-->
+			<div class="content">
+				<div class="content-box my-order">
+					我的订单
+				</div>
+				<div class="content-box my-comment">
+					我的评价
+				</div>
+				<div class="content-box my-like">
+					我的收藏
+				</div>
+				<div class="content-box my-data">
+					个人资料
+				</div>
+				<div class="content-box changePWD">
+					修改密码
+				</div>
+				<div class="content-box address">
+					<div class="address-head">
+						<h3>我的收货地址</h3>
+					</div>
+					<div class="address-bord">
+						<ul class="address-list clearfix">
+							<li class="address-item new-address">
+								<i class="icon-font">++</i>
+								添加新地址
+							</li>
+							<li class="address-item">
+								<dl>
+									<dt class="consignee">陈小明</dt>
+									<dd class="cellphone">14444444444</dd>
+									<dd class="address"><p>广东省广州市海珠区</p>
+										<p>fewajfwakhfawhflawf</p></dd>
+								</dl>
+								<div class="ctrl">
+									<a href="#">修改</a>
+									<a href="#">删除</a>
+								</div>
+							</li>
+							<li class="address-item">
+								<dl>
+									<dt class="consignee">陈小明</dt>
+									<dd class="cellphone">14444444444</dd>
+									<dd class="address"><p>广东省广州市海珠区</p>
+										<p>fewajfwakhfawhflawf</p></dd>
+								</dl>
+								<div class="ctrl">
+									<a href="#">修改</a>
+									<a href="#">删除</a>
+								</div>
+							</li>
+							<li class="address-item">
+								<dl>
+									<dt class="consignee">陈小明</dt>
+									<dd class="cellphone">14444444444</dd>
+									<dd class="address"><p>广东省广州市海珠区</p>
+										<p>fewajfwakhfawhflawf</p></dd>
+								</dl>
+								<div class="ctrl">
+									<a href="#">修改</a>
+									<a href="#">删除</a>
+								</div>
+							</li>
+							<li class="address-item">
+								<dl>
+									<dt class="consignee">陈小明</dt>
+									<dd class="cellphone">14444444444</dd>
+									<dd class="address"><p>广东省广州市海珠区</p>
+										<p>fewajfwakhfawhflawf</p></dd>
+								</dl>
+								<div class="ctrl">
+									<a href="#">修改</a>
+									<a href="#">删除</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="content-box message">
+					消息通知
+				</div>
+				<div class="content-box serve">
+					售后服务
+				</div>
+				<div class="content-box complaint">
+					投诉与建议
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--模态框集合-->
+	<div class="modal-address">
+		<div class="maddress-box">
+			<!--头-->
+			<div class="maddress-head">
+				<span> 添加收货地址</span>
+				<a href="#" class="close">X</a>
+			</div>
+			<!--内容-->
+			<div class="maddress-body">
+				<form action="">
+					<div class="form-section form-consignee form-short">
+						<label for="addconsignee">姓名</label>
+						<input type="text"  class="input-text" id="addconsignee" placeholder="收件人姓名">
+						<i class="icon-font">&#xe90d;</i>
+						<div class="tip">格式不正确,(只能是字母、汉字)</div>
+					</div>
+					<div class="form-section form-cellphone form-short">
+						<label for="addcellphone">联系电话</label>
+						<input type="text" class="input-text" id="addcellphone" placeholder="11位手机号码">
+						<i class="icon-font">&#xe90d;</i>
+						<div class="tip">请输入正确的手机号</div>
+					</div>
+					<div class="form-section form-city">
+						<label for="addcity">所在省/市/区或街道</label>
+						<input type="text" class="input-text" id="addcity" readonly="readonly">
+						<div class="city-select clearfix">
+							<ul class="sele-content clearfix" id="cityList">
+								<!--<li></li>-->
+							</ul>
+						</div>
+					</div>
+					<div class="form-section form-address">
+						<label for="addaddress">详细地址</label>
+						<textarea class="input-text" id="addaddress" placeholder="详细地址，路名或街道名称，门牌号"></textarea>
+					</div>
+					<div class="form-section form-fixedphone form-short">
+						<label for="addpostcode">固定电话</label>
+						<input type="text" class="input-text" id="fixedphone">
+						<i class="icon-font">&#xe90d;</i>
+						<div class="tip">亲输入纯数字固定电话</div>
+					</div>
+					<div class="form-section form-postcode form-short">
+						<label for="addpostcode">邮编</label>
+						<input type="text" class="input-text" id="addpostcode">
+						<i class="icon-font">&#xe90d;</i>
+						<div class="tip">请输入6为数字的邮编</div>
+					</div>
+				</form>
+			</div>
+			<!--按钮-->
+			<div class="maddress-ctrl">
+				<a href="#" class="ok">保存</a>
+				<a href="#" class="cancel">取消</a>
+			</div>
+		</div>
+	</div>
+	<div class="modal-affirm">
+		<div class="affirm-info">
+			<h3 class="affirm-title">删除地址</h3>
+			<p class="affirm-content">确定要删除该地址吗？</p>
+			<div class="affirm-ctrl">
+				<a href="#" class="ctrl-ok">确定</a>
+				<a href="#" class="ctrl-cancel">取消</a>
+			</div>
+			<i class="icon-font ctrl-close">&#xe90d;</i>
+		</div>
+	</div>
+
+	<!--公共页脚盒子-->
+	<div class="pubFooter"></div>
+</body>
+<script src="./js/cjj.js"></script>  <!--框架-->
+<script src="./js/shortHeader.js"></script>  <!--公共页头-->
+<script src="./js/pubFooter.js"></script>  <!--公共页脚-->
+<script src="./js/myjfb.js"></script>  <!--主页架子-->
+</html>

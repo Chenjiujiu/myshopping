@@ -532,7 +532,15 @@
 		val:function(v){
 			if(v){
 				this.get(0).value = v;
+				return this;
 			}else{
+				if(v===null){
+					for(var i = 0; i < this.doms.length; i++){
+						var obj = this.doms[i];
+						obj.value='';
+					}
+					return this;
+				}
 				return this.get(0).value;
 			}
 		},

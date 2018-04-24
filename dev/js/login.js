@@ -68,5 +68,30 @@
 				fn:callback
 			});
 		}
-	})
+	});
+
+	C('#upwd').on("keyup",function(e){
+		var event=C.event(e);
+		var code=event.charCode || event.keyCode;
+		if(code===13){
+			console.log(2);
+			C('#uname').get(0).blur();
+			C("#submit").get(0).click();
+		}else{
+			return false;
+		}
+	});
+
+	C('#uname').on("keyup",function(e){
+		var event=C.event(e);
+		var code=event.charCode || event.keyCode;
+		if(code===13){
+			console.log(1);
+			C('#uname').get(0).blur();
+			C("#submit").get(0).click();
+		}else{
+			return false;
+		}
+	});
+
 }();

@@ -38,17 +38,17 @@
 	var topSonSon = '<div id="top-son-son">这是上面的小盒子</div>';
 //鼠标进入大盒子，上面的小盒子添加内容，内容为一个小盒子
 
-	var flag=true;
+	// var flag=true;
 	father.onmouseenter = function(event){
-		if(flag){
-			flag=false;
+		// if(flag){
+		// 	flag=false;
 			topSon.innerHTML = topSonSon;
 			console.log('鼠标进入父盒子');
-		}
+		// }
 	};
-	father.onmouseleave=function(ev){
-		flag=true;
-	}
+	// father.onmouseleave=function(ev){
+	// 	flag=true;
+	// }
 
 
 

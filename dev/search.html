@@ -16,7 +16,7 @@
 <body>
 	<!--公共页头盒子-->
 	<div class="pubHeader"></div>
-
+	<!--搜索主体-->
 	<div class="search">
 		<div class="w">
 			<!--搜索头部-->
@@ -24,48 +24,43 @@
 				<!--顶部已选项-->
 				<div class="selected clearfix">
 					<h4>疾风步 ></h4>
-					<ul>
-						<li>
-							<span class="title">品牌:</span>
-							<span class="txt">阿迪达斯</span>
-							<i class="icon-font">&#xe90d;</i>
-						</li>
-						<li>
-							<span class="title">尺码:</span>
-							<span class="txt">35</span>
-							<i class="icon-font">&#xe90d;</i>
-						</li>
+					<ul id="showWordsList">
+						<!--<li>-->
+							<!--<span class="title">尺码:</span>-->
+							<!--<span class="txt">35</span>-->
+							<!--<i class="icon-font">&#xe90d;</i>-->
+						<!--</li>-->
 					</ul>
-					<div class="reset">全部取消</div>
+					<div class="reset" id="reset">全部取消</div>
 				</div>
 				<!--选择框-->
 				<div class="selection clearfix">
-					<div class="sele sele-brand clearfix">
+					<div class="sele sele-brand clearfix" data-key="brand">
 						<div class="sele-title">品牌</div>
 						<div class="sele-content clearfix">
 							<ul class="clearfix">
-								<li><a href="#"><img src="./images/logos/adidasi.png" alt=""></a></li>
-								<li><a href="#"><img src="./images/logos/kangnai.png" alt=""></a></li>
-								<li><a href="#"><img src="./images/logos/nike.png" alt=""></a></li>
-								<li><a href="#"><img src="./images/logos/pike.png" alt=""></a></li>
-								<li><a href="#"><img src="./images/logos/dahuanfen.png" alt=""></a></li>
-								<li><a href="#"><img src="./images/logos/tebu.png" alt=""></a></li>
-								<li><a href="#"><img src="./images/logos/anta.png" alt=""></a></li>
-								<li><a href="#"><img src="./images/logos/adidasi.png" alt=""></a></li>
-								<li><a href="#"><img src="./images/logos/kangnai.png" alt=""></a></li>
-								<li><a href="#"><img src="./images/logos/nike.png" alt=""></a></li>
-								<li><a href="#"><img src="./images/logos/pike.png" alt=""></a></li>
-								<li><a href="#"><img src="./images/logos/dahuanfen.png" alt=""></a></li>
-								<li><a href="#"><img src="./images/logos/tebu.png" alt=""></a></li>
-								<li><a href="#"><img src="./images/logos/anta.png" alt=""></a></li>
-								<li><a href="#"><img src="./images/logos/nike.png" alt=""></a></li>
-								<li><a href="#"><img src="./images/logos/pike.png" alt=""></a></li>
-								<li><a href="#"><img src="./images/logos/dahuanfen.png" alt=""></a></li>
-								<li><a href="#"><img src="./images/logos/tebu.png" alt=""></a></li>
-								<li><a href="#"><img src="./images/logos/anta.png" alt=""></a></li>
-								<li><a href="#"><img src="./images/logos/pike.png" alt=""></a></li>
-								<li><a href="#"><img src="./images/logos/tebu.png" alt=""></a></li>
-								<li><a href="#"><img src="./images/logos/anta.png" alt=""></a></li>
+								<li><a href="#" data-value="阿迪达斯"><img src="./images/logos/adidasi.png" alt=""></a></li>
+								<li><a href="#" data-value="康奈"><img src="./images/logos/kangnai.png" alt=""></a></li>
+								<li><a href="#" data-value="耐克"><img src="./images/logos/nike.png" alt=""></a></li>
+								<li><a href="#" data-value="匹克"><img src="./images/logos/pike.png" alt=""></a></li>
+								<li><a href="#" data-value="大黄蜂"><img src="./images/logos/dahuanfen.png" alt=""></a></li>
+								<li><a href="#" data-value="特步"><img src="./images/logos/tebu.png" alt=""></a></li>
+								<li><a href="#" data-value="安踏"><img src="./images/logos/anta.png" alt=""></a></li>
+								<li><a href="#" data-value="阿迪达斯"><img src="./images/logos/adidasi.png" alt=""></a></li>
+								<li><a href="#" data-value="康奈"><img src="./images/logos/kangnai.png" alt=""></a></li>
+								<li><a href="#" data-value="耐克"><img src="./images/logos/nike.png" alt=""></a></li>
+								<li><a href="#" data-value="匹克"><img src="./images/logos/pike.png" alt=""></a></li>
+								<li><a href="#" data-value="大黄蜂"><img src="./images/logos/dahuanfen.png" alt=""></a></li>
+								<li><a href="#" data-value="特步"><img src="./images/logos/tebu.png" alt=""></a></li>
+								<li><a href="#" data-value="安踏"><img src="./images/logos/anta.png" alt=""></a></li>
+								<li><a href="#" data-value="耐克"><img src="./images/logos/nike.png" alt=""></a></li>
+								<li><a href="#" data-value="匹克"><img src="./images/logos/pike.png" alt=""></a></li>
+								<li><a href="#" data-value="大黄蜂"><img src="./images/logos/dahuanfen.png" alt=""></a></li>
+								<li><a href="#" data-value="特步"><img src="./images/logos/tebu.png" alt=""></a></li>
+								<li><a href="#" data-value="安踏"><img src="./images/logos/anta.png" alt=""></a></li>
+								<li><a href="#" data-value="匹克"><img src="./images/logos/pike.png" alt=""></a></li>
+								<li><a href="#" data-value="耐克"><img src="./images/logos/nike.png" alt=""></a></li>
+								<li><a href="#" data-value="匹克"><img src="./images/logos/pike.png" alt=""></a></li>
 							</ul>
 						</div>
 						<div class="sele-option">
@@ -73,94 +68,94 @@
 							<a href="javascript:void(0);" class="option-s">+多选</a>
 						</div>
 					</div>
-					<div class="sele selection-type clearfix">
+					<div class="sele selection-type clearfix" data-key="type">
 						<div class="sele-title">类型</div>
 						<div class="sele-content">
 							<ul class="clearfix">
-								<li><a href="javascript:void(0);">拖鞋</a></li>
-								<li><a href="javascript:void(0);">运动鞋</a></li>
-								<li><a href="javascript:void(0);">板鞋</a></li>
-								<li><a href="javascript:void(0);">跑步鞋</a></li>
-								<li><a href="javascript:void(0);">靴子</a></li>
-								<li><a href="javascript:void(0);">高跟鞋</a></li>
-								<li><a href="javascript:void(0);">单鞋</a></li>
-								<li><a href="javascript:void(0);">皮鞋</a></li>
-								<li><a href="javascript:void(0);">特色鞋</a></li>
+								<li><a href="javascript:void(0);" data-value="拖鞋">拖鞋</a></li>
+								<li><a href="javascript:void(0);" data-value="运动鞋">运动鞋</a></li>
+								<li><a href="javascript:void(0);" data-value="板鞋">板鞋</a></li>
+								<li><a href="javascript:void(0);" data-value="跑步鞋">跑步鞋</a></li>
+								<li><a href="javascript:void(0);" data-value="靴子">靴子</a></li>
+								<li><a href="javascript:void(0);" data-value="高跟鞋">高跟鞋</a></li>
+								<li><a href="javascript:void(0);" data-value="单鞋">单鞋</a></li>
+								<li><a href="javascript:void(0);" data-value="皮鞋">皮鞋</a></li>
+								<li><a href="javascript:void(0);" data-value="特色鞋">特色鞋</a></li>
 							</ul>
 						</div>
 						<div class="sele-option">
 							<a href="javascript:void(0);" class="option-s">+多选</a>
 						</div>
 					</div>
-					<div class="sele selection-price clearfix">
+					<div class="sele selection-price clearfix" data-key="price">
 						<div class="sele-title">价位</div>
 						<div class="sele-content clearfix">
 							<ul class="sele-ul clearfix">
-								<li><a href="javascript:void(0);">0-199</a></li>
-								<li><a href="javascript:void(0);">200-299</a></li>
-								<li><a href="javascript:void(0);">300-349</a></li>
-								<li><a href="javascript:void(0);">350-399</a></li>
-								<li><a href="javascript:void(0);">400-449</a></li>
-								<li><a href="javascript:void(0);">500以上</a></li>
+								<li><a href="javascript:void(0);" data-value="0-199">0-199</a></li>
+								<li><a href="javascript:void(0);" data-value="200-299">200-299</a></li>
+								<li><a href="javascript:void(0);" data-value="300-349">300-349</a></li>
+								<li><a href="javascript:void(0);" data-value="350-399">350-399</a></li>
+								<li><a href="javascript:void(0);" data-value="400-449">400-449</a></li>
+								<li><a href="javascript:void(0);" data-value="500以上">500以上</a></li>
 							</ul>
 							<div class="sele-in">
-								<input type="text">
+								<input type="text" class="minprice">
 								<em>-</em>
-								<input type="text">
-								<a href="javascript:void(0);">确定</a>
+								<input type="text" class="maxprice">
+								<a href="javascript:void(0);" class="btn-price">确定</a>
 							</div>
 						</div>
 						<div class="sele-option">
 							<a href="javascript:void(0);" class="option-s">+多选</a>
 						</div>
 					</div>
-					<div class="sele selection-color clearfix">
+					<div class="sele selection-color clearfix" data-key="color">
 						<div class="sele-title">颜色</div>
 						<div class="sele-content">
 							<ul class="clearfix">
-								<li><a href="javascript:void(0);">黑色</a></li>
-								<li><a href="javascript:void(0);">白色</a></li>
-								<li><a href="javascript:void(0);">棕色</a></li>
-								<li><a href="javascript:void(0);">灰色</a></li>
-								<li><a href="javascript:void(0);">蓝色</a></li>
-								<li><a href="javascript:void(0);">黄色</a></li>
-								<li><a href="javascript:void(0);">褐色</a></li>
-								<li><a href="javascript:void(0);">红色</a></li>
-								<li><a href="javascript:void(0);">卡其色</a></li>
+								<li><a href="javascript:void(0);" data-value="黑色">黑色</a></li>
+								<li><a href="javascript:void(0);" data-value="白色">白色</a></li>
+								<li><a href="javascript:void(0);" data-value="棕色">棕色</a></li>
+								<li><a href="javascript:void(0);" data-value="灰色">灰色</a></li>
+								<li><a href="javascript:void(0);" data-value="蓝色">蓝色</a></li>
+								<li><a href="javascript:void(0);" data-value="黄色">黄色</a></li>
+								<li><a href="javascript:void(0);" data-value="褐色">褐色</a></li>
+								<li><a href="javascript:void(0);" data-value="红色">红色</a></li>
+								<li><a href="javascript:void(0);" data-value="卡其色">卡其色</a></li>
 							</ul>
 						</div>
 						<div class="sele-option">
 							<a href="javascript:void(0);" class="option-s">+多选</a>
 						</div>
 					</div>
-					<div class="sele selection-size clearfix">
+					<div class="sele selection-size clearfix" data-key="size">
 						<div class="sele-title">尺码</div>
 						<div class="sele-content">
 							<ul class="clearfix">
-								<li><a href="javascript:void(0);">35</a></li>
-								<li><a href="javascript:void(0);">36</a></li>
-								<li><a href="javascript:void(0);">37</a></li>
-								<li><a href="javascript:void(0);">38</a></li>
-								<li><a href="javascript:void(0);">39</a></li>
-								<li><a href="javascript:void(0);">40</a></li>
-								<li><a href="javascript:void(0);">41</a></li>
-								<li><a href="javascript:void(0);">42</a></li>
-								<li><a href="javascript:void(0);">43</a></li>
-								<li><a href="javascript:void(0);">44</a></li>
-								<li><a href="javascript:void(0);">45</a></li>
+								<li><a href="javascript:void(0);" data-value="35">35</a></li>
+								<li><a href="javascript:void(0);" data-value="36">36</a></li>
+								<li><a href="javascript:void(0);" data-value="37">37</a></li>
+								<li><a href="javascript:void(0);" data-value="38">38</a></li>
+								<li><a href="javascript:void(0);" data-value="39">39</a></li>
+								<li><a href="javascript:void(0);" data-value="40">40</a></li>
+								<li><a href="javascript:void(0);" data-value="41">41</a></li>
+								<li><a href="javascript:void(0);" data-value="42">42</a></li>
+								<li><a href="javascript:void(0);" data-value="43">43</a></li>
+								<li><a href="javascript:void(0);" data-value="44">44</a></li>
+								<li><a href="javascript:void(0);" data-value="45">45</a></li>
 							</ul>
 						</div>
 						<div class="sele-option">
 							<a href="javascript:void(0);" class="option-s">+多选</a>
 						</div>
 					</div>
-					<div class="sele selection-sex clearfix">
+					<div class="sele selection-sex clearfix" data-key="sex">
 						<div class="sele-title">适用性别</div>
 						<div class="sele-content">
 							<ul class="clearfix">
-								<li><a href="javascript:void(0);">男士</a></li>
-								<li><a href="javascript:void(0);">女士</a></li>
-								<li><a href="javascript:void(0);">儿童</a></li>
+								<li><a href="javascript:void(0);" data-value="男士">男士</a></li>
+								<li><a href="javascript:void(0);" data-value="女士">女士</a></li>
+								<li><a href="javascript:void(0);" data-value="儿童">儿童</a></li>
 							</ul>
 						</div>
 						<div class="sele-option">
@@ -180,7 +175,7 @@
 						<li><a href="javascript:void(0);">销量 <i class="icon-font">&#xe909;</i></a></li>
 					</ul>
 					<div class="info">
-						<p>共 <span>200</span> 个商品</p>
+						<p>共 <span class="top-nums">200</span> 个商品</p>
 						<span class="top-pages">1/20</span>
 						<a href="#" class="ctrl-top-pno top-prev"><i class="icon-font">&#xe900;</i></a>
 						<a href="#" class="ctrl-top-pno top-next"><i class="icon-font">&#xe901;</i></a>
@@ -188,36 +183,7 @@
 				</div>
 				<!--展示盒子-->
 				<div class="content clearfix" id="product-list">
-					<div class="product-item">
-						<div class="img"><img src="./images/product/101/1001m2.jpg"></div>
-						<h3 class="price"><em>¥</em>200.00</h3>
-						<p class="desc">娟的绢 设计师女鞋 韩版休闲运动白鞋 内增高厚底学生跑步单鞋 500 爱心款白色 37</p>
-						<p class="comm">已有<span>100+</span>条评论</p>
-						<div class="btn">
-							<a href="#" class="like"><i class="icon-font">x</i>关注</a>
-							<a href="#" class="add2car"><i class="icon-font">&#xe905;</i>加入购物车</a>
-						</div>
-					</div>
-					<div class="product-item">
-						<div class="img"><img src="./images/product/101/1001m2.jpg"></div>
-						<h3 class="price"><em>¥</em>200.00</h3>
-						<p class="desc">娟的绢 设计师女鞋 韩版休闲运动白鞋 内增高厚底学生跑步单鞋 500 爱心款白色 37</p>
-						<p class="comm">已有<span>100+</span>条评论</p>
-						<div class="btn">
-							<a href="#" class="like"><i class="icon-font">x</i>关注</a>
-							<a href="#" class="add2car"><i class="icon-font">&#xe905;</i>加入购物车</a>
-						</div>
-					</div>
-					<div class="product-item">
-						<div class="img"><img src="./images/product/101/1001m2.jpg"></div>
-						<h3 class="price"><em>¥</em>200.00</h3>
-						<p class="desc">娟的绢 设计师女鞋 韩版休闲运动白鞋 内增高厚底学生跑步单鞋 500 爱心款白色 37</p>
-						<p class="comm">已有<span>100+</span>条评论</p>
-						<div class="btn">
-							<a href="#" class="like"><i class="icon-font">x</i>关注</a>
-							<a href="#" class="add2car"><i class="icon-font">&#xe905;</i>加入购物车</a>
-						</div>
-					</div>
+					<div class="search-no"><span>未搜索到符合条件的商品！</span></div>
 				</div>
 				<!--页码-->
 				<div class="bottom-page">
@@ -240,7 +206,17 @@
 			</div>
 		</div>
 	</div>
-
+	<!--登录提示-->
+	<div class="mod-box" id="tip-login">
+		<div class="mod-info">
+			<h3 class="title">登录提示</h3>
+			<p >未登录，前先登录再进行购物</p>
+			<div class="ctrl">
+				<a href="./pass/login.html" class="ok">前往登录</a>
+			</div>
+			<i class="icon-font close">&#xe90d;</i>
+		</div>
+	</div>
 	<!--公共页脚盒子-->
 	<div class="pubFooter"></div>
 </body>

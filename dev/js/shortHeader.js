@@ -5,7 +5,7 @@
 		//cookie判断
 		~function(){
 			var uname = window.C.getCookie("uname");
-			uname = decodeURIComponent(uname);
+			uname=decodeURIComponent(uname);
 			if(uname !== 'undefined'){
 				if(uname !== undefined){
 					var str = "";
@@ -32,14 +32,16 @@
 		~function(){
 			C("#logout").click(function(){
 				C.delCookie({
-					"name":"uid",
+					"name":"uname",
 					"path":"/"
 				});
 				C.ajax({
 					url:'./data/logout.php',
-					type:'get'
+					type:'get',
+					fn:function(data){
+						location.href = "./pass/login.html"
+					}
 				});
-				location.href = "./pass/login.html"
 			});
 		}();
 		// 屏幕滚动事件
@@ -75,7 +77,7 @@
 				C.prevDef(e);
 				searIn.val(C(this).html());
 			});
-			C(".pub-header .search-box .input-btn").click(function(e){
+			C(".pub-header .header-search .input-btn").click(function(e){
 				C.prevDef(e);
 				var keyword=C.trim(searIn.val());
 				keyword=keyword.replace(/\s+/g," ");
@@ -86,6 +88,7 @@
 			});
 			searIn.on("keyup",function(e){
 				var event=C.event(e);
+				this.value = this.value.replace(/[^(0-9a-zA-Z)|(\s)|(\u4e00-\u9fa5)]/g, "");
 				var code=event.charCode || event.keyCode;
 				if(code===13){
 					C(".pub-header .search-box .input-btn").get(0).click();
