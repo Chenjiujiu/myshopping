@@ -21,7 +21,6 @@ if($uid && $consignee && $province && $city && $county && @$address && $cellphon
        $sql.=" (`uid`,`consignee`,`province`,`city`,`county`,`address`,`cellphone`,`fixedphone`,`postcode`,`is_default`)";
        $sql.=" values ($uid,'$consignee','$province','$city','$county','$address','$cellphone',$fixedphone,$postcode,$is_default)";
     }
-    echo $sql;
     $result=mysqli_query($conn,$sql);
     if($result){
       echo "ok";

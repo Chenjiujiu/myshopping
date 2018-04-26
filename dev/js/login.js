@@ -74,8 +74,8 @@
 		var event=C.event(e);
 		var code=event.charCode || event.keyCode;
 		if(code===13){
-			console.log(2);
 			C('#uname').get(0).blur();
+			C("#submit").get(0).focus();
 			C("#submit").get(0).click();
 		}else{
 			return false;

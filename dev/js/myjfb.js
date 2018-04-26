@@ -176,7 +176,7 @@ AddressBox.prototype = {
 		for(var k in this.address){
 			this.creatAddressDom(this.address[k]);
 			this.bindAddressEvent();
-			this.config.addressList.get(0).appendChild(this.addressDom.get(0));
+			this.config.addressList.get(0).insertBefore(this.addressDom.get(0),this.config.addressList.child().get(1));
 		}
 	},
 	//地址模态框基本动画
@@ -204,8 +204,6 @@ AddressBox.prototype = {
 			that.modalCance();
 		});
 		this.config.modaldOk.click(function(e){
-			console.log(that.nameflag,that.phoneflag,that.addressflag,that.cityflag,that.postCodeflag,that.fixedphoneflag);
-
 			C.prevDef(e);
 			if(that.nameflag && that.phoneflag && that.cityflag && that.addressflag && that.postCodeflag && that.fixedphoneflag){
 				that.submitAddress({
@@ -376,14 +374,17 @@ AddressBox.prototype = {
 	},
 	//地址提交
 	submitAddress:function(data){
+		var addData=data;
 		var that = this;
 		C.ajax({
 			url:'./data/updataAddress.php',
-			data:data,
+			data:addData,
 			type:'post',
 			fn:function(data){
-				console.log(data);
 				if(data === "ok"){
+					that.creatAddressDom(addData);
+					that.bindAddressEvent();
+					that.config.addressList.get(0).insertBefore(that.addressDom.get(0),that.config.addressList.child().get(1));
 					that.modalCance()
 				}
 			}

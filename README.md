@@ -2,8 +2,8 @@
 使用html/scss/js/php/mysql/gulp/git
 ####1.使用原生js
 使用原生js编写了一个仿JQ框架Cjj.js，使用全局变量C调用,可使用链式编程<br>
+兼容至ie8<br>
 框架内容：<br>
-0.对象拷贝扩充
     
 1.数据类型检测框架<br>
 2.选择框架<br>

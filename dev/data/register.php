@@ -1,5 +1,6 @@
 <?php
 header("content-Type:application/json");
+session_start();
 $uname=$_REQUEST['uname'];
 $uphone=$_REQUEST['uphone'];
 $upwd=$_REQUEST['upwd'];
@@ -9,6 +10,7 @@ $result=mysqli_query($conn,$sql);
 if($result===true){
      $data['flag']=1;
      $data['uid']=mysqli_insert_id($conn);
+     $_SESSION["uid"]=$result['uid'];
      echo JSON_encode($data);
 }else{
     $data['flag']=0;
